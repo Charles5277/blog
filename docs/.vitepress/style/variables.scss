@@ -1,0 +1,27 @@
+/* COLORS */
+
+$base-green: #33bf7d;
+$dark-green: #0c934d;
+$base-yellow: #f8e722;
+$base-blue: #3772ff;
+$light-blue: #47caff;
+$base-red: #ff1654;
+$base-purple: #773aff;
+$light-purple: #bd34fe;
+
+/* BREAKPOINTS */
+
+// Mobiles
+$screen-xs-min: 375px;
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 480px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 1024px;
+
+// Large tablets and desktops
+$screen-xl-min: 1280px;

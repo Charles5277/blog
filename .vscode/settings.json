@@ -1,0 +1,103 @@
+{
+  "cSpell.words": [
+    "addtohomescreen",
+    "adipiscing",
+    "amet",
+    "antfu",
+    "appspot",
+    "Bdcc",
+    "camelcase",
+    "cfeatures",
+    "compat",
+    "composables",
+    "consectetur",
+    "creds",
+    "Damngood",
+    "deermocracy",
+    "elit",
+    "firebaseapp",
+    "Firestore",
+    "frontmatter",
+    "Homescreen",
+    "iqjt",
+    "linebreak",
+    "Linktree",
+    "owliehq",
+    "Parens",
+    "rgba",
+    "signin",
+    "tailwindcss",
+    "todos",
+    "tseslint",
+    "VITE",
+    "vitepress",
+    "vuefire",
+    "Zcfg",
+    "Zerotier"
+  ],
+  "cSpell.enableFiletypes": ["!yaml"],
+  // Disable the default formatter, use eslint instead
+  "prettier.enable": false,
+  "editor.formatOnSave": false,
+
+  // Auto fix
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
+
+  // Silent the stylistic rules in you IDE, but still auto fix them
+  "eslint.rules.customizations": [
+    { "rule": "style/*", "severity": "off" },
+    { "rule": "format/*", "severity": "off" },
+    { "rule": "*-indent", "severity": "off" },
+    { "rule": "*-spacing", "severity": "off" },
+    { "rule": "*-spaces", "severity": "off" },
+    { "rule": "*-order", "severity": "off" },
+    { "rule": "*-dangle", "severity": "off" },
+    { "rule": "*-newline", "severity": "off" },
+    { "rule": "*quotes", "severity": "off" },
+    { "rule": "*semi", "severity": "off" }
+  ],
+
+  // Enable eslint for all supported languages
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "yaml",
+    "toml",
+    "xml",
+    "gql",
+    "graphql",
+    "astro",
+    "css",
+    "less",
+    "scss",
+    "pcss",
+    "postcss"
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  }
+
+
+}
