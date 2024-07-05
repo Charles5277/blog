@@ -15,7 +15,7 @@ export default defineConfig({
       { property: 'og:description', content: '前端開發學習心得與踩坑經驗' },
     ],
 
-    ['meta', { property: 'og:image', content: '/home.png' }],
+    ['meta', { property: 'og:image', content: './home.png' }],
     ['meta', { property: 'og:image:alt', content: 'logo' }],
     ['meta', { property: 'og:image:type', content: 'image/png' }],
     ['meta', { property: 'og:image:width', content: '1080' }],
@@ -31,7 +31,7 @@ export default defineConfig({
         content: '前端開發學習心得與踩坑經驗',
       },
     ],
-    ['meta', { property: 'twitter:image', content: '/home.png' }],
+    ['meta', { property: 'twitter:image', content: './home.png' }],
     [
       'link',
       {
