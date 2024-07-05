@@ -62,14 +62,14 @@ export default defineConfig({
       'script',
       {
         async: '',
-        src: 'https://www.googletagmanager.com/gtag/js?id=',
+        src: 'https://www.googletagmanager.com/gtag/js?id=G-HTW5MRZLKR',
       },
     ],
     // - Google Tag Manager
     [
       'script',
       {},
-      '(function(w,d,s,l,i){w[l]=w[l]||[];\nw[l].push({\'gtm.start\': new Date().getTime(),event:\'gtm.js\'});\nvar f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!=\'dataLayer\'?\'&l=\'+l:\'\';\nj.async=true;\nj.src=\'https://www.googletagmanager.com/gtm.js?id=\'+i+dl;f.parentNode.insertBefore(j,f);\n})(window,document,\'script\',\'dataLayer\',\'GTM-\');',
+      "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-HTW5MRZLKR');",
     ],
   ],
   appearance: 'dark',
