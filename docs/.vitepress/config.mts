@@ -45,7 +45,7 @@ export default defineConfig({
       'link',
       {
         rel: 'icon',
-        href: '/favicon.ico',
+        href: '/public/favicon.ico',
       },
     ],
     // - Google Analytics
@@ -113,6 +113,4 @@ export default defineConfig({
       detailsLabel: '目錄',
     },
   },
-
-
 });
