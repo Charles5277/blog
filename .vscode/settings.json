@@ -13,6 +13,7 @@
     "consectetur",
     "creds",
     "Damngood",
+    "Deactive",
     "deermocracy",
     "elit",
     "firebaseapp",
@@ -38,7 +39,6 @@
   ],
   "cSpell.enableFiletypes": ["!yaml"],
   // Disable the default formatter, use eslint instead
-  "prettier.enable": false,
   "editor.formatOnSave": false,
 
   // Auto fix
@@ -84,21 +84,19 @@
     "pcss",
     "postcss"
   ],
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "eslint.workingDirectories": [
     {
       "mode": "auto"
     }
   ],
-  "[vue]": {
-    "editor.defaultFormatter": "Vue.volar"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+  "[markdown]": {
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": true,
+      "strings": true
+    }
   }
-
-
 }

@@ -1,0 +1,63 @@
+//
+{
+  // "選單提示文字": {
+  //   "prefix": "快捷關鍵字",
+  //   "body": ["內容，如：'<TitleSeparator />'"],
+  //   "description": "備忘文字"
+  // },
+  "vue SFC": {
+    "prefix": "vue",
+    "body": [
+      "<script setup>",
+      "  $1",
+      "</script>",
+      "",
+      "<template>",
+      "  <div>",
+      "  $2",
+      "  </div>",
+      "</template>",
+      "",
+      "<style lang='scss' scoped>",
+      "  $3",
+      "</style>",
+    ],
+  },
+  "<script setup>": {
+    "prefix": "setup",
+    "body": ["<script setup>", "  $1", "</script>"],
+  },
+  "template slot": {
+    "prefix": "slotTemplate",
+    "body": ["<template #$1>", "  $2", "</template>"],
+  },
+  "template #prepend": {
+    "prefix": "prependSlot",
+    "body": ["<template #prepend>", "  $1", "</template>"],
+  },
+  "template #append": {
+    "prefix": "appendSlot",
+    "body": ["<template #append>", "  $1", "</template>"],
+  },
+  "page": {
+    "prefix": "page",
+    "body": [
+      "---",
+      "title: ",
+      "description: ",
+      "date: ",
+      "updated: ",
+      "category: ",
+      "tags: ",
+      "",
+      "next: false",
+      "---",
+      "",
+      "# Title",
+      "",
+      "",
+      "🖊️ 內容撰寫中",
+    ],
+    "description": "markdown 頁面建立 frontmatter"
+  },
+}

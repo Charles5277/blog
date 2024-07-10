@@ -12,7 +12,11 @@
 </script>
 
 <template>
-  <VPFeatures class="cfeatures" :class="{ noPadding }" v-bind="$attrs" />
+  <VPFeatures
+    class="cfeatures"
+    :class="{ noPadding }"
+    v-bind="$attrs"
+  />
 </template>
 
 <style scoped>

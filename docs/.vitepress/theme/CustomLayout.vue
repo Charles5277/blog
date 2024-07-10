@@ -1,114 +1,39 @@
-<!-- <script setup>
-import { ref, watch, nextTick, provide } from 'vue'
-import { useData, useRouter } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
-import GlassCard from '../components/GlassCard.vue'
-import GlassCardCodeSnippet from '../components/GlassCardCodeSnippet.vue'
-// import BlogComments from '../components/BlogComments.vue'
-import PostHeader from '../components/PostHeader.vue'
+<!-- Index.vue -->
+<script setup>
+  import Theme from 'vitepress/theme';
 
-const { Layout } = DefaultTheme
-const { page, isDark } = useData()
-const router = useRouter()
-const isBlogPost = ref(false)
+  import { useRouter, withBase } from 'vitepress';
+  import blogStore from '../theme/store';
 
-const enableTransitions = () =>
-  'startViewTransition' in document &&
-  window.matchMedia('(prefers-reduced-motion: no-preference)').matches
+  // - components
+  import TopInfo from '../components/TopInfo.vue';
 
-watch(
-  () => router.route.data.relativePath,
-  () => {
-    isBlogPost.value = page.value.frontmatter.type === 'article'
-  },
-  { immediate: true }
-)
+  const { Layout } = Theme;
 
-provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
-  if (!enableTransitions()) {
-    isDark.value = !isDark.value
-    return
-  }
+  const { go } = useRouter();
+  console.log(go);
+</script>
 
-  const clipPath = [
-    `circle(0px at ${x}px ${y}px)`,
-    `circle(${Math.hypot(
-      Math.max(x, innerWidth - x),
-      Math.max(y, innerHeight - y)
-    )}px at ${x}px ${y}px)`
-  ]
-
-  await document.startViewTransition(async () => {
-    isDark.value = !isDark.value
-    await nextTick()
-  }).ready
-
-  document.documentElement.animate(
-    { clipPath: isDark.value ? clipPath.reverse() : clipPath },
-    {
-      duration: 300,
-      easing: 'ease-in',
-      pseudoElement: `::view-transition-${isDark.value ? 'old' : 'new'}(root)`
-    }
-  )
-})
-</script> -->
-
-<!-- <template>
+<template>
   <Layout>
-    <template #home-hero-after>
-      <GlassCard :height="216">
-        <img src="/home.jpg">
-      </GlassCard>
+    <template #doc-top>
+      <TopInfo v-if="$frontmatter.tags" />
     </template>
-    <template #doc-before>
-      <PostHeader v-if="isBlogPost" :title="page.frontmatter.title" :published-on="page.frontmatter.publishedOn"
-        :updated-on="page.frontmatter.updatedOn" :image="page.frontmatter.image" :tags="page.frontmatter?.tags">
-      </PostHeader>
-    </template>
-    <template #doc-after>
-      <ClientOnly>
-        <BlogComments v-if="isBlogPost" />
-      </ClientOnly>
+
+    <template #doc-footer-before>
+      <div class="mb-4">
+        <span v-if="$frontmatter.tags">Tags:</span>
+        <q-btn
+          v-for="tag in $frontmatter.tags"
+          :key="tag"
+          :label="tag"
+          color="grey-9"
+          dense
+          no-caps
+          class="mx-1 px-2"
+          @click="switchTagPage(tag)"
+        />
+      </div>
     </template>
   </Layout>
-</template> -->
-
-<!-- <style lang="scss" scoped>
-@use '../style/variables.scss' as v;
-@use '../style/breakpoints.scss' as b;
-
-.Layout::v-deep(.VPHome) {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
-
-  .clip {
-    background-color: var(--vp-c-brand-3);
-    background: -webkit-linear-gradient(120deg, v.$light-purple 30%, v.$light-blue);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  @include b.lg {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    // // padding-top: calc(var(--vp-nav-height) + 40px);
-
-    // .card {
-    //   padding-right: 120px;
-    // }
-  }
-}
-
-.Layout::v-deep(.VPDocOutlineDropdown) {
-  margin: 20px 0;
-}
-
-.Layout::v-deep(.vp-doc.container) {
-  display: none;
-}
-</style> -->
+</template>
