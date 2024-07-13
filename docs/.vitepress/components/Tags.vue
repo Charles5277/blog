@@ -25,7 +25,7 @@
         v-for="(tag, idx) in blogStore.selectedTags"
         :key="idx"
         icon="close"
-        class="pr-4 mx-1"
+        class="pr-4 mx-1 mb-2"
         color="#424242"
         text-color="white"
         @click="blogStore.selectedTags.splice(idx, 1)"
@@ -40,7 +40,7 @@
         v-for="(_, tag) in tags"
         :key="tag"
         color="#00897b"
-        class="px-2 mb-1 mr-3"
+        class="px-2 mb-2 mr-3"
         @click="selectTag(tag)"
       >
         <span
