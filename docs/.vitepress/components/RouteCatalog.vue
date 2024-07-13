@@ -12,6 +12,7 @@
 
   onBeforeMount(() => {
     blogStore.value.selectedCategory = props.category;
+    blogStore.value.selectedTags = [];
     go(withBase('/catalog'));
   });
 </script>
