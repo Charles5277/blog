@@ -6,7 +6,7 @@
 
   const tags = initTags(posts);
 
-  function selectTag(tag: string) {
+  function selectTag(tag: string | number) {
     if (!blogStore.value.selectedTags.includes(tag)) {
       blogStore.value.selectedTags.push(tag);
     }
@@ -21,32 +21,36 @@
       class="row items-center text-lg text-bold mb-2"
     >
       篩選標籤：
-      <q-chip
+      <VaChip
         v-for="(tag, idx) in blogStore.selectedTags"
         :key="idx"
-        class="pr-4"
-        removable
-        color="grey-9"
+        icon="close"
+        class="pr-4 mx-1"
+        color="#424242"
         text-color="white"
-        @remove="blogStore.selectedTags.splice(idx, 1)"
+        @click="blogStore.selectedTags.splice(idx, 1)"
       >
         {{ tag }}
-      </q-chip>
+      </VaChip>
     </div>
 
     <div class="flex flex-wrap">
       <div />
-      <q-btn
+      <VaButton
         v-for="(_, tag) in tags"
         :key="tag"
-        color="teal-7"
+        color="#00897b"
         class="px-2 mb-1 mr-3"
-        no-caps
         @click="selectTag(tag)"
       >
-        <span class="theme-badge">{{ tag }}</span>
-      </q-btn>
+        <span
+          class="theme-badge"
+        >
+          {{ tag }}
+        </span>
+      </VaButton>
     </div>
+    <hr class="h-px my-4 bg-gray-200 border-0">
   </div>
 </template>
 
@@ -67,5 +71,9 @@ a:hover {
   text-decoration-thickness: 2px !important;
   text-decoration: underline !important;
   text-underline-offset: 2px !important;
+}
+
+:deep(.va-chip__inner) {
+  flex-direction: row-reverse;
 }
 </style>

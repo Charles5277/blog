@@ -7,6 +7,7 @@ category: Catalog
 editLink: false
 lastUpdated: false
 footer: false
+prev: false
 next: false
 ---
 

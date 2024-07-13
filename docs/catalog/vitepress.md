@@ -2,12 +2,13 @@
 title: VitePress
 # description:
 date: 2024-07-11 01:47
-category:
+category: VitePress
 tags:
+editLink: false
+lastUpdated: false
 
+prev: false
 next: false
 ---
 
-# VitePress
-
-🖊️ 內容撰寫中
+<RouteCatalog :category="$frontmatter.category" />

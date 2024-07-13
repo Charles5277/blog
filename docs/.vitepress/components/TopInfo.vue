@@ -12,10 +12,11 @@
 
 <template>
   <div class="flex row justify-center">
-    <span class="theme-title pb-6 text-4xl font-extrabold">
+    <div class="theme-title pb-6 text-4xl font-extrabold">
       {{ frontmatter.title }}
-    </span>
+    </div>
   </div>
+
   <div class="flex row justify-center items-center text-lg">
     <span class="px-1">
       📆
@@ -27,4 +28,12 @@
     />
     {{ frontmatter.category }}
   </div>
+
+  <hr class="my-4 h-px bg-gray-300 border-0 dark:bg-gray-500">
+  <div class="flex row">
+    <div class="text-lg ">
+      <span v-html="frontmatter.description" />
+    </div>
+  </div>
+  <hr class="my-4 h-px bg-gray-300 border-0 dark:bg-gray-500">
 </template>

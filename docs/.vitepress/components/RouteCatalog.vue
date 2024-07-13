@@ -1,0 +1,22 @@
+<script setup lang="ts">
+  import { useRouter, withBase } from 'vitepress';
+  import { onBeforeMount } from 'vue';
+
+  import blogStore from '../theme/store';
+
+  const props = defineProps<{
+    category: string;
+  }>();
+
+  const { go } = useRouter();
+
+  onBeforeMount(() => {
+    blogStore.value.selectedCategory = props.category;
+    go(withBase('/catalog'));
+  });
+</script>
+
+<template>
+  <!-- // 加載過渡 -->
+  <Catalog />
+</template>

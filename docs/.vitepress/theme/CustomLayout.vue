@@ -2,28 +2,22 @@
 <script setup>
   import Theme from 'vitepress/theme';
 
-  import { useRouter, withBase } from 'vitepress';
-  import blogStore from '../theme/store';
-
   // - components
   import TopInfo from '../components/TopInfo.vue';
 
   const { Layout } = Theme;
-
-  const { go } = useRouter();
-  console.log(go);
 </script>
 
 <template>
   <Layout>
-    <template #doc-top>
+    <template #doc-before>
       <TopInfo v-if="$frontmatter.tags" />
     </template>
 
     <template #doc-footer-before>
       <div class="mb-4">
         <span v-if="$frontmatter.tags">Tags:</span>
-        <q-btn
+        <button
           v-for="tag in $frontmatter.tags"
           :key="tag"
           :label="tag"

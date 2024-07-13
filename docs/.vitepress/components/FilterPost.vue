@@ -18,7 +18,12 @@
     else {
       const arr: Post[] = [];
       blogStore.value.selectedTags.forEach((tag) => {
-        arr.push(...tags[tag]);
+        const items = tags[tag];
+        items.forEach((item) => {
+          if (!arr.includes(item)) {
+            arr.push(item);
+          }
+        });
       });
 
       return arr;

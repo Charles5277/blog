@@ -61,6 +61,16 @@ export default defineConfig({
         </svg>`,
       },
     ],
+
+    // - vuestic
+    ['link', {
+      href: `
+      https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;1,700&display=swap
+    `,
+rel: 'stylesheet',
+    }],
+    ['link', { href: 'https://fonts.googleapis.com/icon?family=Material+Icons', rel: 'stylesheet' }],
+
     // - Google Analytics
     [
       'script',
@@ -91,7 +101,7 @@ export default defineConfig({
       },
     },
     editLink: {
-      pattern: 'https://github.com/Charles5277/dev-blog/main/docs/:path',
+      pattern: 'https://github.com/Charles5277/dev-blog/tree/main/docs/:path',
       text: '在 GitHub 編輯此頁',
     },
     nav: [],
@@ -99,12 +109,12 @@ export default defineConfig({
       {
         text: '文章主題',
         items: [
-          { text: 'Vue.js', link: '/catalog/?category="Vue.js"' },
-          { text: 'VitePress', link: '/catalog/?category="VitePress"' },
-          { text: 'VS Code', link: '/catalog/?category="VS Code"' },
-          { text: 'Git', link: '/catalog/?category="Git"' },
-          { text: 'GitHub', link: '/catalog/?category="GitHub"' },
-          { text: 'Docker', link: '/catalog/?category="Docker"' },
+          { text: 'Vue.js', link: '/catalog/vue' },
+          { text: 'VitePress', link: '/catalog/vitepress' },
+          { text: 'VS Code', link: '/catalog/vscode' },
+          { text: 'Git', link: '/catalog/git' },
+          { text: 'GitHub', link: '/catalog/github' },
+          { text: 'Docker', link: '/catalog/docker' },
         ],
       },
     ],

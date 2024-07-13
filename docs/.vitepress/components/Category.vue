@@ -15,17 +15,16 @@
 <template>
   <div class="theme-container">
     <div class="flex flex-wrap">
-      <q-btn
+      <VaButton
         v-for="(_, item) in category"
         :key="item"
         class="px-2 my-1 mr-3"
-        color="deep-purple-8"
-        no-caps
+        color="#512da8"
         @click="categorySwitcher(`${item}`)"
       >
         <span class="theme-badge">{{ item }}</span>
-      </q-btn>
+      </VaButton>
     </div>
-    <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-500">
+    <hr class="h-px my-4 bg-gray-200 border-0">
   </div>
 </template>
