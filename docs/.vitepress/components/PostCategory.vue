@@ -1,4 +1,4 @@
-<script setup lang='ts'>
+<script setup lang="ts">
   import { initCategory } from '../theme/utils';
   import { data as posts } from '../theme/posts.data';
 
@@ -9,7 +9,7 @@
   function categorySwitcher(item: string) {
     blogStore.value.selectedCategory = item;
     blogStore.value.selectedTags = [];
-  };
+  }
 </script>
 
 <template>
@@ -25,6 +25,6 @@
         <span class="theme-badge">{{ item }}</span>
       </VaButton>
     </div>
-    <hr class="h-px my-4 bg-gray-200 border-0">
+    <hr class="h-px my-4 bg-gray-200 border-0" />
   </div>
 </template>

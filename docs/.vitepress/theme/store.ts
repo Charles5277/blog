@@ -6,7 +6,7 @@ interface BlogStore {
   pageBarIdx: number;
   currentPage: number;
   selectedCategory: string;
-  selectedTags: (string | number)[];
+  selectedTags: string[];
   filterType: string;
   icon: string;
 }
@@ -23,7 +23,7 @@ const blogStore = ref<BlogStore>({
 watch(
   () => blogStore.value.selectedCategory,
   (v: string) => {
-      blogStore.value.icon = iconSheet.title[v] || '';
+    blogStore.value.icon = iconSheet.title[v] || '';
   },
 );
 

@@ -58,4 +58,25 @@
     ],
     "description": "markdown 頁面建立 frontmatter"
   },
+  "focus":
+  {
+    "prefix": "focus",
+    "body": ["// [!code focus]"],
+    "description": "focus"
+  },
+  "block-vue":{
+    "prefix": "block-vue",
+    "body": [
+      "```vue:line-numbers {9}",
+      "$1",
+      "```",
+    ],
+    "description": "block-vue"
+  },
+  "link":{
+    "prefix": "link",
+    "body": [
+      "[🔗 ${1:label}](${2:url})",
+    ],
+  }
 }

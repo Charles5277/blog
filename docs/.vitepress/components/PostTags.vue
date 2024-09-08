@@ -1,17 +1,17 @@
-<script setup lang='ts'>
+<script setup lang="ts">
   import { initTags } from '../theme/utils';
   import { data as posts } from '../theme/posts.data';
 
   import blogStore from '../theme/store';
 
-  const tags = initTags(posts);
+  const tags: object = initTags(posts);
 
-  function selectTag(tag: string | number) {
+  function selectTag(tag: string) {
     if (!blogStore.value.selectedTags.includes(tag)) {
       blogStore.value.selectedTags.push(tag);
     }
     blogStore.value.selectedCategory = '';
-  };
+  }
 </script>
 
 <template>
@@ -43,37 +43,33 @@
         class="px-2 mb-2 mr-3"
         @click="selectTag(tag)"
       >
-        <span
-          class="theme-badge"
-        >
-          {{ tag }}
-        </span>
+        <span class="theme-badge"> {{ tag }} </span>
       </VaButton>
     </div>
-    <hr class="h-px my-4 bg-gray-200 border-0">
+    <hr class="h-px my-4 bg-gray-200 border-0" />
   </div>
 </template>
 
 <style scoped>
-.vp-doc,
-a {
-  font-weight: normal !important;
-  color: initial !important;
-  text-decoration: none !important;
-  text-underline-offset: initial !important;
-  transition: none !important;
-}
+  .vp-doc,
+  a {
+    font-weight: normal !important;
+    color: initial !important;
+    text-decoration: none !important;
+    text-underline-offset: initial !important;
+    transition: none !important;
+  }
 
-.vp-doc,
-a:hover {
-  font-weight: 500 !important;
-  color: var(--vp-c-brand-1) !important;
-  text-decoration-thickness: 2px !important;
-  text-decoration: underline !important;
-  text-underline-offset: 2px !important;
-}
+  .vp-doc,
+  a:hover {
+    font-weight: 500 !important;
+    color: var(--vp-c-brand-1) !important;
+    text-decoration-thickness: 2px !important;
+    text-decoration: underline !important;
+    text-underline-offset: 2px !important;
+  }
 
-:deep(.va-chip__inner) {
-  flex-direction: row-reverse;
-}
+  :deep(.va-chip__inner) {
+    flex-direction: row-reverse;
+  }
 </style>

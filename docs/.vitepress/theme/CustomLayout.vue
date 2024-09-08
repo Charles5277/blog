@@ -10,8 +10,8 @@
   const { Layout } = Theme;
   const { go } = useRouter();
 
-  function searchCategory(category) {
-    blogStore.value.selectedCategory = category;
+  function searchTags(tag) {
+    blogStore.value.selectedTags.push(tag);
     go(withBase('/catalog/'));
   }
 </script>
@@ -33,26 +33,11 @@
             size="small"
             color="#00897b"
             class="ml-2"
-            @click="searchCategory(tag)"
+            @click="searchTags(tag)"
           >
-            <span
-              class="theme-badge"
-            >
-              {{ tag }}
-            </span>
+            <span class="theme-badge"> {{ tag }} </span>
           </VaButton>
         </div>
-
-        <button
-          v-for="tag in $frontmatter.tags"
-          :key="tag"
-          :label="tag"
-          color="grey-9"
-          dense
-          no-caps
-          class="mx-1 px-2"
-          @click="switchTagPage(tag)"
-        />
       </div>
     </template>
   </Layout>

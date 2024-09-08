@@ -9,8 +9,8 @@ import { createVuestic } from 'vuestic-ui';
 // - components
 // import CustomFeatures from '../components/CustomFeatures.vue';
 // import CustomLayout from './CustomLayout.vue';
-import Tags from '../components/Tags.vue';
-import Category from '../components/Category.vue';
+import Tags from '../components/PostTags.vue';
+import Category from '../components/PostCategory.vue';
 import RouteCatalog from '../components/RouteCatalog.vue';
 
 import CustomLayout from './CustomLayout.vue';
@@ -20,8 +20,8 @@ export default {
   Layout: CustomLayout,
   async enhanceApp({ app }) {
     // app.component('CustomFeatures', CustomFeatures);
-    app.component('Tags', Tags);
-    app.component('Category', Category);
+    app.component('PostTags', Tags);
+    app.component('PostCategory', Category);
     app.component('RouteCatalog', RouteCatalog);
 
     app.use(createVuestic());

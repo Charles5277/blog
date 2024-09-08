@@ -15,32 +15,38 @@
     if (blogStore.value.selectedCategory) {
       return category[blogStore.value.selectedCategory];
     }
-    else {
-      const arr: Post[] = [];
-      blogStore.value.selectedTags.forEach((tag) => {
-        const items = tags[tag];
-        items.forEach((item) => {
-          if (!arr.includes(item)) {
-            arr.push(item);
-          }
-        });
-      });
 
-      return arr;
-    }
+    const arr: Post[] = [];
+    const selectedTags = blogStore.value.selectedTags;
+
+    const addItemIfNeeded = (item: Post) => {
+      // 檢查該貼文是否已經在 arr 中
+      if (!arr.includes(item)) {
+        // 確保該貼文包含所有選中的標籤
+        const hasAllTags = selectedTags.every((selectedTag) =>
+          item.tags.includes(selectedTag),
+        );
+
+        if (hasAllTags) {
+          arr.push(item);
+        }
+      }
+    };
+
+    // 遍歷所有標籤
+    selectedTags.forEach((tag) => {
+      const items = tags[tag] || [];
+      items.forEach(addItemIfNeeded);
+    });
+
+    return arr;
   });
 </script>
 
 <template>
   <div v-if="blogStore.selectedCategory !== ''">
-    <h3
-      id="tagName"
-      class="pb-2 flex row items-center"
-    >
-      <span
-        class="mr-4"
-        v-html="blogStore.icon"
-      />
+    <h3 id="tagName" class="pb-2 flex row items-center">
+      <span class="mr-4" v-html="blogStore.icon" />
       <span>{{ blogStore.selectedCategory }}</span>
     </h3>
   </div>
@@ -52,8 +58,7 @@
       :href="withBase(post.url)"
     >
       <dd
-        class="flex justify-between  my-3 text-base leading-6 font-medium
-          text-gray-500 dark:text-gray-300"
+        class="flex justify-between my-3 text-base leading-6 font-medium text-gray-500 dark:text-gray-300"
       >
         <div class="list-disc truncate w-64 sm:w-fit pl-2">
           <li>
@@ -62,35 +67,36 @@
               v-text="
                 `${post.category}
               |
-              `"
+              `
+              "
             />
-            {{ post.title }}</li>
+            {{ post.title }}
+          </li>
         </div>
         <div class="w-24">
           {{ post.date.string }}
         </div>
-
       </dd>
     </a>
   </dl>
 </template>
 
 <style scoped>
-.vp-doc,
-a {
-  font-weight: normal !important;
-  color: initial !important;
-  text-decoration: none !important;
-  text-underline-offset: initial !important;
-  transition: none !important;
-}
+  .vp-doc,
+  a {
+    font-weight: normal !important;
+    color: initial !important;
+    text-decoration: none !important;
+    text-underline-offset: initial !important;
+    transition: none !important;
+  }
 
-.vp-doc,
-a:hover {
-  font-weight: 500 !important;
-  color: var(--vp-c-brand-1) !important;
-  text-decoration-thickness: 2px !important;
-  text-decoration: underline !important;
-  text-underline-offset: 2px !important;
-}
+  .vp-doc,
+  a:hover {
+    font-weight: 500 !important;
+    color: var(--vp-c-brand-1) !important;
+    text-decoration-thickness: 2px !important;
+    text-decoration: underline !important;
+    text-underline-offset: 2px !important;
+  }
 </style>

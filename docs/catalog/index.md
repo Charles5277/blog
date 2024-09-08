@@ -12,7 +12,7 @@ next: false
 ---
 
 <script setup>
-  import Catalog from '../.vitepress/components/Catalog.vue'
+  import Catalog from '../.vitepress/components/PostCatalog.vue'
 </script>
 
 <Catalog />
