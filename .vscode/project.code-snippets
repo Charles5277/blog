@@ -56,27 +56,20 @@
       "",
       "🖊️ 內容撰寫中",
     ],
-    "description": "markdown 頁面建立 frontmatter"
+    "description": "markdown 頁面建立 frontmatter",
   },
-  "focus":
-  {
+  "focus": {
     "prefix": "focus",
     "body": ["// [!code focus]"],
-    "description": "focus"
+    "description": "focus",
   },
-  "block-vue":{
+  "block-vue": {
     "prefix": "block-vue",
-    "body": [
-      "```vue:line-numbers {9}",
-      "$1",
-      "```",
-    ],
-    "description": "block-vue"
+    "body": ["```vue:line-numbers", "$1", "```"],
+    "description": "block-vue",
   },
-  "link":{
+  "link": {
     "prefix": "link",
-    "body": [
-      "[🔗 ${1:label}](${2:url})",
-    ],
-  }
+    "body": ["[🔗 ${1:label}](${2:url})"],
+  },
 }
