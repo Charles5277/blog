@@ -1,8 +1,8 @@
 ---
-title: Vue.js
+title: Ubuntu
 # description:
-date: 2024-07-11
-category: Vue.js
+date: 2024-09-11
+category: Ubuntu
 tags:
 editLink: false
 lastUpdated: false

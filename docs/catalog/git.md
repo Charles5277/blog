@@ -1,7 +1,7 @@
 ---
 title: Git
 # description:
-date: 2024-07-11 01:47
+date: 2024-07-11
 category: Git
 tags:
 editLink: false

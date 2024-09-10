@@ -1,7 +1,7 @@
 ---
 title: 簡介 GitHub
 description: 什麼是 GitHub？<br>GitHub 為什麼這麼受歡迎？
-date: 2024-07-13 08:41
+date: 2024-07-13
 category: GitHub
 tags:
   - GitHub

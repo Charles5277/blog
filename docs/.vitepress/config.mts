@@ -67,7 +67,7 @@ export default defineConfig({
       href: `
       https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;1,700&display=swap
     `,
-rel: 'stylesheet',
+      rel: 'stylesheet',
     }],
     ['link', { href: 'https://fonts.googleapis.com/icon?family=Material+Icons', rel: 'stylesheet' }],
 
@@ -115,6 +115,7 @@ rel: 'stylesheet',
           { text: 'Git', link: '/catalog/git' },
           { text: 'GitHub', link: '/catalog/github' },
           { text: 'Docker', link: '/catalog/docker' },
+          { text: 'Ubuntu', link: '/catalog/ubuntu' },
         ],
       },
     ],

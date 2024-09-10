@@ -1,7 +1,7 @@
 ---
 title: v-on 事件綁定指令
 description: 透過 v-on 事件綁定，讓元素可以觸發事件
-date: 2024-09-09 02:34
+date: 2024-09-09
 category: Vue.js
 tags:
   - Vue

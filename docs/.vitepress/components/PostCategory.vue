@@ -5,6 +5,7 @@
   import blogStore from '../theme/store';
 
   const category = initCategory(posts);
+  const sortedCategory = Object.keys(category).sort();
 
   function categorySwitcher(item: string) {
     blogStore.value.selectedCategory = item;
@@ -16,11 +17,11 @@
   <div class="theme-container">
     <div class="flex flex-wrap">
       <VaButton
-        v-for="(_, item) in category"
+        v-for="item in sortedCategory"
         :key="item"
         class="px-2 my-1 mr-3"
         color="#512da8"
-        @click="categorySwitcher(`${item}`)"
+        @click="categorySwitcher(item)"
       >
         <span class="theme-badge">{{ item }}</span>
       </VaButton>

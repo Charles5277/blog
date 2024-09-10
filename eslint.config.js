@@ -27,6 +27,7 @@ export default [
   },
   {
     rules: {
+      'no-useless-escape': 'off',
       eqeqeq: 'error',
       camelcase: 'error',
       'vue/eqeqeq': 'error',
@@ -40,7 +41,7 @@ export default [
       'prefer-const': 'error',
       'vue/singleline-html-element-content-newline': 'off',
       'vue/html-self-closing': 'off',
-      'vue/max-attributes-per-line': 'off',
+      'vue/max-attributes-per-line': 'off'
     },
   },
 ];

@@ -1,7 +1,7 @@
 ---
 title: v-bind 屬性綁定指令
 description: 透過 v-bind 屬性綁定，讓元素可以動態更新屬性
-date: 2024-09-09 04:47
+date: 2024-09-09
 category: Vue.js
 tags:
   - Vue
