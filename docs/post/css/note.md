@@ -31,7 +31,7 @@ next: false
 
 - External style sheet
 
-  ```css
+  ```html
   <link rel="stylesheet" href="style.css" />
   ```
 
@@ -54,7 +54,7 @@ next: false
     color: rgb(100, 100, 100);
   }
   ```
-  > value 為 0\~255
+  > value 為 `0 ~ 255`
 - rgba
   ```css
   .demo {
@@ -75,7 +75,7 @@ next: false
   }
   ```
   > Hue   / Saturation / Lightness (色相 / 飽和度 / 亮度)
-  > 0~~359 /  0~~100%  /   0\~100%
+  > 0\~359 /  0\~100%  /   0\~100%
 
 ## Selectors
 
@@ -262,7 +262,7 @@ next: false
     3. tag   (0,0,1) <br>
        > 優先級由 (1,1,1) \~ (0,0,0)
   - Order Rule
-    - 發生衝突時由後面的設定覆寫，包含引用外部的 <link> stylesheet
+    - 發生衝突時由後面的設定覆寫，包含引用外部的 `<link> `stylesheet
 
 ## text styling
 
@@ -509,13 +509,8 @@ next: false
 
 > 每個 block element 都是一個 box
 
-<p class="indent_2"><img src="https://i.imgur.com/L9XTrLY.png" width="250">
+<p class="indent_2"><img src="https://i.imgur.com/L9XTrLY.png" width="250" />
 </p>
-<style>
-    .indent_2 {
-      text-indent: 2rem;
-    }
-</style>
 
 - context (內容)：顯示內容區域，用 width 和 height 調整大小
 
@@ -602,14 +597,14 @@ next: false
   - content-box (預設)
     > width 跟 height 決定整個 content 的寬高，padding 跟 border 外加
   - border-box > width 跟 height 決定整個 box 的寬高，即包含 border、padding、content
-    \`css
+    ```css
     - {
       box-sizing: border-box;
-      }
-      \`
-      > content-box => 設定內部 content 大小，外加模式
-      > border-box  => 設定整個 box 大小，內縮模式
-      > 💡絕大多數網頁使用 **border-box**
+    }
+    ```
+    > content-box => 設定內部 content 大小，外加模式
+    > border-box  => 設定整個 box 大小，內縮模式
+    > 💡絕大多數網頁使用 **border-box**
 
 ## Display
 
@@ -623,8 +618,7 @@ next: false
   - flex
   - grid
 
-<p><img src="https://i.imgur.com/4XcF9sm.png" width="100%">
-</p>
+<p><img src="https://i.imgur.com/4XcF9sm.png" width="100%" /></p>
 
 ## Position
 
@@ -672,7 +666,7 @@ next: false
 
 > element 位置重疊時，依虛擬 z 軸堆疊的情況
 
-- Root element of the document (<html>)
+- Root element of the document (`<html>`)
 - 任何 **position 為 relative 或 absolute**，且 **z-index 的值不是 auto**，則**內部形成新的 stacking context**
   > 內部形成新的 stacking 之後，z-index 值就不會跟 parent element (含) 以上的 element 比較
 - 任何 position 為 fixed 或 sticky 的 element
@@ -680,6 +674,7 @@ next: false
 ## Table Style
 
 - border collapse
+
   ```css
   table,
   th,
@@ -691,16 +686,15 @@ next: false
   }
   ```
 
+- 圖 1
+
 <p class="indent_4"><img src="https://i.imgur.com/LkHmDww.png" width="300 px">
 </p>
+
+- 圖 2
+
 <p class="indent_4"><img src="https://i.imgur.com/Ukcas3z.png" width="300 px">
 </p>
-> test
-<style>
-    .indent_4 {
-      text-indent: 3.2rem;
-    }
-</style>
 
 ## Opacity (不透明度) & Cursor (游標樣式)
 
