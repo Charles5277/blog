@@ -33,10 +33,17 @@
       }
     };
 
-    // 遍歷所有標籤
+    // - 遍歷所有標籤
     selectedTags.forEach((tag) => {
       const items = tags[tag] || [];
       items.forEach(addItemIfNeeded);
+    });
+
+    // - 依照日期排序
+    arr.sort((a, b) => {
+      return (
+        new Date(b.date.string).getTime() - new Date(a.date.string).getTime()
+      );
     });
 
     return arr;

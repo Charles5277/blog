@@ -11,6 +11,8 @@
   const { go } = useRouter();
 
   function searchTags(tag) {
+    blogStore.value.selectedTags = [];
+    blogStore.value.selectedCategory = '';
     blogStore.value.selectedTags.push(tag);
     go(withBase('/catalog/'));
   }
