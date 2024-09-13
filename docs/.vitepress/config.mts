@@ -6,7 +6,7 @@ export default defineConfig({
   title: '起司的開發技術分享Blog',
   description: '前端開發學習心得與踩坑經驗',
   cleanUrls: true,
-  base: '/dev-blog/', // 根據 repo 名稱設定
+  base: '/blog/', // 根據 repo 名稱設定
   appearance: 'dark',
   head: [
     ['meta', { property: 'og:locale', content: 'zh_TW' }],
@@ -101,7 +101,7 @@ export default defineConfig({
       },
     },
     editLink: {
-      pattern: 'https://github.com/Charles5277/dev-blog/tree/main/docs/:path',
+      pattern: 'https://github.com/Charles5277/blog/tree/main/docs/:path',
       text: '在 GitHub 編輯此頁',
     },
     nav: [],
