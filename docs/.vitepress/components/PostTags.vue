@@ -46,7 +46,6 @@
         <span class="theme-badge"> {{ tag }} </span>
       </VaButton>
     </div>
-    <hr class="h-px my-4 bg-gray-200 border-0" />
   </div>
 </template>
 

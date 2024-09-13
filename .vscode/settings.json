@@ -1,4 +1,54 @@
 {
+  "better-comments.tags": [
+    {
+      "backgroundColor": "transparent",
+      "bold": true,
+      "color": "#d9444a",
+      "italic": false,
+      "strikethrough": false,
+      "tag": "!",
+      "underline": false
+    },
+    {
+      "backgroundColor": "transparent",
+      "bold": false,
+      "color": "#f5c018",
+      "italic": false,
+      "strikethrough": false,
+      "tag": "?",
+      "underline": false
+    },
+    {
+      "backgroundColor": "transparent",
+      "color": "#fff",
+      "strikethrough": false,
+      "tag": ">"
+    },
+    {
+      "backgroundColor": "transparent",
+      "bold": true,
+      "color": "#b3aff7",
+      "strikethrough": false,
+      "tag": "-"
+    },
+    {
+      "backgroundColor": "transparent",
+      "bold": false,
+      "color": "#474747",
+      "italic": false,
+      "strikethrough": true,
+      "tag": "//",
+      "underline": false
+    },
+    {
+      "backgroundColor": "#21ba45",
+      "bold": true,
+      "color": "#FFF",
+      "strikethrough": false,
+      "tag": "todo",
+      "underline": true
+    }
+  ],
   "cSpell.words": [
     "addtohomescreen",
     "adipiscing",
@@ -6,7 +56,9 @@
     "amet",
     "antfu",
     "appspot",
+    "autolayout",
     "Bdcc",
+    "bezier",
     "builtins",
     "camelcase",
     "cfeatures",
@@ -23,6 +75,7 @@
     "evenodd",
     "firebaseapp",
     "Firestore",
+    "flexbox",
     "frontmatter",
     "giscus",
     "gitmoji",
@@ -30,11 +83,14 @@
     "Hexschool",
     "Homescreen",
     "iqjt",
+    "keyframes",
     "linebreak",
     "Linktree",
+    "mediafeature",
     "mergetool",
     "MRZLKR",
     "ncal",
+    "Noto",
     "owliehq",
     "Parens",
     "redjue",
@@ -56,6 +112,7 @@
     "winget",
     "workdir",
     "worktree",
+    "xlink",
     "Zcfg",
     "Zerotier",
     "zless"

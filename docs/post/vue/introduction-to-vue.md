@@ -5,6 +5,7 @@ date: 2024-07-13
 category: Vue.js
 tags:
   - Vue
+  - Frontend
 
 prev: false
 next: false

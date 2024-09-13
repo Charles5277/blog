@@ -5,7 +5,21 @@
   import blogStore from '../theme/store';
 
   const category = initCategory(posts);
-  const sortedCategory = Object.keys(category).sort();
+  // - 自定義排序
+  const order = [
+    'Vue.js',
+    'VitePress',
+    'VS Code',
+    'Ubuntu',
+    'Git',
+    'GitHub',
+    'HTML',
+    'CSS',
+    'Docker',
+  ];
+  const sortedCategory = Object.keys(category).sort((a, b) => {
+    return order.indexOf(a) - order.indexOf(b);
+  });
 
   function categorySwitcher(item: string) {
     blogStore.value.selectedCategory = item;

@@ -44,41 +44,52 @@
 </script>
 
 <template>
-  <div v-if="blogStore.selectedCategory !== ''">
-    <h3 id="tagName" class="pb-2 flex row items-center">
-      <span class="mr-4" v-html="blogStore.icon" />
-      <span>{{ blogStore.selectedCategory }}</span>
-    </h3>
-  </div>
-  <dl>
-    <a
-      v-for="post in filteredPosts"
-      :key="post.title"
-      class="decoration-2 hover:underline"
-      :href="withBase(post.url)"
-    >
-      <dd
-        class="flex justify-between my-3 text-base leading-6 font-medium text-gray-500 dark:text-gray-300"
+  <div
+    v-if="
+      blogStore.selectedCategory !== '' || blogStore.selectedTags.length > 0
+    "
+  >
+    <div class="text-3xl font-extrabold">篩選貼文</div>
+    <div v-if="blogStore.selectedCategory !== ''">
+      <h3 id="tagName" class="pb-2 flex row items-center">
+        <span class="mr-4" v-html="blogStore.icon" />
+        <span>{{ blogStore.selectedCategory }}</span>
+      </h3>
+    </div>
+    <dl>
+      <a
+        v-for="post in filteredPosts"
+        :key="post.title"
+        class="decoration-2 hover:underline"
+        :href="withBase(post.url)"
       >
-        <div class="list-disc truncate w-64 sm:w-fit pl-2">
-          <li>
-            <span
-              v-if="blogStore.selectedCategory === ''"
-              v-text="
-                `${post.category}
+        <dd
+          class="flex justify-between my-3 text-base leading-6 font-medium text-gray-500 dark:text-gray-300"
+        >
+          <div class="list-disc truncate w-64 sm:w-fit pl-2">
+            <li>
+              <span
+                v-if="blogStore.selectedCategory === ''"
+                v-text="
+                  `${post.category}
               |
               `
-              "
-            />
-            {{ post.title }}
-          </li>
-        </div>
-        <div class="w-24">
-          {{ post.date.string }}
-        </div>
-      </dd>
-    </a>
-  </dl>
+                "
+              />
+              {{ post.title }}
+            </li>
+          </div>
+          <div class="w-24">
+            {{ post.date.string }}
+          </div>
+        </dd>
+      </a>
+    </dl>
+  </div>
+  <div v-else>
+    <div class="text-3xl font-extrabold">請選擇主題或標籤</div>
+  </div>
+  <hr class="h-px my-4 bg-gray-200 border-0" />
 </template>
 
 <style scoped>

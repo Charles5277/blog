@@ -7,6 +7,7 @@ date: 2024-07-13
 category: VitePress
 tags:
   - VitePress
+  - Frontend
 
 prev: false
 next: false

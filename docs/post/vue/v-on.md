@@ -5,6 +5,7 @@ date: 2024-09-09
 category: Vue.js
 tags:
   - Vue
+  - Frontend
 
 lastUpdated: true
 
