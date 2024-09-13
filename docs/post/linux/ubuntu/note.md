@@ -13,15 +13,19 @@ next: false
 
 ### shortcut
 
-- 關閉terminal
-  > exit 或 Ctrl + d
+- 關閉 Terminal
+  > exit 或 Ctrl + D
 - 複製
   > Ctrl + Shift + C
+  >
   > Ctrl + Insert
+  >
   > 滑鼠中鍵按住拖曳
 - 貼上
   > Ctrl + Shift + V
+  >
   > Shift + Insert
+  >
   > 點擊滑鼠中鍵
 
 ### command line editing
@@ -37,64 +41,64 @@ next: false
 - Ctrl + b (backward)
   > 方向鍵➡️
 - Alt + f (forward)
-  > 移到前一個word(以空白分隔)
+  > 移到前一個 word (以空白分隔)
 - Alt + b (backward)
-  > 移到下一個word(以空白分隔)
+  > 移到下一個 word (以空白分隔)
 - Ctrl + l (clear)
   > 清除螢幕資訊
 
 #### modifying text
 
 - Ctrl + d (delete)
-  > delete鍵
+  > delete 鍵
 - Ctrl + t (transpose)
   > 將當前字元跟前一個字元交換
 - Alt + t (transpose)
-  > 將當前word跟前一個word交換
+  > 將當前 word 跟前一個 word 交換
 - Alt + l (lowercase)
-  > 當前位置到EOF轉為小寫
+  > 當前位置到 EOF 轉為小寫
 - Alt + u (uppercase)
-  > 當前位置到EOF轉為大寫
+  > 當前位置到 EOF 轉為大寫
 
 #### cutting and pasting text
 
-> 在linux又稱killing and yanking
+> 在 linux 又稱 killing and yanking
 
 - Ctrl + k (kill)
-  > 將當前位置到EOF剪下
+  > 將當前位置到 EOF 剪下
 - Ctrl + u (kill line)
   > 將當前位置到開頭剪下
 - Alt + d (delete)
-  > 將當前位置到當前word的結尾剪下
+  > 將當前位置到當前 word 的結尾剪下
 - Alt + backspace (delete word)
-  > 將當前位置到當前word的開頭剪下，如果已經在開頭，則將前一個word剪下
+  > 將當前位置到當前 word 的開頭剪下，如果已經在開頭，則將前一個 word 剪下
 - Ctrl + y (yank)
   > 貼上到當前位置
 
 #### completion
 
-- Tab (或Alt + ?)
-  > 可以自動完成當前command、username、hostname、當前位置的檔案名稱等等
+- Tab (或 Alt + ?)
+  > 可以自動完成當前 command、username、hostname、當前位置的檔案名稱等等
 - Alt + \*
   > 將所有可用的參數插入
 
 ### command
 
-> 使用semicolon ( `;` )可以將多個command串在一起
+> 使用 semicolon ( `;` ) 可以將多個 command 串在一起
 
-- 查看目前使用的shell
+- 查看目前使用的 shell
 
 ```bash
 echo $0
-#通常可得到 bash 或 /usr/bin/bash
+# 通常可得到 bash 或 /usr/bin/bash
 ```
 
 - 註解
   > 單行註解為 #
   > 多行註解為
   > << comment
-  > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <內容>
-  > &nbsp;&nbsp;&nbsp;&nbsp;comment
+  >        <內容>
+  >     comment
 
 ```bash
 # 內容
@@ -105,6 +109,7 @@ comment
 ```
 
 - 時間
+
   - date (current time and date)
     > 當前時間跟日期
     ```bash
@@ -126,6 +131,7 @@ comment
     26 27 28 29 30 31
     comment
     ```
+
 - 硬碟資訊
 
   - df (current amount of free space on disk drives)
@@ -136,19 +142,23 @@ comment
     ![](https://i.imgur.com/paflpni.png)
 
 - 記憶體資訊
+
   - free (amount of free memory)
     > 記憶體使用情況
     ```bash
     free
     ```
     ![](https://i.imgur.com/C1g8rML.png)
+
 - 當前工作目錄
+
   - pwd (print working directory)
     > 顯示當前工作目錄
     ```bash
     pwd
     #/home/charles
     ```
+
 - 當前目錄資訊
 
   - ls (list the files and directories)
@@ -175,8 +185,6 @@ comment
     ls -l
     ```
 
-    &nbsp;
-
     > 使用多個參數
 
     ```bash
@@ -187,8 +195,6 @@ comment
     ```
 
     ![](https://i.imgur.com/ug61vbG.png)
-
-    &nbsp;
 
     > 指定位置
 
@@ -203,7 +209,6 @@ comment
     ```
 
     ![](https://i.imgur.com/QEzRG5g.png)
-    &nbsp;
 
 - 移動目前位置
 
@@ -228,8 +233,9 @@ comment
     ```
 
 - 檔案內容資訊
+
   - file
-    > 獲得file_name的資訊
+    > 獲得 file_name 的資訊
     ```bash
     file <file_name>
     ```
@@ -252,10 +258,11 @@ comment
     comment
     ```
   - zless
-    > 檢視.gz (gzip)的壓縮檔內容
+    > 檢視.gz (gzip) 的壓縮檔內容
     ```bash
     zless <file>
     ```
+
 - 檔案管理
 
   - cp (copy)
@@ -333,7 +340,7 @@ comment
     > 刪除檔案跟資料夾
 
     > ⚠️注意刪除不可逆，刪除資料前要再三注意
-    > 如： rm _.txt 若打成 rm _ .txt 則相當於先執行 rm \*
+    > 如： rm \_.txt 若打成 rm \_ .txt 則相當於先執行 rm \*
 
     - optional
 
@@ -361,21 +368,21 @@ comment
 
   - ln (link files)
 
-    > 建立hard跟symbolic link (硬連結跟軟連結)
+    > 建立 hard 跟 symbolic link (硬連結跟軟連結)
 
     > hard link
-    > 預設每個檔案只會有1個hard link，當創建了新的hard link時，即directory開了新的入口指向file
-    > 只能針對同一個硬碟分割(disk partition)的檔案進行hard link
-    > 只能針對檔案hard link，不能針對目錄
-    > 不會有任何特徵顯示hard link
-    > 只要這個檔案還存在hard link，內容就還存在
+    > 預設每個檔案只會有 1 個 hard link，當創建了新的 hard link 時，即 directory 開了新的入口指向 file
+    > 只能針對同一個硬碟分割 (disk partition) 的檔案進行 hard link
+    > 只能針對檔案 hard link，不能針對目錄
+    > 不會有任何特徵顯示 hard link
+    > 只要這個檔案還存在 hard link，內容就還存在
     > 間單來說，可以理解為建立捷徑或別名
 
     > symbolic link
     > 可以針對檔案或資料夾
-    > 可以跨不同檔案分割(disk partition)位置的檔案或資料夾
-    > 當刪除symbolic link時，不會刪除原檔案
-    > 當原檔案被刪除，symbolic link會斷掉(broken)
+    > 可以跨不同檔案分割 (disk partition) 位置的檔案或資料夾
+    > 當刪除 symbolic link 時，不會刪除原檔案
+    > 當原檔案被刪除，symbolic link 會斷掉 (broken)
 
     ```bash
     #建立hard link (only file)
@@ -402,41 +409,42 @@ comment
     ```
 
 - 指令、檔案、程式資訊
+
   - type
-    > 查詢某個command的功能類型
+    > 查詢某個 command 的功能類型
     ```bash
     type <command>
     ```
-    > 可得到4種結果：
-    > &nbsp;An executable program (可執行程式)
-    > &nbsp;A command built into the shell itself (shell內建的指令)
-    > &nbsp;A shell function (shell的功能函數)
-    > &nbsp;An alias (別名)
+    > 可得到 4 種結果：
+    >  An executable program (可執行程式)
+    >  A command built into the shell itself (shell 內建的指令)
+    >  A shell function (shell 的功能函數)
+    >  An alias (別名)
   - which
-    > 輸出某個command存在的絕對路徑
+    > 輸出某個 command 存在的絕對路徑
     ```bash
     which <command>
     ```
     > 常用於某個程式裝了多個版本的情況進行確認
-    > 只適用executable programs，對builtins, aliases無效
+    > 只適用 executable programs，對 builtins, aliases 無效
   - help
-    > 查詢某個command的使用說明
+    > 查詢某個 command 的使用說明
     ```bash
     help <command>
      #or
     <command> --help
     ```
     > square brackets `[ ]` 代表選填參數
-    > vertical bar `|` 即or，只能擇一填參數
+    > vertical bar `|` 即 or，只能擇一填參數
   - man (manual)
     > 取得操作手冊
     ```bash
     man <program>
     ```
-    > 通常是program功能說明，不包含教學步驟跟example
-    > man顯示的方式基於less，因此適用less的相關shortcut
+    > 通常是 program 功能說明，不包含教學步驟跟 example
+    > man 顯示的方式基於 less，因此適用 less 的相關 shortcut
     - apropos
-      > 搜尋man pages的內容
+      > 搜尋 man pages 的內容
       ```bash
       apropos <keyword>
        #or
@@ -462,10 +470,11 @@ comment
     q：離開
     comment
     ```
+
 - 快捷、別名
 
   - alias
-    > 將一連串command建立別名
+    > 將一連串 command 建立別名
 
   ```bash
   #所有alias清單
@@ -480,30 +489,30 @@ comment
   unalias <name>
   ```
 
-  > 此方法建立的alias會在shell section結束後消失
-  > 若要永久建立alias，需要寫入到~/.bashrc，然後執行 source ~/.bashrc 或重開shell
-  > 如果對現有command加上alias，可以用來指定參數，之後就不用手動補參數
+  > 此方法建立的 alias 會在 shell section 結束後消失
+  > 若要永久建立 alias，需要寫入到\~/.bashrc，然後執行 source \~/.bashrc 或重開 shell
+  > 如果對現有 command 加上 alias，可以用來指定參數，之後就不用手動補參數
 
 ## File System Tree
 
 > 系統檔案樹
 
-- Linux與Windows差別
-  > Linux：整個系統一棵樹，即只有一個root，硬碟mount(掛接)位置由administrator決定
-  > Windows：每個硬碟一棵樹，每個磁碟機有各自的root
+- Linux 與 Windows 差別
+  > Linux：整個系統一棵樹，即只有一個 root，硬碟 mount (掛接) 位置由 administrator 決定
+  > Windows：每個硬碟一棵樹，每個磁碟機有各自的 root
 - 目前工作目錄 (current working directory)
   > 任何狀態下都會有當前處於的工作目錄
-  > 使用pwd可以查看位置
+  > 使用 pwd 可以查看位置
 - home directory
-  > 打開terminal預設會在home directory
-  > 每個user都有專屬的home directory，也只有權限管理自己home底下的檔案跟資料夾
+  > 打開 terminal 預設會在 home directory
+  > 每個 user 都有專屬的 home directory，也只有權限管理自己 home 底下的檔案跟資料夾
 
 ## Filename rule
 
 > 檔案名稱規則
 
 - hidden
-  > period(.) 開頭的檔案名稱會被隱藏
+  > period (.) 開頭的檔案名稱會被隱藏
 - case sensitive
   > 大小寫差異會視為不同檔案
 - filename characters
@@ -518,22 +527,22 @@ comment
 
 - 屬性
   - 文件類型
-    > 第1個字元 `-` 表示普通文件，`d` 表示目錄，`l`表示Symbolic Links
+    > 第 1 個字元 `-` 表示普通文件，`d` 表示目錄，`l` 表示 Symbolic Links
   - 權限
-    > Owner(2 3 4)、Group(5 6 7)、User(8 9 10)
-    > r：讀取(read)
-    > w：寫入(write)
-    > x：執行(execute)
+    > Owner (2 3 4)、Group (5 6 7)、User (8 9 10)
+    > r：讀取 (read)
+    > w：寫入 (write)
+    > x：執行 (execute)
     > 若對應的位置是 - 代表沒有該權限
 - 文件數
-  > 若為資料夾，數量即子項目(檔案+資料夾)的數量，即hardlinks
-  > 若為文件，則為1
+  > 若為資料夾，數量即子項目 (檔案 + 資料夾) 的數量，即 hardlinks
+  > 若為文件，則為 1
 - 擁有者
-  - Owner的name
-- 所屬Group
-  - Group的name
+  - Owner 的 name
+- 所屬 Group
+  - Group 的 name
 - 文件大小
-  - 預設用byte，可配合-h
+  - 預設用 byte，可配合 - h
 - 建檔日期
   - month date HH:MM
 - 文件名稱
@@ -547,48 +556,48 @@ comment
 - /bin
   > binaries programs，系統開機時執行的檔案
 - /boot
-  > Linux kernel (Linux核心)、RAM disk image (for驅動程式)
+  > Linux kernel (Linux 核心)、RAM disk image (for 驅動程式)
 - /dev
-  > device，linux將所有東西視為檔案，此處為與硬體裝置有關的資料
+  > device，linux 將所有東西視為檔案，此處為與硬體裝置有關的資料
 - /etc
-  > and so on(法文縮寫et cetera)，包含系統組態檔(config)，shell的腳本(script)
+  > and so on (法文縮寫 et cetera)，包含系統組態檔 (config)，shell 的腳本 (script)
   > /etc/crontab：自動執行的程式
   > /etc/fstab：儲存的裝置及其安裝位置
-  > /etc/passwd：所有user的帳戶資訊
+  > /etc/passwd：所有 user 的帳戶資訊
 - /home
-  > 存放所有使用者的home目錄(會在這層有自己username的資料夾)
+  > 存放所有使用者的 home 目錄 (會在這層有自己 username 的資料夾)
 - /lib
-  > library，核心系統程式共用的檔案(DLLs)
+  > library，核心系統程式共用的檔案 (DLLs)
 - /lost+found
   > 損毀檔案的回復位置
 - /media
-  > 可攜式裝置(如USB Driver)位置，通常是較新的linux system使用
+  > 可攜式裝置 (如 USB Driver) 位置，通常是較新的 linux system 使用
 - /mnt
-  > mount，可移除裝置掛載位置(如虛擬磁碟機)，通常是較舊的linux system使用，或WSL(Windows的Linux子系統)
+  > mount，可移除裝置掛載位置 (如虛擬磁碟機)，通常是較舊的 linux system 使用，或 WSL (Windows 的 Linux 子系統)
 - /opt
   > optional，主要用來安裝第三方應用程序的位置
 - /proc
   > process，一個虛擬的檔案系統，將系統的資訊以檔案的方式呈現
 - /root
-  > root帳號的home directory
+  > root 帳號的 home directory
 - /sbin
-  > system binaries，存放root跟superuser需要使用的系統管理工具，例如用於啟動、修復系統的可執行程式
+  > system binaries，存放 root 跟 superuser 需要使用的系統管理工具，例如用於啟動、修復系統的可執行程式
 - /tmp
   > Temporary，存放暫存檔案
 - /usr
   > user，使用者會用到的內容
 - /usr/bin
-  > 存放所有user都可用的程式，通常包含ls、cp、mv等等
+  > 存放所有 user 都可用的程式，通常包含 ls、cp、mv 等等
 - /usr/lib
-  > /usr/bin的程式共用的library檔案位置
+  > /usr/bin 的程式共用的 library 檔案位置
 - /usr/local
-  > user手動安裝的軟體位置
+  > user 手動安裝的軟體位置
 - /usr/sbin
-  > superuser、root才能用的系統程式位置
+  > superuser、root 才能用的系統程式位置
 - /usr/share
-  > 保存/usr/bin的程式中共享的資料，例如文檔、圖片和程式語言文件等
+  > 保存 /usr/bin 的程式中共享的資料，例如文檔、圖片和程式語言文件等
 - /usr/share/doc
-  > /usr/bin中的程式或軟體說明文件 (即README)
+  > /usr/bin 中的程式或軟體說明文件 (即 README)
 - /var
   > variable，系統會寫入的造成內容變動的資料位置
 - /var/log
@@ -596,23 +605,23 @@ comment
 
 ## Symbolic Link
 
-> 軟連結，使用絕對或相對路徑指向檔案或資料夾的參照，類似windows系統的捷徑功能，使常會變更檔名的檔案或文件(如版本會更新)更方便管理
+> 軟連結，使用絕對或相對路徑指向檔案或資料夾的參照，類似 windows 系統的捷徑功能，使常會變更檔名的檔案或文件 (如版本會更新) 更方便管理
 
 ## Wildcards
 
 > 萬用字元，如以下清單：\*：所有長度的字串
 > ?：單個字元
-> [characters]：符合[]中的字元，如[abc]，即可以對應a或b或c
-> [!characters]：不符合[]中的字元，如[abc]，即可以對應a或b或c以外的檔案
+> \[characters]：符合 \[] 中的字元，如 \[abc]，即可以對應 a 或 b 或 c
+> \[!characters]：不符合 \[] 中的字元，如 \[abc]，即可以對應 a 或 b 或 c 以外的檔案
 
-[[:class:]]：使用以下類別：
+\[\[:class:]]：使用以下類別：
 
-> [:alnum:]：任何文字跟數字
-> [:alpha:]：任何文字
-> [:digit:]：任何數字
-> [:lower:]：任何小寫
-> [:upper:]：任何大寫
-> [:alnum:]：任何數字
+> \[:alnum:]：任何文字跟數字
+> \[:alpha:]：任何文字
+> \[:digit:]：任何數字
+> \[:lower:]：任何小寫
+> \[:upper:]：任何大寫
+> \[:alnum:]：任何數字
 
 ```bash
 # sample
@@ -654,10 +663,10 @@ BACKUP.[0-9][0-9][0-9]
   ```
 
   > 由當前往過去搜尋歷史紀錄
-  > 會出現 (reverse-i-search)`':
+  > 會出現 (reverse-i-search)\`':
   > 開始輸入關鍵字，冒號後會出現配對的指令
   > 使用 Enter ： 直接執行
-  > 使用 Ctrl + J ： 複製到command line以供編輯
+  > 使用 Ctrl + J ： 複製到 command line 以供編輯
 
 - history shortcut
   - Ctrl + p
@@ -671,14 +680,14 @@ BACKUP.[0-9][0-9][0-9]
   - Ctrl + r
     > reverse-i-search
   - Alt + p
-    > 輸入搜尋內容後按enter才開始搜尋，從最新的開始往前搜尋
+    > 輸入搜尋內容後按 enter 才開始搜尋，從最新的開始往前搜尋
   - Alt + n
-    > 輸入搜尋內容後按enter才開始搜尋，從最舊的開始往前搜尋
+    > 輸入搜尋內容後按 enter 才開始搜尋，從最舊的開始往前搜尋
   - Ctrl + o
     > 執行目前的歷史紀錄，並顯示下一筆歷史紀錄 (用於要執行連續的歷史紀錄)
   - !(number)
-    > 執行標號為(number)的歷史紀錄，e.g, `!193`
+    > 執行標號為 (number) 的歷史紀錄，e.g, `!193`
   - !(string)
-    > 執行最近一筆開頭是(string)的歷史紀錄，e.g, `!cd`
+    > 執行最近一筆開頭是 (string) 的歷史紀錄，e.g, `!cd`
   - !?(string)
-    > 執行最近一筆指令包含(string)的歷史紀錄，e.g, `!?/data`
+    > 執行最近一筆指令包含 (string) 的歷史紀錄，e.g, `!?/data`
