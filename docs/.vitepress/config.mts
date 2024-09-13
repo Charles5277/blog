@@ -116,6 +116,8 @@ export default defineConfig({
           { text: 'GitHub', link: '/catalog/github' },
           { text: 'Docker', link: '/catalog/docker' },
           { text: 'Ubuntu', link: '/catalog/ubuntu' },
+          { text: 'HTML', link: '/catalog/html' },
+          { text: 'CSS', link: '/catalog/css' },
         ],
       },
     ],

@@ -10,12 +10,12 @@
     'Vue.js',
     'VitePress',
     'VS Code',
-    'Ubuntu',
     'Git',
     'GitHub',
+    'Docker',
+    'Ubuntu',
     'HTML',
     'CSS',
-    'Docker',
   ];
   const sortedCategory = Object.keys(category).sort((a, b) => {
     return order.indexOf(a) - order.indexOf(b);
