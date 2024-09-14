@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: 'zh-TW',
-  title: '起司的開發技術分享Blog',
+  title: 'Charles 起司的開發技術分享Blog',
   description: '前端開發學習心得與踩坑經驗',
   cleanUrls: true,
   base: '/', // 根據 repo 名稱設定
@@ -11,7 +11,7 @@ export default defineConfig({
   head: [
     ['meta', { property: 'og:locale', content: 'zh_TW' }],
     ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:title', content: '起司的開發技術分享 Blog' }],
+    ['meta', { property: 'og:title', content: 'Charles 起司的開發技術分享 Blog' }],
     [
       'meta',
       { property: 'og:description', content: '前端開發學習心得與踩坑經驗' },
@@ -70,7 +70,6 @@ export default defineConfig({
       rel: 'stylesheet',
     }],
     ['link', { href: 'https://fonts.googleapis.com/icon?family=Material+Icons', rel: 'stylesheet' }],
-
     // - Google Analytics
     [
       'script',
@@ -87,6 +86,16 @@ export default defineConfig({
       function gtag(){dataLayer.push(arguments);}\n
       gtag(\'js\', new Date());\n
       gtag(\'config\', \'G-HTW5MRZLKR\');`,
+    ],
+
+    // - Google AdSense
+    [
+      'script',
+      {
+        async: '',
+        src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2836544901703817',
+        crossorigin: 'anonymous',
+      },
     ],
   ],
   themeConfig: {
