@@ -6,7 +6,7 @@ export default defineConfig({
   title: '起司的開發技術分享Blog',
   description: '前端開發學習心得與踩坑經驗',
   cleanUrls: true,
-  base: '/blog/', // 根據 repo 名稱設定
+  base: '/', // 根據 repo 名稱設定
   appearance: 'dark',
   head: [
     ['meta', { property: 'og:locale', content: 'zh_TW' }],
