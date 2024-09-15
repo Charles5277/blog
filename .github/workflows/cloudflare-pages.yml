@@ -87,6 +87,6 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 0eac599c12df10586d97a78179b9f11f
           projectName: blog
-          directory: /docs/.vitepress/dist
+          directory: ./docs/.vitepress/dist
           # Optional: Enable this if you want to have GitHub Deployments triggered
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
