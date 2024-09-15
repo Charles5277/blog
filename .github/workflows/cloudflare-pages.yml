@@ -67,6 +67,7 @@ jobs:
           path: docs/.vitepress/dist
 
   publish:
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: read
