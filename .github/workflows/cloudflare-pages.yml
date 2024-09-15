@@ -81,12 +81,11 @@ jobs:
 
       # Run a build step here if your project requires
 
-      - name: Cloudflare Pages GitHub Action
-        uses: cloudflare/pages-action@v1.5.0
+      - name: Deploy Worker
+        uses: cloudflare/wrangler-action@v3
         with:
+          packageManager: pnpm
+          workingDirectory: docs/.vitepress/dist
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: 0eac599c12df10586d97a78179b9f11f
-          projectName: blog
-          directory: ./docs/.vitepress/dist
-          # Optional: Enable this if you want to have GitHub Deployments triggered
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist
