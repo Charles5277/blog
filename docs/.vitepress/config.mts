@@ -170,4 +170,7 @@ export default defineConfig({
       detailsLabel: '',
     },
   },
+  sitemap: {
+    hostname: 'https://charlestw.dev/',
+  },
 });
