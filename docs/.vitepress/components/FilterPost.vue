@@ -64,11 +64,10 @@
       </h3>
     </div>
     <dl>
-      <a
+      <div
         v-for="post in filteredPosts"
         :key="post.title"
         class="decoration-2 hover:underline"
-        :href="withBase(post.url)"
       >
         <dd
           class="flex justify-between my-3 text-base leading-6 font-medium text-gray-500 dark:text-gray-300"
@@ -77,20 +76,18 @@
             <li>
               <span
                 v-if="blogStore.selectedCategory === ''"
-                v-text="
-                  `${post.category}
-              |
-              `
-                "
-              />
-              {{ post.title }}
+                v-text="`${post.category} | `"
+              ></span>
+              <a :href="withBase(post.url)" class="hover:underline">
+                {{ post.title }}
+              </a>
             </li>
           </div>
           <div class="w-24">
             {{ post.date.string }}
           </div>
         </dd>
-      </a>
+      </div>
     </dl>
   </div>
   <div v-else>

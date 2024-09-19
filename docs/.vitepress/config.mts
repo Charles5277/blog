@@ -17,7 +17,7 @@ export default defineConfig({
       { property: 'og:description', content: '前端開發學習心得與踩坑經驗' },
     ],
 
-    ['meta', { property: 'og:image', content: './home.png' }],
+    ['meta', { property: 'og:image', content: './home.webp' }],
     ['meta', { property: 'og:image:alt', content: 'logo' }],
     ['meta', { property: 'og:image:type', content: 'image/png' }],
 
@@ -31,13 +31,13 @@ export default defineConfig({
         content: '前端開發學習心得與踩坑經驗',
       },
     ],
-    ['meta', { property: 'twitter:image', content: './home.png' }],
+    ['meta', { property: 'twitter:image', content: './home.webp' }],
 
     [
       'link',
       {
         rel: 'icon',
-        href: "../public/favicon.ico",
+        href: "/favicon.ico",
       },
     ],
     [
@@ -45,7 +45,7 @@ export default defineConfig({
       {
         rel: 'icon',
         type: 'image/x-icon',
-        href: "../public/favicon.ico",
+        href: "/favicon.ico",
       },
     ],
     [
@@ -53,7 +53,7 @@ export default defineConfig({
       {
         rel: 'shortcut icon',
         type: 'image/x-icon',
-        href: "../public/favicon.ico",
+        href: "/favicon.ico",
       },
     ],
 
