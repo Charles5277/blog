@@ -2,6 +2,7 @@
 title: VS Code 筆記
 description: 快捷鍵與前端開發常用 Extension 推薦
 date: 2024-09-10
+lastUpdated: 2024-09-22 07:17:00 +8
 category: VS Code
 tags:
   - VS Code

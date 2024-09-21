@@ -2,12 +2,11 @@
 title: v-bind 屬性綁定指令
 description: 透過 v-bind 屬性綁定，讓元素可以動態更新屬性
 date: 2024-09-09
+lastUpdated: 2024-09-22 07:17:00 +8
 category: Vue.js
 tags:
   - Vue
   - Frontend
-
-lastUpdated: true
 
 prev:
   text: v-on 事件綁定指令

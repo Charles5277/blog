@@ -2,12 +2,11 @@
 title: v-for 迴圈指令
 description: 透過 v-for 迴圈指令，讓元素可以動態渲染數據。
 date: 2024-09-09
+lastUpdated: 2024-09-22 07:17:00 +8
 category: Vue.js
 tags:
   - Vue
   - Frontend
-
-lastUpdated: true
 
 prev:
   text: v-bind 屬性綁定指令
