@@ -4,3 +4,5 @@ docs/.vitepress/config.mts.*
 node_modules
 temp/
 .env
+
+docs/local/*
