@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   content: [
     './docs/.vitepress/**/*.js',
     './docs/.vitepress/**/*.vue',
