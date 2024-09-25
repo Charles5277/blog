@@ -26,7 +26,7 @@ next: false
 
 3. Jamstack / Static Site Generation (SSG)
 
-   靜態網站生成：在部署前生成靜態 HTML，不需要在瀏覽器或服務器上進行渲染。
+   靜態網站生成：在部署前生成靜態 HTML，不需要在瀏覽器或伺服器上進行渲染。
 
 4. 作為 Web Component 遷入到任何頁面上
 
