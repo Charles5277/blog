@@ -13,11 +13,11 @@ export default defineConfig({
   head: [
     ['meta', { property: 'og:locale', content: 'zh_TW' }],
     ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:title', content: 'Charles 起司的開發技術分享 Blog' }],
-    [
-      'meta',
-      { property: 'og:description', content: '前端開發學習心得與踩坑經驗' },
-    ],
+    // ['meta', { property: 'og:title', content: 'Charles 起司的開發技術分享 Blog' }],
+    // [
+    //   'meta',
+    //   { property: 'og:description', content: '前端開發學習心得與踩坑經驗' },
+    // ],
 
     ['meta', { property: 'og:image', content: 'home.webp' }],
     ['meta', { property: 'og:image:alt', content: 'logo' }],
@@ -25,15 +25,15 @@ export default defineConfig({
 
     ['meta', { property: 'twitter:card', content: 'summary' }],
     ['meta', { property: 'twitter:site', content: 'summary' }],
-    ['meta', { property: 'twitter:title', content: '起司的開發技術分享 Blog' }],
-    [
-      'meta',
-      {
-        property: 'twitter:description',
-        content: '前端開發學習心得與踩坑經驗',
-      },
-    ],
-    ['meta', { property: 'twitter:image', content: './home.webp' }],
+    // ['meta', { property: 'twitter:title', content: 'Charles 起司的開發技術分享 Blog' }],
+    // [
+    //   'meta',
+    //   {
+    //     property: 'twitter:description',
+    //     content: '前端開發學習心得與踩坑經驗',
+    //   },
+    // ],
+    ['meta', { property: 'twitter:image', content: 'home.webp' }],
 
     [
       'link',
