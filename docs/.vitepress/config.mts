@@ -19,7 +19,7 @@ export default defineConfig({
       { property: 'og:description', content: '前端開發學習心得與踩坑經驗' },
     ],
 
-    ['meta', { property: 'og:image', content: './home.webp' }],
+    ['meta', { property: 'og:image', content: 'home.webp' }],
     ['meta', { property: 'og:image:alt', content: 'logo' }],
     ['meta', { property: 'og:image:type', content: 'image/png' }],
 
