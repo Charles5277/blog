@@ -1,5 +1,7 @@
 import { defineConfig } from 'vitepress';
 
+import { handleHeadMeta } from './utils/handleHeadMeta';
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: 'zh-TW',
@@ -146,6 +148,10 @@ export default defineConfig({
         ariaLabel: 'github link'
       },
     ],
+    docFooter: {
+      prev: '上一篇',
+      next: '下一篇',
+    },
     footer: {
       message:
         'Released under the MIT License.',
@@ -169,4 +175,8 @@ export default defineConfig({
   sitemap: {
     hostname: 'https://charlestw.dev/',
   },
+
+  async transformHead(content) {
+    return handleHeadMeta(content);
+  }
 });
