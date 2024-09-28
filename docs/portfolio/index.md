@@ -2,8 +2,6 @@
 title: Portfolio
 # description:
 date: 2024-09-18
-category:
-tags:
 
 prev: false
 next: false

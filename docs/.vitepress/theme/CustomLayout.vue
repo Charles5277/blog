@@ -27,8 +27,7 @@
     <template #doc-footer-before>
       <div class="mb-4">
         <div class="flex row item-center">
-          Tags:
-
+          <span v-if="$frontmatter.tags"> Tags: </span>
           <VaButton
             v-for="(tag, idx) in $frontmatter.tags"
             :key="idx"
