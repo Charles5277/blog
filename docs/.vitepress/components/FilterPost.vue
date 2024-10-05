@@ -12,6 +12,19 @@
   const tags = initTags(posts);
   const category = initCategory(posts);
 
+  const postTitle = computed(() => {
+    if (
+      blogStore.value.selectedCategory === '' &&
+      blogStore.value.selectedTags.length === 0
+    ) {
+      return '最新文章';
+    } else if (filteredPosts.value.length === 0) {
+      return '無符合篩選條件的文章';
+    } else {
+      return '篩選貼文';
+    }
+  });
+
   // - 篩選文章
   const filteredPosts = computed(() => {
     let arr: Post[] = [];
@@ -81,11 +94,7 @@
 <template>
   <div>
     <div class="text-3xl font-extrabold">
-      {{
-        blogStore.selectedCategory !== '' || blogStore.selectedTags.length > 0
-          ? '篩選貼文'
-          : '最新文章'
-      }}
+      {{ postTitle }}
     </div>
     <div v-if="blogStore.selectedCategory !== ''">
       <h3 id="tagName" class="pb-2 flex row items-center">
@@ -124,6 +133,7 @@
 
     <div class="flex justify-center">
       <VaPagination
+        v-show="filteredPosts.values.length > 0"
         v-model="currentPage"
         :pages="pages"
         :visible-pages="5"
