@@ -5,7 +5,7 @@ date: 2024-10-05
 category: Linux
 tags:
   - Linux
-  - Ubuntu'/post
+  - Ubuntu
   - WSL
 
 prev: false
