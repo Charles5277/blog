@@ -10,13 +10,13 @@ tags:
 
 prev:
   text: v-on 事件綁定指令
-  link: '/post/vue/v-on'
+  link: '/vue/v-on'
 next:
   text: v-for 迴圈指令
-  link: '/post/vue/v-for'
+  link: '/vue/v-for'
 ---
 
-v-bind 是 Vue 提供的 [🔗 指令(directive)](https://vuejs.org/api/built-in-directives.html#v-bind) 之一，用來綁定屬性。透過 v-bind 可以讓元素的屬性值動態更新，例如 class、style、href 等屬性。除了原生 HTML 元素的屬性之外，v-bind 也廣泛應用於自定義元件，特別是綁定 props 屬性。當你在使用自定義元件時，可以使用 v-bind 動態地將父元件的資料綁定到子元件的 props，使元件間的資料流更靈活且易於維護。
+v-bind 是 Vue 提供的 [🔗 指令 (directive)](https://vuejs.org/api/built-in-directives.html#v-bind) 之一，用來綁定屬性。透過 v-bind 可以讓元素的屬性值動態更新，例如 class、style、href 等屬性。除了原生 HTML 元素的屬性之外，v-bind 也廣泛應用於自定義元件，特別是綁定 props 屬性。當你在使用自定義元件時，可以使用 v-bind 動態地將父元件的資料綁定到子元件的 props，使元件間的資料流更靈活且易於維護。
 
 ## 基本使用方式
 

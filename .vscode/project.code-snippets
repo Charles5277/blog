@@ -73,4 +73,9 @@
     "prefix": "link",
     "body": ["[🔗 ${1:label}](${2:url})"],
   },
+
+  "next": {
+    "prefix": "next",
+    "body": ["text: '${1:label}'", "link: '${2:path}'"],
+  },
 }

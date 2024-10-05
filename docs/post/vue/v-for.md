@@ -10,11 +10,11 @@ tags:
 
 prev:
   text: v-bind 屬性綁定指令
-  link: '/post/vue/v-bind'
+  link: '/vue/v-bind'
 next: false
 ---
 
-v-for 是 Vue 提供的 [🔗 指令(directive)](https://vuejs.org/api/built-in-directives.html#v-for) 之一，用於在 `<template>` 中遍歷數據。如同普遍高階程式語言常用的 for 迴圈，在渲染介面元素時，透過這個指令可以直覺且高效的產生動態且大量的數據。
+v-for 是 Vue 提供的 [🔗 指令 (directive)](https://vuejs.org/api/built-in-directives.html#v-for) 之一，用於在 `<template>` 中遍歷數據。如同普遍高階程式語言常用的 for 迴圈，在渲染介面元素時，透過這個指令可以直覺且高效的產生動態且大量的數據。
 
 ## 適用的資料型別
 

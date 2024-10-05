@@ -10,13 +10,13 @@ tags:
 
 prev:
   text: 介紹 Vue.js
-  link: '/post/vue/introduction-to-vue'
+  link: '/vue/introduction'
 next:
   text: v-bind 屬性綁定指令
-  link: '/post/vue/v-bind'
+  link: '/vue/v-bind'
 ---
 
-v-on 是 Vue 提供的[🔗 指令(directive)](https://vuejs.org/api/built-in-directives.html#built-in-directives#v-on)之一，用來綁定事件。透過 v-on 可以讓元素觸發事件，例如點擊、滑鼠移入、滑鼠移出等事件發生時，執行指定的方法。
+v-on 是 Vue 提供的[🔗 指令 (directive)](https://vuejs.org/api/built-in-directives.html#built-in-directives#v-on) 之一，用來綁定事件。透過 v-on 可以讓元素觸發事件，例如點擊、滑鼠移入、滑鼠移出等事件發生時，執行指定的方法。
 
 ## 基本使用方式
 
@@ -69,4 +69,4 @@ v-on 是 Vue 提供的[🔗 指令(directive)](https://vuejs.org/api/built-in-di
 
 ## 延伸閱讀
 
-[🔗 事件處理(Event Handling)](https://vuejs.org/guide/essentials/event-handling.html)
+[🔗 事件處理 (Event Handling)](https://vuejs.org/guide/essentials/event-handling.html)
