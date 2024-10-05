@@ -58,7 +58,7 @@
       arr = posts;
     }
 
-    // - 按日期排序
+    // - 按日期排序並處理 url
     arr.sort((a, b) => {
       return (
         new Date(b.date.string).getTime() - new Date(a.date.string).getTime()
@@ -75,7 +75,14 @@
   const paginatedPosts = computed(() => {
     const startIdx = (currentPage.value - 1) * itemsPerPage;
     const endIdx = startIdx + itemsPerPage;
-    return filteredPosts.value.slice(startIdx, endIdx);
+
+    const posts = filteredPosts.value.slice(startIdx, endIdx);
+    posts.map((item) => {
+      item.url = item.url.replace('/post', '');
+      return item;
+    });
+
+    return posts;
   });
 
   const pages = computed(() => {
@@ -119,7 +126,7 @@
               <span
                 v-if="blogStore.selectedCategory === ''"
                 v-text="`${post.category} | `"
-              ></span>
+              />
               <a :href="withBase(post.url)" class="hover:underline">
                 {{ post.title }}
               </a>

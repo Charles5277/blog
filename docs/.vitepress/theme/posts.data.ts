@@ -30,7 +30,9 @@ export default createContentLoader('post/**/*.md', {
         category: frontmatter.category,
         tags: frontmatter.tags,
         date: formatDate(frontmatter.date),
-        updated: frontmatter.updated ? formatDate(frontmatter.updated) : undefined,
+        updated: frontmatter.updated
+          ? formatDate(frontmatter.updated)
+          : undefined,
       }))
       .sort((a, b) => b.date.time - a.date.time);
   },

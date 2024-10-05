@@ -16,3 +16,7 @@
     go(withBase('/catalog/'));
   });
 </script>
+
+<template>
+  <slot />
+</template>
