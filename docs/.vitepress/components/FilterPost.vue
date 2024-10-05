@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { withBase } from 'vitepress';
-  import { ref, computed, onMounted } from 'vue';
+  import { ref, computed, watch } from 'vue';
 
   import { initCategory, initTags } from '../theme/utils';
   import { data as posts } from '../theme/posts.data';
@@ -8,6 +8,8 @@
   import type { Post } from '../theme/posts.data';
 
   import blogStore from '../theme/store';
+
+  import catalogSheet from '../json/category.json';
 
   const tags = initTags(posts);
   const category = initCategory(posts);
@@ -84,10 +86,8 @@
     currentPage.value = page;
   };
 
-  // - 初始化時顯示所有文章
-  onMounted(() => {
-    blogStore.value.selectedCategory = '';
-    blogStore.value.selectedTags = [];
+  watch(filteredPosts, () => {
+    currentPage.value = 1;
   });
 </script>
 
@@ -98,7 +98,10 @@
     </div>
     <div v-if="blogStore.selectedCategory !== ''">
       <h3 id="tagName" class="pb-2 flex row items-center">
-        <span class="mr-4" v-html="blogStore.icon" />
+        <span class="mr-4">
+          <img :src="`/icons/${catalogSheet[blogStore.icon]}-md.svg`" />
+        </span>
+
         <span>{{ blogStore.selectedCategory }}</span>
       </h3>
     </div>
@@ -133,7 +136,7 @@
 
     <div class="flex justify-center">
       <VaPagination
-        v-show="filteredPosts.values.length > 0"
+        v-show="filteredPosts.length > 0"
         v-model="currentPage"
         :pages="pages"
         :visible-pages="5"

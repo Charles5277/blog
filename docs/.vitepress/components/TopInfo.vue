@@ -1,7 +1,7 @@
-<script setup lang='ts'>
+<script setup lang="ts">
   import { useData } from 'vitepress';
 
-  import iconSheet from '../json/icon-sheet.json';
+  import catalogSheet from '../json/category.json';
 
   const { frontmatter } = useData();
 
@@ -18,22 +18,19 @@
   </div>
 
   <div class="flex row justify-center items-center text-lg">
-    <span class="px-1">
-      📆
-    </span>
+    <span class="px-1"> 📆 </span>
     {{ frontmatter.date.slice(0, 10) }} |
-    <span
-      class="px-2"
-      v-html="iconSheet.label[frontmatter.category]"
-    />
+    <span class="px-2">
+      <img :src="`/icons/${catalogSheet[frontmatter.category]}-sm.svg`" />
+    </span>
     {{ frontmatter.category }}
   </div>
 
-  <hr class="my-4 h-px bg-gray-300 border-0 dark:bg-gray-500">
+  <hr class="my-4 h-px bg-gray-300 border-0 dark:bg-gray-500" />
   <div class="flex row">
-    <div class="text-lg ">
-      <span v-html="frontmatter.description" />
+    <div class="text-lg">
+      <span v-text="frontmatter.description" />
     </div>
   </div>
-  <hr class="my-4 h-px bg-gray-300 border-0 dark:bg-gray-500">
+  <hr class="my-4 h-px bg-gray-300 border-0 dark:bg-gray-500" />
 </template>

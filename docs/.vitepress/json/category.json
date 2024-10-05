@@ -1,0 +1,12 @@
+{
+  "CSS": "css",
+  "Docker": "docker",
+  "Git": "git",
+  "GitHub": "github",
+  "HTML": "html",
+  "Linux": "linux",
+  "Node.js": "nodejs",
+  "VitePress": "vitepress",
+  "VS Code": "vscode",
+  "Vue.js": "vue"
+}

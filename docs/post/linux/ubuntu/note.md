@@ -3,7 +3,7 @@ title: Ubuntu 筆記
 description: Ubuntu 操作入門筆記
 date: 2024-09-11
 lastUpdated: 2024-09-22 07:17:00 +8
-category: Ubuntu
+category: Linux
 tags:
   - Linux
   - Ubuntu

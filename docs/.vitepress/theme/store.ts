@@ -1,7 +1,5 @@
 import { ref, watch } from 'vue';
 
-import iconSheet from '../json/icon-sheet.json';
-
 interface BlogStore {
   pageBarIdx: number;
   currentPage: number;
@@ -23,7 +21,7 @@ const blogStore = ref<BlogStore>({
 watch(
   () => blogStore.value.selectedCategory,
   (v: string) => {
-    blogStore.value.icon = iconSheet.title[v] || '';
+    blogStore.value.icon = v || '';
   },
 );
 

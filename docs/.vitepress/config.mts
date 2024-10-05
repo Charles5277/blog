@@ -132,7 +132,7 @@ export default defineConfig({
           { text: 'Git', link: '/catalog/git' },
           { text: 'GitHub', link: '/catalog/github' },
           { text: 'Docker', link: '/catalog/docker' },
-          { text: 'Ubuntu', link: '/catalog/ubuntu' },
+          { text: 'Linux', link: '/catalog/linux' },
           { text: 'HTML', link: '/catalog/html' },
           { text: 'CSS', link: '/catalog/css' },
         ],
@@ -180,6 +180,11 @@ export default defineConfig({
       detailsLabel: '',
     },
   },
+
+  rewrites: {
+    'post/(.*)': '(.*)',
+  },
+
   sitemap: {
     hostname: 'https://charlestw.dev/',
   },
