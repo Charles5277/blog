@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { withBase } from 'vitepress';
-  import { computed } from 'vue';
+  import { ref, computed, onMounted } from 'vue';
+
   import { initCategory, initTags } from '../theme/utils';
   import { data as posts } from '../theme/posts.data';
 
@@ -11,35 +12,38 @@
   const tags = initTags(posts);
   const category = initCategory(posts);
 
+  // - 篩選文章
   const filteredPosts = computed(() => {
-    if (blogStore.value.selectedCategory) {
-      return category[blogStore.value.selectedCategory];
+    let arr: Post[] = [];
+    const selectedTags = blogStore.value.selectedTags;
+    const selectedCategory = blogStore.value.selectedCategory;
+
+    if (selectedCategory) {
+      // - 以 category 單選篩選
+      arr = category[selectedCategory];
+    } else if (selectedTags.length > 0) {
+      // - 以 tags 複選篩選
+      const addItemIfNeeded = (item: Post) => {
+        if (!arr.includes(item)) {
+          const hasAllTags = selectedTags.every((selectedTag) =>
+            item.tags.includes(selectedTag),
+          );
+          if (hasAllTags) {
+            arr.push(item);
+          }
+        }
+      };
+
+      selectedTags.forEach((tag) => {
+        const items = tags[tag] || [];
+        items.forEach(addItemIfNeeded);
+      });
+    } else {
+      // > 如果沒有選擇類別或標籤，顯示所有文章
+      arr = posts;
     }
 
-    const arr: Post[] = [];
-    const selectedTags = blogStore.value.selectedTags;
-
-    const addItemIfNeeded = (item: Post) => {
-      // 檢查該貼文是否已經在 arr 中
-      if (!arr.includes(item)) {
-        // 確保該貼文包含所有選中的標籤
-        const hasAllTags = selectedTags.every((selectedTag) =>
-          item.tags.includes(selectedTag),
-        );
-
-        if (hasAllTags) {
-          arr.push(item);
-        }
-      }
-    };
-
-    // - 遍歷所有標籤
-    selectedTags.forEach((tag) => {
-      const items = tags[tag] || [];
-      items.forEach(addItemIfNeeded);
-    });
-
-    // - 依照日期排序
+    // - 按日期排序
     arr.sort((a, b) => {
       return (
         new Date(b.date.string).getTime() - new Date(a.date.string).getTime()
@@ -48,15 +52,41 @@
 
     return arr;
   });
+
+  // - 文章分頁
+  const itemsPerPage = 5;
+  const currentPage = ref(1);
+
+  const paginatedPosts = computed(() => {
+    const startIdx = (currentPage.value - 1) * itemsPerPage;
+    const endIdx = startIdx + itemsPerPage;
+    return filteredPosts.value.slice(startIdx, endIdx);
+  });
+
+  const pages = computed(() => {
+    return Math.ceil(filteredPosts.value.length / itemsPerPage);
+  });
+
+  const goToPage = (page: number) => {
+    currentPage.value = page;
+  };
+
+  // - 初始化時顯示所有文章
+  onMounted(() => {
+    blogStore.value.selectedCategory = '';
+    blogStore.value.selectedTags = [];
+  });
 </script>
 
 <template>
-  <div
-    v-if="
-      blogStore.selectedCategory !== '' || blogStore.selectedTags.length > 0
-    "
-  >
-    <div class="text-3xl font-extrabold">篩選貼文</div>
+  <div>
+    <div class="text-3xl font-extrabold">
+      {{
+        blogStore.selectedCategory !== '' || blogStore.selectedTags.length > 0
+          ? '篩選貼文'
+          : '最新文章'
+      }}
+    </div>
     <div v-if="blogStore.selectedCategory !== ''">
       <h3 id="tagName" class="pb-2 flex row items-center">
         <span class="mr-4" v-html="blogStore.icon" />
@@ -65,7 +95,7 @@
     </div>
     <dl>
       <div
-        v-for="post in filteredPosts"
+        v-for="post in paginatedPosts"
         :key="post.title"
         class="decoration-2 hover:underline"
       >
@@ -89,9 +119,19 @@
         </dd>
       </div>
     </dl>
-  </div>
-  <div v-else>
-    <div class="text-3xl font-extrabold">請選擇主題或標籤</div>
+
+    <hr />
+
+    <div class="flex justify-center">
+      <VaPagination
+        v-model="currentPage"
+        :pages="pages"
+        :visible-pages="5"
+        gapped
+        buttons-preset="primary"
+        @update:model-value="goToPage"
+      />
+    </div>
   </div>
   <hr class="h-px my-4 bg-gray-200 border-0" />
 </template>
