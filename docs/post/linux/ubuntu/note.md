@@ -8,8 +8,12 @@ tags:
   - Linux
   - Ubuntu
 
-prev: false
-next: false
+prev:
+  text: '安裝 WSL 教學'
+  link: '/linux/wsl'
+next:
+  text: 'Ubuntu 修改 sources.list'
+  link: '/linux/ubuntu/sourcelist'
 ---
 
 ### shortcut
