@@ -113,7 +113,7 @@ export default defineConfig({
         dateStyle: 'short',
         timeStyle: 'short',
         hourCycle: 'h23',
-        forceLocale: false,
+        forceLocale: true,
       },
     },
     editLink: {
