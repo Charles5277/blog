@@ -1,7 +1,7 @@
 ---
 title: GitHub
 # description:
-date: 2024-07-11
+datePublished: 2024-07-11
 category: GitHub
 tags:
 editLink: false

@@ -1,7 +1,7 @@
 ---
 title: Ubuntu 讓 sudo 時不用輸入密碼
 description: 透過修改 sudoers 檔案，讓特定使用者在執行 sudo 時不用輸入密碼。
-date: 2024-10-05
+datePublished: 2024-10-05
 category: Linux
 tags:
   - Linux

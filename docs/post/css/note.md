@@ -1,7 +1,7 @@
 ---
 title: CSS 筆記
 description: CSS 基礎屬性與樣式
-date: 2024-09-13
+datePublished: 2024-09-13
 lastUpdated: 2024-09-22 07:17:00 +8
 category: CSS
 tags:

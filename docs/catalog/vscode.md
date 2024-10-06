@@ -1,7 +1,7 @@
 ---
 title: VS Code
 # description:
-date: 2024-07-11
+datePublished: 2024-07-11
 category: VS Code
 tags:
 editLink: false

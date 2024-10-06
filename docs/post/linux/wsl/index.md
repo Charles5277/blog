@@ -1,7 +1,7 @@
 ---
 title: 安裝 WSL 教學
 description: 透過 Windows Subsystem for Linux (WSL) 在 Windows 上安裝 Ubuntu 來使用 Linux 環境。
-date: 2024-10-05
+datePublished: 2024-10-05
 category: Linux
 tags:
   - Linux

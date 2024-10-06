@@ -1,7 +1,7 @@
 ---
 title: Node.js
 # description:
-date: 2024-10-01
+datePublished: 2024-10-01
 category: Node.js
 tags:
 editLink: false

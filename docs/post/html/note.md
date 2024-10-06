@@ -1,7 +1,7 @@
 ---
 title: HTML 筆記
 description: HTML 基礎語法與常用標籤
-date: 2024-09-13
+datePublished: 2024-09-13
 lastUpdated: 2024-09-22 07:17:00 +8
 category: HTML
 tags:

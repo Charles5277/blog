@@ -1,7 +1,7 @@
 ---
 title: VitePress
 # description:
-date: 2024-07-11
+datePublished: 2024-07-11
 category: VitePress
 tags:
 editLink: false

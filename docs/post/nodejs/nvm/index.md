@@ -1,7 +1,7 @@
 ---
 title: 用 NVM 管理 Node.js 版本
 description: 認識 Node.js，在 Windows 跟 Linux 系統上安裝 NVM 來管理 Node.js 版本。
-date: 2024-10-05
+datePublished: 2024-10-05
 category: Node.js
 tags:
   - Node.js

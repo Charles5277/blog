@@ -19,7 +19,7 @@
 
   <div class="flex row justify-center items-center text-lg">
     <span class="px-1"> 📆 </span>
-    {{ frontmatter.date.slice(0, 10) }} |
+    {{ frontmatter.datePublished.slice(0, 10) }} |
     <span class="px-2">
       <img :src="`/icons/${catalogSheet[frontmatter.category]}-sm.svg`" />
     </span>

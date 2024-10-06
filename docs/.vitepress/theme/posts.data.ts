@@ -7,10 +7,6 @@ interface Post {
     time: number;
     string: string;
   };
-  updated?: {
-    time: number;
-    string: string;
-  };
   category: string;
   tags: string[];
   excerpt?: string | undefined;
@@ -29,10 +25,7 @@ export default createContentLoader('post/**/*.md', {
         excerpt,
         category: frontmatter.category,
         tags: frontmatter.tags,
-        date: formatDate(frontmatter.date),
-        updated: frontmatter.updated
-          ? formatDate(frontmatter.updated)
-          : undefined,
+        date: formatDate(frontmatter.datePublished),
       }))
       .sort((a, b) => b.date.time - a.date.time);
   },
@@ -40,8 +33,13 @@ export default createContentLoader('post/**/*.md', {
 
 function formatDate(raw: string): Post['date'] {
   const date = new Date(raw);
+
   return {
     time: +date,
-    string: date.toISOString().slice(0, 10).replace(/-/g, '/'),
+    string: date.toLocaleDateString('zh-TW', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }),
   };
 }

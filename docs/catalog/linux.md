@@ -1,7 +1,7 @@
 ---
 title: Ubuntu
 # description:
-date: 2024-09-11
+datePublished: 2024-09-11
 category: Linux
 tags:
 editLink: false

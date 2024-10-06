@@ -1,7 +1,7 @@
 ---
 title: 認識 Vue.js
 description: Vue.js，一個平易近人、高效能且功能完整的漸進式 JavaScript 框架。
-date: 2024-09-25
+datePublished: 2024-09-25
 category: Vue.js
 tags:
   - Vue

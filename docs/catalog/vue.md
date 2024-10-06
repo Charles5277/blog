@@ -1,7 +1,7 @@
 ---
 title: Vue.js
 # description:
-date: 2024-07-11
+datePublished: 2024-07-11
 category: Vue.js
 tags:
 editLink: false
