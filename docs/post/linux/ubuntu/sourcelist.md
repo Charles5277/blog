@@ -1,6 +1,6 @@
 ---
 title: Ubuntu 修改 sources.list
-description: 將 Ubuntu 的 apt 來源更換為台灣國網中心，提升 package 下載速度。
+description: 將 Ubuntu 的 apt 來源更換為台灣國網中心，提升 package 的下載速度。
 date: 2024-10-05
 category: Linux
 tags:
