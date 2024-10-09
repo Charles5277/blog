@@ -110,7 +110,8 @@ export default defineConfig({
     lastUpdated: {
       text: '更新時間',
       formatOptions: {
-        dateStyle: 'short',
+        formatMatcher: 'best fit',
+        dateStyle: 'long',
         timeStyle: 'short',
         hourCycle: 'h23',
         forceLocale: true,
