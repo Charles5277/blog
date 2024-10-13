@@ -8,7 +8,9 @@ tags:
   - Frontend
 
 prev: false
-next: false
+next:
+  text: '以 Vite 創建一個 Vue.js 專案'
+  link: '/vue/create-project'
 ---
 
 用於建立面向於 Desktop, Mobile, WebGL, Terminal 應用程式的前端。
