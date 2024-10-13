@@ -41,7 +41,17 @@
         "amirha.better-comments-2",
         "usernamehw.errorlens",
         "vscode-icons-team.vscode-icons",
-        "sdras.vue-vscode-snippets"
+        "sdras.vue-vscode-snippets",
+        "fill-labs.dependi",
+        "ecmel.vscode-html-css",
+        "wix.vscode-import-cost",
+        "AykutSarac.jsoncrack-vscode",
+        "WallabyJs.quokka-vscode",
+        "yy0931.save-as-root",
+        "sibiraj-s.vscode-scss-formatter",
+        "pflannery.vscode-versionlens",
+        "zeabur.zeabur-vscode",
+        "adpyke.codesnap"
       ]
     }
   }

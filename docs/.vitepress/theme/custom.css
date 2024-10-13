@@ -50,3 +50,7 @@
 html {
   scroll-behavior: smooth;
 }
+
+.custom-block {
+  border-width: 3px;
+}
