@@ -168,5 +168,6 @@
     "vue",
     "typescript",
     "typescriptreact"
-  ]
+  ],
+  "versionlens.suggestions.showOnStartup": true
 }
