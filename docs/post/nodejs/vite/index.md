@@ -14,7 +14,7 @@ next: false
 
 ## 為什麼選擇 Vite
 
-Vite 是近 3 年來最受歡迎的前端開發工具之一，在 state of javascript 2021 ~ 2023 中，在 [Library Tier List](https://2023.stateofjs.com/en-US/libraries/#tier_list) 皆為 S Tier，且留用率蟬聯第一名。
+Vite 是近 3 年來最受歡迎的前端開發工具之一，在 state of javascript 2021 \~ 2023 中，在 [Library Tier List](https://2023.stateofjs.com/en-US/libraries/#tier_list) 皆為 S Tier，且留用率蟬聯第一名。
 
 ![alt text](image.png)
 
