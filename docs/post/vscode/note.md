@@ -7,7 +7,9 @@ category: VS Code
 tags:
   - VS Code
 
-prev: false
+prev:
+  text: '認識 Visual Studio Code'
+  link: '/vscode/introduction'
 next: false
 ---
 
