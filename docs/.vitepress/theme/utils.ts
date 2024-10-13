@@ -1,20 +1,22 @@
 import type { Post } from './posts.data';
 
-interface Data { [key: string]: Post[] }
-
-export function initArchives(posts: Post[]): Data {
-  const data: Data = {};
-  for (let i = 0; i < posts.length; i++) {
-    const post = posts[i];
-    const year = post.date.string.slice(0, 4);
-    if (!data[year]) {
-      data[year] = [];
-    }
-    data[year].push(post);
-  }
-
-  return data;
+interface Data {
+  [key: string]: Post[];
 }
+
+// export function initArchives(posts: Post[]): Data {
+//   const data: Data = {};
+//   for (let i = 0; i < posts.length; i++) {
+//     const post = posts[i];
+//     const year = post.date.string.slice(0, 4);
+//     if (!data[year]) {
+//       data[year] = [];
+//     }
+//     data[year].push(post);
+//   }
+
+//   return data;
+// }
 
 export function initCategory(posts: Post[]): Data {
   const data: Data = {};

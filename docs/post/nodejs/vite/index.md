@@ -30,7 +30,7 @@ Vite 提供了一個極為快速的開發環境，並且支援熱模組替換（
 
 :::tip ℹ️ 提示
 若尚未安裝 node.js，參考這篇教學 [📝用 NVM 管理 Node.js 版本
-](/nodejs/nvm)
+](/nodejs/nvm/)
 :::
 
 ```bash

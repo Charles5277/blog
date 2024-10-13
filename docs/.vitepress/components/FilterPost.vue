@@ -77,6 +77,7 @@
     const endIdx = startIdx + itemsPerPage;
 
     const posts = filteredPosts.value.slice(startIdx, endIdx);
+
     posts.map((item) => {
       item.url = item.url.replace('/post', '');
       return item;

@@ -16,8 +16,8 @@ next: false
 
 ## 準備環境
 
-- Node.js 環境 [🔗參考](/nodejs/vite)
-- VS Code 編輯器 [🔗參考](/vscode/introduction)
+- Node.js 環境 [🔗參考](/nodejs/vite/)
+- VS Code 編輯器 [🔗參考](/vscode/introduction/)
 
 ## 建立專案
 
