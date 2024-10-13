@@ -193,4 +193,9 @@ export default defineConfig({
   async transformHead(content) {
     return handleHeadMeta(content);
   },
+  vite: {
+    build: {
+      modulePreload: false,
+    },
+  },
 });
