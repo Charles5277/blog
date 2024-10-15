@@ -70,7 +70,7 @@ npm -v
         <td>✔️ - The default</td>
       </tr>
       <tr>
-        <td>Autoinstalling peers</td>
+        <td>Auto installing peers</td>
         <td>✔️</td>
         <td>❌</td>
         <td>✔️</td>
