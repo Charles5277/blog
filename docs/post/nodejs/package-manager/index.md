@@ -19,7 +19,7 @@ next:
 
 Node.js 的 Package Manager 稱為 npm，是 Node.js 的官方套件管理工具，提供了一個龐大的套件庫供開發者使用，並且可以透過 npm 安裝、更新、移除套件。所有可供下載的套件都會放在 npm 的官方網站 [npmjs.com](https://www.npmjs.com/) 上。
 
-當你完成 Node 的安裝 (參考[用 NVM 管理 Node.js 版本](/nodejs/nvm))，npm 也會一併安裝在你的電腦上，你可以透過以下指令來確認 npm 是否已經安裝：
+當你完成 Node 的安裝 (參考[用 NVM 管理 Node.js 版本](/nodejs/nvm/))，npm 也會一併安裝在你的電腦上，你可以透過以下指令來確認 npm 是否已經安裝：
 
 ```bash
 npm -v
