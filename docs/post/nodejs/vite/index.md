@@ -8,14 +8,16 @@ tags:
   - Vite
   - Frontend
 
-prev: false
+prev:
+  text: '認識 Node.js 的 Package Manager'
+  link: '/nodejs/package-manager/'
 next: false
 ---
 
 ## 為什麼選擇 Vite
 
 Vite 是近 3 年來最受歡迎的前端開發工具之一，在 state of javascript 2021 \~ 2023 中，在 [Library Tier List](https://2023.stateofjs.com/en-US/libraries/#tier_list) 皆為 S Tier，且留用率蟬聯第一名。
-
+認識 Node.js 的 Package Manager
 ![alt text](image.png)
 
 > Vite 的生態系豐富，下載量成長也相當迅速，目前已經超過 1500 萬次下載量，並且在 GitHub 上的 Star 數也達到 67.8k，超過了 webpack。
