@@ -1,4 +1,11 @@
 {
+  "[markdown]": {
+    "editor.quickSuggestions": {
+      "comments": true,
+      "other": true,
+      "strings": true
+    }
+  },
   "better-comments.tags": [
     {
       "backgroundColor": "transparent",
@@ -49,9 +56,11 @@
       "underline": true
     }
   ],
+  "cSpell.enableFiletypes": ["!yaml"],
   "cSpell.words": [
     "addtohomescreen",
     "adipiscing",
+    "adpyke",
     "alnum",
     "amet",
     "amirha",
@@ -64,6 +73,7 @@
     "camelcase",
     "cfeatures",
     "charlestw",
+    "codesnap",
     "Codespace",
     "compat",
     "composables",
@@ -80,6 +90,7 @@
     "dism",
     "Distro",
     "eamodio",
+    "ecmel",
     "elit",
     "env",
     "errorlens",
@@ -97,6 +108,7 @@
     "Homescreen",
     "iqjt",
     "Jamstack",
+    "jsoncrack",
     "keyframes",
     "kohler",
     "linebreak",
@@ -115,11 +127,13 @@
     "oderwat",
     "owliehq",
     "Parens",
+    "pflannery",
     "redjue",
     "reflog",
     "rgba",
     "Rolldown",
     "sdras",
+    "sibiraj",
     "signin",
     "sourcelist",
     "strikethrough",
@@ -132,6 +146,7 @@
     "unstage",
     "usernamehw",
     "userprofile",
+    "versionlens",
     "VITE",
     "vitepress",
     "vuefire",
@@ -146,28 +161,21 @@
     "xlink",
     "Zcfg",
     "Zerotier",
-    "zless"
+    "zless",
+    "AykutSarac"
   ],
-  "cSpell.enableFiletypes": ["!yaml"],
   "editor.formatOnSave": true,
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto"
-    }
-  ],
-  "[markdown]": {
-    "editor.quickSuggestions": {
-      "other": true,
-      "comments": true,
-      "strings": true
-    }
-  },
   "eslint.validate": [
     "javascript",
     "javascriptreact",
     "vue",
     "typescript",
     "typescriptreact"
+  ],
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
   ],
   "versionlens.suggestions.showOnStartup": true
 }
