@@ -1,6 +1,6 @@
 import js from '@eslint/js';
-import vue from 'eslint-plugin-vue';
 import ts from 'typescript-eslint';
+import vue from 'eslint-plugin-vue';
 
 export default [
   {
@@ -18,14 +18,6 @@ export default [
   // vue
   ...vue.configs['flat/recommended'],
   {
-    // files: ['*.vue', '**/*.vue'],
-    languageOptions: {
-      parserOptions: {
-        parser: ts.parser,
-      },
-    },
-  },
-  {
     rules: {
       'no-useless-escape': 'off',
       eqeqeq: 'error',
@@ -41,7 +33,7 @@ export default [
       'prefer-const': 'error',
       'vue/singleline-html-element-content-newline': 'off',
       'vue/html-self-closing': 'off',
-      'vue/max-attributes-per-line': 'off'
+      'vue/max-attributes-per-line': 'off',
     },
   },
 ];

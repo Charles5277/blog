@@ -67,6 +67,7 @@
     "antfu",
     "appspot",
     "autolayout",
+    "AykutSarac",
     "Bdcc",
     "bezier",
     "builtins",
@@ -93,6 +94,7 @@
     "ecmel",
     "elit",
     "env",
+    "eqeqeq",
     "errorlens",
     "evenodd",
     "featurename",
@@ -135,6 +137,7 @@
     "sdras",
     "sibiraj",
     "signin",
+    "singleline",
     "sourcelist",
     "strikethrough",
     "swtich",
@@ -161,8 +164,7 @@
     "xlink",
     "Zcfg",
     "Zerotier",
-    "zless",
-    "AykutSarac"
+    "zless"
   ],
   "editor.formatOnSave": true,
   "eslint.validate": [
