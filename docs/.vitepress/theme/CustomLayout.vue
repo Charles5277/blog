@@ -6,6 +6,7 @@
 
   // - components
   import TopInfo from '../components/TopInfo.vue';
+  import Comments from '../components/GiscusComments.vue';
 
   const { Layout } = Theme;
   const { go } = useRouter();
@@ -40,6 +41,11 @@
           </VaButton>
         </div>
       </div>
+    </template>
+
+    <template #doc-after>
+      <div class="my-6" style="border-top: 1px solid var(--vp-c-divider)"></div>
+      <Comments />
     </template>
   </Layout>
 </template>
