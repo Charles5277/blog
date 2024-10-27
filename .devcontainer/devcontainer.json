@@ -50,7 +50,8 @@
         "pflannery.vscode-versionlens",
         "zeabur.zeabur-vscode",
         "adpyke.codesnap",
-        "doggy8088.pangu2"
+        "doggy8088.pangu2",
+        "alefragnani.separators"
       ]
     }
   }

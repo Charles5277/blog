@@ -23,8 +23,8 @@ export default defineConfig({
     ['meta', { property: 'og:image:alt', content: 'logo' }],
     ['meta', { property: 'og:image:type', content: 'image/png' }],
 
-    ['meta', { property: 'twitter:card', content: 'summary' }],
-    ['meta', { property: 'twitter:site', content: 'summary' }],
+    // ['meta', { property: 'twitter:card', content: 'summary' }],
+    // ['meta', { property: 'twitter:site', content: 'summary' }],
     // ['meta', { property: 'twitter:title', content: 'Charles 起司的開發技術分享 Blog' }],
     // [
     //   'meta',

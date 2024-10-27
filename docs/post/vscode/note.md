@@ -205,10 +205,6 @@ next: false
 
   > <img src="https://i.imgur.com/acvhMA2.png" width="30%">
 
-- [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag)
-
-  > 自動補齊 html/xml 的 tag，在修改時亦會同步修正配對的 close tag
-
 - [GitHub Copilot](https://docs.github.com/en/copilot/getting-started-with-github-copilot/getting-started-with-github-copilot-in-visual-studio-code)
 
   > AI 自動預測程式碼，支援絕大多數程式語言，打註解亦可生成 code，用 tab 自動完成

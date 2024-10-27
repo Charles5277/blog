@@ -122,7 +122,7 @@
         <dd
           class="flex justify-between my-3 text-base leading-6 font-medium text-gray-500 dark:text-gray-300"
         >
-          <div class="list-disc truncate w-64 sm:w-fit pl-2">
+          <div class="list-disc truncate w-auto sm:w-fit pl-2">
             <li>
               <span
                 v-if="blogStore.selectedCategory === ''"
@@ -133,7 +133,7 @@
               </a>
             </li>
           </div>
-          <div class="w-24">
+          <div class="pl-4 w-24 responsive-hide">
             {{ post.date.string }}
           </div>
         </dd>
@@ -174,5 +174,12 @@
     text-decoration-thickness: 2px !important;
     text-decoration: underline !important;
     text-underline-offset: 2px !important;
+  }
+
+  @media (max-width: 480px) {
+    .responsive-hide {
+      width: 0px !important;
+      display: none;
+    }
   }
 </style>

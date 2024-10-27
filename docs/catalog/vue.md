@@ -6,6 +6,7 @@ category: Vue.js
 tags:
 editLink: false
 lastUpdated: false
+comments: false
 
 prev: false
 next: false

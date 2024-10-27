@@ -18,6 +18,13 @@ export default [
   // vue
   ...vue.configs['flat/recommended'],
   {
+    languageOptions: {
+      parserOptions: {
+        parser: ts.parser,
+      },
+    },
+  },
+  {
     rules: {
       'no-useless-escape': 'off',
       eqeqeq: 'error',

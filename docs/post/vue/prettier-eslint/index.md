@@ -50,14 +50,22 @@ pnpm add -D eslint @eslint/js eslint-plugin-vue typescript-eslint prettier
       },
     },
 
-    // js
+    // JS
     js.configs.recommended,
 
-    // ts
+    // TS
     ...ts.configs.recommended,
 
-    // vue
+    // Vue
     ...vue.configs['flat/recommended'],
+    // 若要解析 <script setup lang="ts"> 的話，需要指定 ts.parser
+    {
+      languageOptions: {
+        parserOptions: {
+          parser: ts.parser,
+        },
+      },
+    },
     {
       rules: {
         'no-useless-escape': 'off',
