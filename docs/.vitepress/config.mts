@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress';
-
 import { handleHeadMeta } from './utils/handleHeadMeta';
+
+import vueDevTools from 'vite-plugin-vue-devtools';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -197,5 +198,7 @@ export default defineConfig({
     build: {
       modulePreload: false,
     },
+
+    plugins: [vueDevTools()],
   },
 });
