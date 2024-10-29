@@ -196,7 +196,6 @@ export default defineConfig({
         }
         return true;
       });
-      console.log(items);
 
       return items;
     },
