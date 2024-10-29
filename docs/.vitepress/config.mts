@@ -188,7 +188,17 @@ export default defineConfig({
   },
 
   sitemap: {
-    hostname: 'https://charlestw.dev/',
+    hostname: 'https://blog.charlestw.dev/',
+    transformItems(items) {
+      items.filter((item) => {
+        if (item.url.includes('catalog/') && item.url !== 'catalog/') {
+          return false;
+        }
+        return true;
+      });
+
+      return items;
+    },
   },
 
   async transformHead(content) {

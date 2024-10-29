@@ -10,7 +10,7 @@ tags:
 
 prev:
   text: '認識 Vue.js'
-  link: '/vue/introduction'
+  link: '/vue/intro'
 next:
   text: '設定 Prettier + ESLint 讓你的 Vue 專案開發體驗更舒適順暢'
   link: '/vue/prettier-eslint'
@@ -20,7 +20,7 @@ next:
 
 - Node.js 環境 [🔗參考](/nodejs/nvm/)
 - pnpm 套件管理器 [🔗參考](/nodejs/package-manager/)
-- VS Code 編輯器 [🔗參考](/vscode/introduction/)
+- VS Code 編輯器 [🔗參考](/vscode/intro/)
 
 ## 建立專案
 

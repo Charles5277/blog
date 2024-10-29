@@ -29,7 +29,7 @@
   <hr class="my-4 h-px bg-gray-300 border-0 dark:bg-gray-500" />
   <div class="flex row">
     <div class="text-lg">
-      <span v-text="frontmatter.description" />
+      <span style="white-space: pre" v-text="frontmatter.description" />
     </div>
   </div>
   <hr class="my-4 h-px bg-gray-300 border-0 dark:bg-gray-500" />

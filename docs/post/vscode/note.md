@@ -9,7 +9,7 @@ tags:
 
 prev:
   text: '認識 Visual Studio Code'
-  link: '/vscode/introduction'
+  link: '/vscode/intro'
 next: false
 ---
 

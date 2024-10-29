@@ -10,7 +10,7 @@ tags:
 
 prev:
   text: 介紹 Vue.js
-  link: '/vue/introduction'
+  link: '/vue/intro'
 next:
   text: v-bind 屬性綁定指令
   link: '/vue/v-bind'

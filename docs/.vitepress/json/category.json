@@ -8,5 +8,6 @@
   "Node.js": "nodejs",
   "VitePress": "vitepress",
   "VS Code": "vscode",
-  "Vue.js": "vue"
+  "Vue.js": "vue",
+  "PostgreSQL": "postgres"
 }

@@ -1,1 +1,5 @@
+User-agent: *
+Allow: /catalog
+Disallow: /catalog/
+Disallow: /post/
 Sitemap: https://blog.charlestw.dev/sitemap.xml
