@@ -190,12 +190,13 @@ export default defineConfig({
   sitemap: {
     hostname: 'https://blog.charlestw.dev/',
     transformItems(items) {
-      items.filter((item) => {
+      items = items.filter((item) => {
         if (item.url.includes('catalog/') && item.url !== 'catalog/') {
           return false;
         }
         return true;
       });
+      console.log(items);
 
       return items;
     },
