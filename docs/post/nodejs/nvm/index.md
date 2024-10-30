@@ -45,15 +45,15 @@ nvm ls-remote
 ```
 
 ![alt text](image-8.png)
-目前最新的 LTS 版本為 20.18.0
 
 4. 安裝最新的 Node.js LTS 版本
 
 ```bash
-nvm install 20.18.0
+nvm install 22.11.0
 ```
 
 ![alt text](image-9.png)
+
 系統會自動將這個版本設定為預設
 
 5. 確認 node, npm 的版本
@@ -102,12 +102,12 @@ nvm install lts
 ```
 
 ![alt text](image-4.png)
-這邊顯示我們安裝的版本是 20.18.0，我們指定它為預設版本
+這邊顯示我們安裝的版本是 22.11.0，我們指定它為預設版本
 
 5. 啟用指定的版本
 
 ```bash
-nvm use 20.18.0
+nvm use 22.11.0
 ```
 
 ![alt text](image-5.png)

@@ -27,7 +27,7 @@ npm -v
 
 如果你看到 npm 的版本號，代表 npm 已經安裝完成。
 
-## npm /yarn/pnpm 的差異
+## npm / yarn / pnpm 的差異
 
 在 JavaScript 的開發生態中，你會經常看到一個套件同時提供了 npm、yarn、pnpm 三種安裝方式，這三種套件管理工具有什麼差異呢？
 

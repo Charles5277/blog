@@ -27,10 +27,8 @@
   </div>
 
   <hr class="my-4 h-px bg-gray-300 border-0 dark:bg-gray-500" />
-  <div class="flex row">
-    <div class="text-lg">
-      <span style="white-space: pre" v-text="frontmatter.description" />
-    </div>
+  <div class="flex row text-lg">
+    <span class="whitespace-normal" v-text="frontmatter.description" />
   </div>
   <hr class="my-4 h-px bg-gray-300 border-0 dark:bg-gray-500" />
 </template>
