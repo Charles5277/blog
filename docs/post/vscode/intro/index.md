@@ -94,3 +94,7 @@ winget install vscode
 
   透過 Remote Tunnels 擴充套件，可以在 VS Code 中建立遠端通道連線，不必設定 SSH 伺服器，以 GitHub 帳號或 Microsoft 帳號驗證身分，就能讓內外網任何可連網裝置以 VS Code 應用程式或是網頁版 VS Code 進行遠端開發。
   甚至包含用平板、手機以瀏覽器存取完整的 VS Code 功能與擴充套件。
+
+## 參考我的設定檔
+
+- [設定檔 - GitHub](https://github.com/Charles5277/vscode_setting_config)
