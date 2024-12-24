@@ -1,6 +1,6 @@
 ---
 title: 用 NVM 管理 Node.js 版本
-description: 認識 Node.js，在 Windows 跟 Linux 系統上安裝 NVM 來管理 Node.js 版本。
+description: 認識 Node.js，在 Linux / Windows / Mac 任何作業系統安裝 NVM 來管理 Node.js 版本。
 datePublished: 2024-10-05
 category: Node.js
 tags:
@@ -8,6 +8,8 @@ tags:
   - Frontend
   - Linux
   - Ubuntu
+  - Windows
+  - MacOS
 
 prev: false
 next:
@@ -120,6 +122,78 @@ npm -v
 ```
 
 ![alt text](image-6.png)
+
+## 以 MacOS 安裝 NVM
+
+1. 開啟終端機並執行以下指令
+
+```bash
+brew install nvm
+```
+
+2. 建立 nvm 的目錄
+
+```bash
+mkdir ~/.nvm
+```
+
+3. 設定環境變數
+
+```bash
+nano ~/.zshrc
+```
+
+在檔案最後加入以下內容
+
+```bash
+export NVM_DIR="$HOME/.nvm"
+export NVM_HOME="/opt/homebrew/opt/nvm"
+[ -s "$NVM_HOME/nvm.sh" ] && \. "$NVM_HOME/nvm.sh"
+```
+
+![alt text](image-11.png)
+
+按下 Ctrl + O 儲存後按下 Enter，再按下 Ctrl + X 退出
+
+4. 重新載入設定
+
+```bash
+source ~/.zshrc
+```
+
+5. 確認 nvm 是否安裝成功
+
+```bash
+nvm -v
+```
+
+![alt text](image-12.png)
+有出現版本號表示安裝成功
+
+6. 查看最新的 Node.js LTS 版本
+
+```bash
+nvm ls-remote
+```
+
+![alt text](image-13.png)
+
+7. 安裝最新的 Node.js LTS 版本
+
+```bash
+nvm install 22.12.0
+```
+
+系統會自動將這個版本設定為預設
+
+8. 確認 node, npm 的版本
+
+```bash
+node -v
+npm -v
+```
+
+![alt text](image-14.png)
 
 ## 常用指令列表
 
