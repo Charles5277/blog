@@ -332,6 +332,8 @@ Date:   Sat Mar 25 15:40:00 2023 +0800
 <icon><space><type>(<scope>):<space><subject><enter><body><enter><footer>
 ```
 
+以下遵照 Angular 風格，提供範例
+
 - `<icon>`
 
   > 建議遵循 gitmoji 規則使用 icon，以及對應的 type 關係

@@ -20,14 +20,14 @@ next:
 - 適用 Ubuntu 24.04 及之後版本
 
 ```bash
-sudo sed -i 's/archive.ubuntu.com/free.nchc.org.tw/g' /etc/apt/sources.list.d/ubuntu.sources
+sudo sed -i 's|http://tw\.archive\.ubuntu\.com/ubuntu/|http://free.nchc.org.tw/ubuntu/|g' /etc/apt/sources.list.d/ubuntu.sources
 sudo sed -i 's/security.ubuntu.com/free.nchc.org.tw/g' /etc/apt/sources.list.d/ubuntu.sources
 ```
 
 - 適用 Ubuntu 22.04 及之前版本
 
 ```bash
-sudo sed -i 's/archive.ubuntu.com/free.nchc.org.tw/g' /etc/apt/sources.list
+sudo sed -i 's|http://tw\.archive\.ubuntu\.com/ubuntu/|http://free.nchc.org.tw/ubuntu/|g' /etc/apt/sources.list
 sudo sed -i 's/security.ubuntu.com/free.nchc.org.tw/g' /etc/apt/sources.list
 ```
 
