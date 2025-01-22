@@ -28,7 +28,7 @@
     "vitepress": "1.4.2"
   },
   "engines": {
-    "node": "22"
+    "node": "18"
   },
   "postcss": {
     "plugins": {
