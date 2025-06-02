@@ -15,6 +15,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^4.13.2",
     "eslint": "9.28.0",
+    "postcss": "^8.5.4",
     "tailwindcss": "4.1.8",
     "vitepress": "2.0.0-alpha.5"
   },
