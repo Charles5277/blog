@@ -25,19 +25,35 @@
   },
   "<script setup>": {
     "prefix": "setup",
-    "body": ["<script setup>", "  $1", "</script>"],
+    "body": [
+      "<script setup>",
+      "  $1",
+      "</script>"
+    ],
   },
   "template slot": {
     "prefix": "slotTemplate",
-    "body": ["<template #$1>", "  $2", "</template>"],
+    "body": [
+      "<template #$1>",
+      "  $2",
+      "</template>"
+    ],
   },
   "template #prepend": {
     "prefix": "prependSlot",
-    "body": ["<template #prepend>", "  $1", "</template>"],
+    "body": [
+      "<template #prepend>",
+      "  $1",
+      "</template>"
+    ],
   },
   "template #append": {
     "prefix": "appendSlot",
-    "body": ["<template #append>", "  $1", "</template>"],
+    "body": [
+      "<template #append>",
+      "  $1",
+      "</template>"
+    ],
   },
   "page": {
     "prefix": "page",
@@ -61,21 +77,49 @@
   },
   "focus": {
     "prefix": "focus",
-    "body": ["// [!code focus]"],
+    "body": [
+      "// [!code focus]"
+    ],
     "description": "focus",
   },
   "block-vue": {
     "prefix": "block-vue",
-    "body": ["```vue:line-numbers", "$1", "```"],
+    "body": [
+      "```vue:line-numbers",
+      "$1",
+      "```"
+    ],
     "description": "block-vue",
+  },
+  "block-js": {
+    "prefix": "block-js",
+    "body": [
+      "```javascript:line-numbers",
+      "$1",
+      "```"
+    ],
+    "description": "block-js",
+  },
+  "block-ts": {
+    "prefix": "block-ts",
+    "body": [
+      "```typescript:line-numbers",
+      "$1",
+      "```"
+    ],
+    "description": "block-ts",
   },
   "link": {
     "prefix": "link",
-    "body": ["[🔗 ${1:label}](${2:url})"],
+    "body": [
+      "[🔗 ${1:label}](${2:url})"
+    ],
   },
-
   "next": {
     "prefix": "next",
-    "body": ["text: '${1:label}'", "link: '${2:path}'"],
+    "body": [
+      "text: '${1:label}'",
+      "link: '${2:path}'"
+    ],
   },
 }

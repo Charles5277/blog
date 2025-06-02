@@ -128,6 +128,7 @@ export default defineConfig({
         text: '文章主題',
         items: [
           { text: 'Vue.js', link: '/catalog/vue' },
+          { text: 'Nuxt', link: '/catalog/nuxt' },
           { text: 'Node.js', link: '/catalog/nodejs' },
           { text: 'VS Code', link: '/catalog/vscode' },
           { text: 'Git', link: '/catalog/git' },

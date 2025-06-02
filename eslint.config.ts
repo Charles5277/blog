@@ -1,10 +1,11 @@
-import antfu from '@antfu/eslint-config';
+import antfu from '@antfu/eslint-config'
 
 export default antfu({
+  ignores: ['**/*.md'],
   rules: {
     'no-useless-escape': 'off',
-    eqeqeq: 'error',
-    camelcase: 'error',
+    'eqeqeq': 'error',
+    'camelcase': 'error',
     'vue/eqeqeq': 'error',
     'no-async-promise-executor': 'error',
     'no-await-in-loop': 'error',
@@ -18,4 +19,4 @@ export default antfu({
     'vue/html-self-closing': 'off',
     'vue/max-attributes-per-line': 'off',
   },
-});
+})
