@@ -9,5 +9,6 @@
   "VitePress": "vitepress",
   "VS Code": "vscode",
   "Vue.js": "vue",
+  "Nuxt": "nuxt",
   "PostgreSQL": "postgres"
 }
