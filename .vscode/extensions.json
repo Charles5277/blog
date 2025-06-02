@@ -1,7 +1,6 @@
 {
   "recommendations": [
     "streetsidesoftware.code-spell-checker",
-    "wallabyjs.console-ninja",
     "editorconfig.editorconfig",
     "dbaeumer.vscode-eslint",
     "mhutchie.git-graph",
@@ -17,7 +16,6 @@
     "amirha.better-comments-2",
     "usernamehw.errorlens",
     "vscode-icons-team.vscode-icons",
-    "sdras.vue-vscode-snippets",
     "alefragnani.separators"
   ]
 }

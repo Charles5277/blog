@@ -1,7 +1,4 @@
-// .vitepress/theme/index.js
-import './tailwind.postcss';
 import DefaultTheme from 'vitepress/theme';
-import './firebase';
 import './custom.css';
 
 import { createVuestic } from 'vuestic-ui';
