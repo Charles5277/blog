@@ -1,5 +1,5 @@
 ---
-title: 在 Nuxt 專案中以 Maybe<T> 優雅處理 null 與 undefined
+title: 在 Nuxt 專案中優雅處理 null 與 undefined
 description: 透過 Maybe<T> 全域型別定義，在 Nuxt 專案中優雅地處理可能為 null 或 undefined 的值，提升型別安全和開發體驗。
 datePublished: 2025-06-03
 category: Nuxt
