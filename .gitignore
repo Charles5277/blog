@@ -1,6 +1,6 @@
 docs/.vitepress/cache/
 docs/.vitepress/dist/
-docs/.vitepress/config.mts.*
+docs/.vitepress/config.ts.*
 node_modules
 .pnpm-store
 temp/
