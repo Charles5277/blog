@@ -8,13 +8,13 @@ tags:
   - Nitro
 ---
 
-在純 SPA 的 Vue 專案中，我們常透過 `import data from './data.json'` 讀取 JSON。但在 Nuxt 中，因預設使用 Nitro，前後端環境分離，靜態資源分為「公開資源（public assets）」與「伺服器資源（server assets）」，因此無法直接 `import`。本文將說明其原因，並示範如何正確讀取 JSON、圖片等靜態資源。
+在純 SPA 的 Vue 專案中，我們常透過 `import data from './data.json'` 讀取 JSON。但在 Nuxt 中，因預設使用 Nitro，前後端環境分離，靜態資源分為「公開資源 (public assets)」與「伺服器資源 (server assets)」，因此無法直接 `import`。本文將說明其原因，並示範如何正確讀取 JSON、圖片等靜態資源。
 
 ## 為什麼不能直接 import 靜態檔案？
 
-在 Nuxt 專案中，`import` 靜態檔案會報錯的主要原因在於 Nuxt 採用了 SSR（伺服器端渲染）與 Nitro 作為執行引擎，並且嚴格區分執行環境與靜態資源的型態。
+在 Nuxt 專案中，`import` 靜態檔案會報錯的主要原因在於 Nuxt 採用了 SSR (伺服器端渲染) 與 Nitro 作為執行引擎，並且嚴格區分執行環境與靜態資源的型態。
 
-- `import` 是 ES Module 的靜態語法，會在建構（build-time）或 SSR 階段執行，僅適用於被當作模組處理的檔案。
+- `import` 是 ES Module 的靜態語法，會在建構 (build-time) 或 SSR 階段執行，僅適用於被當作模組處理的檔案。
 - `public/` 資料夾內的內容並非模組，而是部署後透過 URL 存取的公開靜態資源。
 - 因此，若嘗試 `import '~/public/data.json'`，會在建構時找不到對應模組而出錯。
 
@@ -22,9 +22,9 @@ tags:
 
 ---
 
-## Public assets（公開靜態資源）
+## Public assets (公開靜態資源)
 
-在 Nuxt 中，`public/` 資料夾用來存放靜態資源（如圖片、影片、robots.txt 等）。這些檔案會自動對外公開，無需額外設定。
+在 Nuxt 中，`public/` 資料夾用來存放靜態資源 (如圖片、影片、robots.txt 等)。這些檔案會自動對外公開，無需額外設定。
 
 - 放在 `public/` 的檔案，會自動對應到網站根目錄。
 - 例如：`public/image.png` 可直接透過 `localhost:3000/image.png` 存取。
@@ -72,11 +72,11 @@ public/
 
 **Q：需要設定前綴路由或 middleware 嗎？**
 
-> Ans：不需要，Nitro 會自動處理。
+> **Ans**：不需要，Nitro 會自動處理。
 
-## Server assets（伺服器資源）
+## Server assets (伺服器資源)
 
-`server/assets/` 目錄用於存放僅供伺服器端存取的檔案（如 json、機密檔案等），這些資源不會直接公開給用戶端。
+`server/assets/` 目錄用於存放僅供伺服器端存取的檔案 (如 json、機密檔案等)，這些資源不會直接公開給用戶端。
 
 - 放在 `server/assets/` 的檔案會被打包進伺服器 bundle，可透過 Nitro 的 storage API 於 handler 內讀取。
 - 適合存放 API 需要的資料

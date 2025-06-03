@@ -155,7 +155,7 @@ const handleClick = () => {
 ## 常見 TypeScript 錯誤與解決方案
 
 - 空值賦值錯誤：
-  當你嘗試將 null 指派給一個非空型別（例如 User）時，會出現錯誤訊息：
+  當你嘗試將 null 指派給一個非空型別 (例如 User) 時，會出現錯誤訊息：
   `Type 'null' is not assignable to type 'User'`
   解決方式是使用 `Maybe<T>`，將變數型別定義為 `Maybe<User>`，讓 null 成為合法值：
 
@@ -174,8 +174,8 @@ const result: Maybe<string> = value ?? null;
 
 - 可選屬性型別錯誤：
   當 API 回傳可能是陣列或 undefined，你想將其存入嚴格的陣列型別時，會出現：
-  Type 'User[] | undefined' is not assignable to type 'User[]'
-  利用 Maybe<User[]> 可以包裝陣列，並允許 null 或 undefined：
+  Type 'User \[] | undefined' is not assignable to type 'User \[]'
+  利用 Maybe\<User \[]> 可以包裝陣列，並允許 null 或 undefined：
 
 ```typescript:line-numbers
 const users: Maybe<User[]> = response.data ?? null;

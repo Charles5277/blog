@@ -28,7 +28,7 @@ Nitro 是 Nuxt 團隊打造的 Universal JS Server，負責處理 API routes、m
 
 H3 是 Nitro 內部使用的極簡 HTTP 框架，專為現代全端與 Serverless 應用設計。其核心特點：
 
-- **極簡、快速、可樹搖（tree-shakable）**：比 Express 更輕量、啟動更快
+- **極簡、快速、可樹搖 (tree-shakable)**：比 Express 更輕量、啟動更快
 - **零額外依賴**：避免傳統框架的龐大依賴鏈
 - **Composable 工具設計**：每個功能都是獨立工具函數，可按需引入，與 Vue 3 Composition API 風格一致
 - **豐富內建工具**：如 `readBody`、`getQuery`、`setCookie` 等，直接用於 Nuxt 事件處理器
@@ -50,9 +50,9 @@ export default defineEventHandler(async (event) => {
 
 ## Nitro 與 H3 的關係
 
-- **Nitro 是高階伺服器引擎，HTTP 處理完全建構於 H3 之上**
-- **開發者在 `server/api`、middleware 中操作的 event 物件，即來自 H3**
-- **Nuxt plugin (`defineNitroPlugin`) 會註冊到 H3 的 middleware stack**
+- **Nitro 是高階伺服器引擎**，HTTP 處理完全建構於 H3 之上
+- **開發者在 `server/api`、middleware 中操作的 event 物件**，即來自 H3
+- **Nuxt plugin (`defineNitroPlugin`)**，會註冊到 H3 的 middleware stack
 
 ### 範例：在 Nuxt 中自訂 API route 中的 H3 event
 
@@ -76,9 +76,9 @@ export default defineEventHandler((event) => {
 
 ## 結論
 
-- **H3 是 Nitro 的基礎 HTTP 框架，極簡高效**
-- **Nitro 將 H3 擴充為完整伺服器引擎，支援 SSR 與多平台部署**
-- **UnJS 生態系提供現代 JS 應用的基礎建設，讓 Nuxt 更靈活高效**
+- **H3** 是 Nitro 的基礎 HTTP 框架，極簡高效
+- **Nitro** 將 H3 擴充為完整伺服器引擎，支援 SSR 與多平台部署
+- **UnJS 生態系** 提供現代 JS 應用的基礎建設，讓 Nuxt 更靈活高效
 
 這套架構讓 Nuxt 3 在伺服器端開發上，既能享受 Vue 3 的 Composition API 優勢，也因為 Nitro 與 H3 的模組化、靈活部署、自動分割、快取與 storage layer 等設計，讓專案在逐漸擴大或需要重構時，能大幅降低複雜度與開發門檻，並在部署上獲得極大的靈活性與效能提升。無論是 API 開發、SSR 還是 Serverless 應用，Nitro 與 H3 都提供了現代全端開發的最佳支援。
 
