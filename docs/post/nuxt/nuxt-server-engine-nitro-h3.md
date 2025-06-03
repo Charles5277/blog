@@ -10,8 +10,8 @@ tags:
   - UnJS
 prev: false
 next:
-  text: '在 Nuxt 專案中優雅處理 null 與 undefined'
-  link: '/nuxt/global-type'
+  text: 'Nuxt 引入使用靜態資源的方式'
+  link: '/nuxt/nuxt-import-static-file'
 ---
 
 ## Nitro：Nuxt 的通用伺服器引擎

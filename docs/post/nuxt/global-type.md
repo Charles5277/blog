@@ -7,7 +7,9 @@ tags:
   - Nuxt
   - TypeScript
 
-prev: false
+prev:
+  text: 'Nuxt 引入使用靜態資源的方式'
+  link: '/nuxt/nuxt-import-static-file'
 next: false
 ---
 
@@ -41,13 +43,13 @@ declare global {
 
 ```typescript
 // ❌ 這些都會產生型別錯誤
-const user: User = null;                              // API 回應可能為空值
-const found: User = users.find(u => u.id === 3);     // find() 可能回傳空值
+const user: User = null; // API 回應可能為空值
+const found: User = users.find((u) => u.id === 3); // find() 可能回傳空值
 const element: HTMLElement = document.querySelector('.btn'); // DOM 查詢可能為空值
 
 // ✅ 使用 Maybe<T> 正確處理空值
 const user: Maybe<User> = null;
-const found: Maybe<User> = users.find(u => u.id === 3) ?? null;
+const found: Maybe<User> = users.find((u) => u.id === 3) ?? null;
 const element: Maybe<HTMLElement> = document.querySelector('.btn');
 ```
 
@@ -63,18 +65,20 @@ const element: Maybe<HTMLElement> = document.querySelector('.btn');
 
 ```vue
 <script setup lang="ts">
-interface User {
-  id: number;
-  name: string;
-  avatar?: string;
-}
+  interface User {
+    id: number;
+    name: string;
+    avatar?: string;
+  }
 
-// 使用 Maybe<T> 明確表示 API 可能回傳空值
-const { data: currentUser } = await useFetch<Maybe<User>>('/api/user/me');
+  // 使用 Maybe<T> 明確表示 API 可能回傳空值
+  const { data: currentUser } = await useFetch<Maybe<User>>('/api/user/me');
 
-// 安全地使用資料
-const username = computed(() => currentUser?.name ?? '訪客');
-const userAvatar = computed(() => currentUser?.avatar ?? '/default-avatar.png');
+  // 安全地使用資料
+  const username = computed(() => currentUser?.name ?? '訪客');
+  const userAvatar = computed(
+    () => currentUser?.avatar ?? '/default-avatar.png',
+  );
 </script>
 
 <template>
@@ -99,8 +103,8 @@ const selectedProduct: Ref<Maybe<Product>> = ref(
   products.value.find(p => p.id === productId.value) ?? null
 );
 
-const productInfo = computed(() => 
-  selectedProduct.value 
+const productInfo = computed(() =>
+  selectedProduct.value
     ? `${selectedProduct.value.name} - ${selectedProduct.value.price}`
     : '找不到商品'
 );
@@ -124,21 +128,21 @@ const handleClick = () => {
 
 ```vue
 <script setup lang="ts">
-// 使用 Maybe<T> 表示載入狀態
-const posts: Ref<Maybe<BlogPost[]>> = ref(null);
-const error: Ref<Maybe<string>> = ref(null);
+  // 使用 Maybe<T> 表示載入狀態
+  const posts: Ref<Maybe<BlogPost[]>> = ref(null);
+  const error: Ref<Maybe<string>> = ref(null);
 
-const fetchPosts = async () => {
-  try {
-    const { data: response } = await useFetch<BlogPost[]>('/api/posts');
-    posts.value = response.value;
-  } catch (err) {
-    error.value = '載入失敗';
-    posts.value = null;
-  }
-};
+  const fetchPosts = async () => {
+    try {
+      const { data: response } = await useFetch<BlogPost[]>('/api/posts');
+      posts.value = response.value;
+    } catch (err) {
+      error.value = '載入失敗';
+      posts.value = null;
+    }
+  };
 
-const postCount = computed(() => posts.value?.length ?? 0);
+  const postCount = computed(() => posts.value?.length ?? 0);
 </script>
 
 <template>
@@ -156,34 +160,36 @@ const postCount = computed(() => posts.value?.length ?? 0);
 ## 常見 TypeScript 錯誤與解決方案
 
 - 空值賦值錯誤：
-當你嘗試將 null 指派給一個非空型別（例如 User）時，會出現錯誤訊息：
-`Type 'null' is not assignable to type 'User'`
-解決方式是使用 `Maybe<T>`，將變數型別定義為 `Maybe<User>`，讓 null 成為合法值：
+  當你嘗試將 null 指派給一個非空型別（例如 User）時，會出現錯誤訊息：
+  `Type 'null' is not assignable to type 'User'`
+  解決方式是使用 `Maybe<T>`，將變數型別定義為 `Maybe<User>`，讓 null 成為合法值：
+
 ```typescript:line-numbers
 const user: Maybe<User> = null;
 ```
 
 - 未定義賦值錯誤：
-當一個變數預期為 string，但實際上可能是 undefined 時，會出現：
-`Type 'undefined' is not assignable to type 'string'`
-你可以將該型別改成 `Maybe<string>`，或在賦值時使用空值合併運算子確保不會是 undefined：
+  當一個變數預期為 string，但實際上可能是 undefined 時，會出現：
+  `Type 'undefined' is not assignable to type 'string'`
+  你可以將該型別改成 `Maybe<string>`，或在賦值時使用空值合併運算子確保不會是 undefined：
+
 ```typescript:line-numbers
 const result: Maybe<string> = value ?? null;
 ```
 
 - 可選屬性型別錯誤：
-當 API 回傳可能是陣列或 undefined，你想將其存入嚴格的陣列型別時，會出現：
-Type 'User[] | undefined' is not assignable to type 'User[]'
-利用 Maybe<User[]> 可以包裝陣列，並允許 null 或 undefined：
+  當 API 回傳可能是陣列或 undefined，你想將其存入嚴格的陣列型別時，會出現：
+  Type 'User[] | undefined' is not assignable to type 'User[]'
+  利用 Maybe<User[]> 可以包裝陣列，並允許 null 或 undefined：
 
 ```typescript:line-numbers
 const users: Maybe<User[]> = response.data ?? null;
 ```
 
 - 函式缺少回傳錯誤：
-如果函式簽名指定回傳某型別，但在所有分支沒有明確回傳值，會出現：
-Function lacks ending return statement
-這時候將回傳型別設為 `Maybe<T>` 並確保所有分支有適當回傳值即可解決：
+  如果函式簽名指定回傳某型別，但在所有分支沒有明確回傳值，會出現：
+  Function lacks ending return statement
+  這時候將回傳型別設為 `Maybe<T>` 並確保所有分支有適當回傳值即可解決：
 
 ```typescript:line-numbers
 const getUserName = (id: number): Maybe<string> => {
