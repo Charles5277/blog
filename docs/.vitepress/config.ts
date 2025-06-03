@@ -138,6 +138,7 @@ export default defineConfig({
           { text: 'CSS', link: '/catalog/css' },
           { text: 'VitePress', link: '/catalog/vitepress' },
           { text: 'Docker', link: '/catalog/docker' },
+          { text: 'Database', link: '/catalog/database' },
         ],
       },
     ],

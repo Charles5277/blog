@@ -10,5 +10,5 @@
   "VS Code": "vscode",
   "Vue.js": "vue",
   "Nuxt": "nuxt",
-  "PostgreSQL": "postgres"
+  "Database": "database"
 }
