@@ -66,7 +66,7 @@ const sidebarConfigData = [
   },
 ];
 
-const POST_PATH = path.resolve(__dirname, '..', '..', 'post');
+const POST_PATH = path.resolve(process.cwd(), 'docs', 'post');
 
 // 取得 FrontMatter
 function getFrontMatter(filePath: string) {
