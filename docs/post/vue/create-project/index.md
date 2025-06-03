@@ -8,12 +8,6 @@ tags:
   - Frontend
   - Vite
 
-prev:
-  text: '認識 Vue.js'
-  link: '/vue/intro'
-next:
-  text: '設定 Prettier + ESLint 讓你的 Vue 專案開發體驗更舒適順暢'
-  link: '/vue/prettier-eslint'
 ---
 
 ## 準備環境

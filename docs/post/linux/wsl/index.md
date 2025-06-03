@@ -8,10 +8,6 @@ tags:
   - Ubuntu
   - WSL
 
-prev: false
-next:
-  text: 'Ubuntu 入門筆記'
-  link: '/linux/ubuntu/note'
 ---
 
 ## 什麼是 WSL

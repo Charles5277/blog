@@ -8,8 +8,6 @@ tags:
   - Frontend
   - CSS
 
-prev: false
-next: false
 ---
 
 ## 基本框架

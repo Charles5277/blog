@@ -6,11 +6,6 @@ category: Nuxt
 tags:
   - Nuxt
   - TypeScript
-
-prev:
-  text: 'Nuxt 引入使用靜態資源的方式'
-  link: '/nuxt/nuxt-import-static-file'
-next: false
 ---
 
 在 Nuxt 專案 (及其他使用 TypeScript 的專案) 中，你一定遇過這些惱人的錯誤：

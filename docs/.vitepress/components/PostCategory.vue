@@ -2,16 +2,14 @@
   import { initCategory } from '../theme/utils';
   import { data as posts } from '../theme/posts.data';
 
-  import order from '../json/order-category.json';
+  import { getSortedCategories } from '../utils/categories';
 
   import blogStore from '../theme/store';
 
   const category = initCategory(posts);
 
   // - 自定義排序
-  const sortedCategory = Object.keys(category).sort((a, b) => {
-    return order.indexOf(a) - order.indexOf(b);
-  });
+  const sortedCategory = getSortedCategories(Object.keys(category));
 
   function categorySwitcher(item: string) {
     blogStore.value.selectedCategory = item;

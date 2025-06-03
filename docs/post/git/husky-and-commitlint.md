@@ -7,8 +7,6 @@ category: Git
 tags:
   - Git
 
-prev: false
-next: false
 ---
 
 以下以 pnpm 跟已經有 git 初始化的專案為例。

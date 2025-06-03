@@ -6,12 +6,6 @@ category: Nuxt
 tags:
   - Nuxt
   - Nitro
-prev:
-  text: '簡介 Nuxt 中的伺服器引擎：Nitro 與 H3'
-  link: '/nuxt/nuxt-server-engine-nitro-h3'
-next:
-  text: '在 Nuxt 專案中優雅處理 null 與 undefined'
-  link: '/nuxt/global-type'
 ---
 
 在純 SPA 的 Vue 專案中，我們常透過 `import data from './data.json'` 讀取 JSON。但在 Nuxt 中，因預設使用 Nitro，前後端環境分離，靜態資源分為「公開資源（public assets）」與「伺服器資源（server assets）」，因此無法直接 `import`。本文將說明其原因，並示範如何正確讀取 JSON、圖片等靜態資源。

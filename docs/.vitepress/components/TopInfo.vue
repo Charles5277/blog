@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { useData } from 'vitepress';
 
-  import catalogSheet from '../json/category.json';
+  import { getCategoryIcon } from '../utils/categories';
 
   const { frontmatter } = useData();
 
@@ -21,7 +21,7 @@
     <span class="px-1"> 📆 </span>
     {{ frontmatter.datePublished.slice(0, 10) }} |
     <span class="px-2">
-      <img :src="`/icons/${catalogSheet[frontmatter.category]}-sm.svg`" />
+      <img :src="`/icons/${getCategoryIcon(frontmatter.category)}-sm.svg`" />
     </span>
     {{ frontmatter.category }}
   </div>

@@ -7,12 +7,6 @@ tags:
   - Node.js
   - pnpm
 
-prev:
-  text: '用 NVM 管理 Node.js 版本'
-  link: '/nodejs/nvm/'
-next:
-  text: 'Vite - 稱霸網頁前端開發的開發工具'
-  link: '/nodejs/vite/'
 ---
 
 ## 認識 Node Package Manager (npm)

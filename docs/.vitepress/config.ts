@@ -1,5 +1,7 @@
-import { defineConfig } from 'vitepress';
+import { defineConfig, type DefaultTheme } from 'vitepress';
 import { handleHeadMeta } from './utils/handleHeadMeta';
+
+import sidebar from './utils/sidebar';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -125,24 +127,10 @@ export default defineConfig({
     nav: [],
     sidebar: [
       {
-        text: '文章主題',
-        items: [
-          { text: 'Vue.js', link: '/catalog/vue' },
-          { text: 'Nuxt', link: '/catalog/nuxt' },
-          { text: 'Node.js', link: '/catalog/nodejs' },
-          { text: 'VS Code', link: '/catalog/vscode' },
-          { text: 'Git', link: '/catalog/git' },
-          { text: 'GitHub', link: '/catalog/github' },
-          { text: 'Linux', link: '/catalog/linux' },
-          { text: 'HTML', link: '/catalog/html' },
-          { text: 'CSS', link: '/catalog/css' },
-          { text: 'VitePress', link: '/catalog/vitepress' },
-          { text: 'Docker', link: '/catalog/docker' },
-          { text: 'Database', link: '/catalog/database' },
-        ],
+        text: '文章分類',
+        items: [{ base: '/', items: sidebarPost() }],
       },
     ],
-
     socialLinks: [
       {
         icon: 'instagram',
@@ -194,7 +182,7 @@ export default defineConfig({
     transformItems(items) {
       items = items.filter((item) => {
         if (item.url.includes('catalog/') && item.url !== 'catalog/') {
-          return false;
+          return true;
         }
         return true;
       });
@@ -208,8 +196,12 @@ export default defineConfig({
   },
   vite: {
     build: {
-      modulePreload: false,
+      modulePreload: true,
     },
     plugins: [tailwindcss()],
   },
 });
+
+function sidebarPost(): DefaultTheme.SidebarItem[] {
+  return sidebar;
+}

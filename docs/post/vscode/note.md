@@ -7,10 +7,6 @@ category: VS Code
 tags:
   - VS Code
 
-prev:
-  text: '認識 Visual Studio Code'
-  link: '/vscode/intro'
-next: false
 ---
 
 ## Shortcut

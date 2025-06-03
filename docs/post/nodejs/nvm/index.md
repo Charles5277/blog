@@ -11,10 +11,6 @@ tags:
   - Windows
   - MacOS
 
-prev: false
-next:
-  text: '認識 Node.js 的 Package Manager'
-  link: '/nodejs/package-manager/'
 ---
 
 Node.js 是一個基於 Chrome V8 引擎的 JavaScript 運行環境，可以讓 JavaScript 在伺服器端運行，並且可以使用 NPM 等 Package Manager 來安裝第三方套件。現代的網頁前端開發也離不開使用 node.js 的 package，例如透過 Vite 建立本地開發伺服器與打包專案。

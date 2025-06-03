@@ -8,8 +8,6 @@ tags:
   - Git
   - VS Code
 
-prev: false
-next: false
 ---
 
 ## 參考教學：

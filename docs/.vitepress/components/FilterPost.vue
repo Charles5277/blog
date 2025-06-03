@@ -9,7 +9,7 @@
 
   import blogStore from '../theme/store';
 
-  import catalogSheet from '../json/category.json';
+  import { getCategoryIcon } from '../utils/categories';
 
   const tags = initTags(posts);
   const category = initCategory(posts);
@@ -107,7 +107,7 @@
     <div v-if="blogStore.selectedCategory !== ''">
       <h3 id="tagName" class="pb-2 flex row items-center">
         <span class="mr-4">
-          <img :src="`/icons/${catalogSheet[blogStore.icon]}-md.svg`" />
+          <img :src="`/icons/${getCategoryIcon(blogStore.icon)}-md.svg`" />
         </span>
 
         <span>{{ blogStore.selectedCategory }}</span>

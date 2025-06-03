@@ -9,10 +9,6 @@ tags:
   - Prettier
   - JavaScript
 
-prev:
-  text: '以 Vite 創建一個 Vue.js 專案'
-  link: '/vue/create-project'
-next: false
 ---
 
 ## 認識 ESLint 與 Prettier

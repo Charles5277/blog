@@ -6,10 +6,6 @@ category: VS Code
 tags:
   - VS Code
 
-prev: false
-next:
-  text: 'VS Code 筆記'
-  link: '/vscode/note'
 ---
 
 ## 什麼是 VS Code

@@ -7,10 +7,6 @@ tags:
   - Linux
   - Ubuntu
 
-prev:
-  text: 'Ubuntu 修改 sources.list'
-  link: '/linux/ubuntu/sourcelist'
-next: false
 ---
 
 :::warning ⚠️ 安全性警告

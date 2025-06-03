@@ -8,10 +8,6 @@ tags:
   - Vite
   - Frontend
 
-prev:
-  text: '認識 Node.js 的 Package Manager'
-  link: '/nodejs/package-manager/'
-next: false
 ---
 
 ## 為什麼選擇 Vite

@@ -7,12 +7,6 @@ tags:
   - Linux
   - Ubuntu
 
-prev:
-  text: 'Ubuntu 入門筆記'
-  link: '/linux/ubuntu/note'
-next:
-  text: 'Ubuntu 讓 sudo 時不用輸入密碼'
-  link: '/linux/ubuntu/sudo-no-password'
 ---
 
 ## 修改 source
