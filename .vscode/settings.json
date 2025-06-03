@@ -148,6 +148,7 @@
     "singleline",
     "sourcelist",
     "strikethrough",
+    "Supabase",
     "swtich",
     "tabout",
     "tailwindcss",
@@ -155,6 +156,7 @@
     "TRUNC",
     "tseslint",
     "unalias",
+    "unjs",
     "unstage",
     "usernamehw",
     "userprofile",
@@ -185,8 +187,7 @@
   // Disable the default formatter, use eslint instead
   "prettier.enable": false,
   "editor.formatOnSave": true, // 存檔時自動格式化
-  "editor.formatOnSaveMode": "file", // 格式化範圍
-  // Auto fix
+  //   // Auto fix
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.fixAll.stylelint": "explicit",
