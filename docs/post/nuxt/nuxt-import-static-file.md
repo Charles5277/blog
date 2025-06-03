@@ -42,17 +42,25 @@ public/
 
 1. **將靜態檔案放入 `public/`**
 2. **重新啟動開發伺服器**
-3. **直接在瀏覽器或 vue 檔中以 `<template>` 或 `<script setup>`存取**
+3. **直接在瀏覽器或 vue 檔中透過 URL 路徑存取**
+
+- 透過 `useFetch` 或 `useAsyncData` 讀取 JSON：
 
 ```vue
 <script setup>
-  import image from '~/public/image.png';
+  // 取得 public/ 目錄中的 JSON 數據
+  const { data: config } = await useFetch('/data.json');
 </script>
 
 <template>
-  <img :src="image" alt="My Image" />
+  <div>
+    <h1>設定資料</h1>
+    <pre>{{ config }}</pre>
+  </div>
 </template>
 ```
+
+- 直接在模板中使用圖片或影片：
 
 ```vue
 <template>
