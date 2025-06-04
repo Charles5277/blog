@@ -57,7 +57,7 @@
     </template>
 
     <template #doc-footer-before>
-      <div>
+      <div class="mb-4">
         <span v-if="$frontmatter.tags"> Tags: </span>
         <VaButton
           v-for="(tag, idx) in $frontmatter.tags"

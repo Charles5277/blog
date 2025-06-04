@@ -12,7 +12,6 @@ const sidebarConfigData = [
     items: [
       { link: 'vue/intro/' },
       { link: 'vue/create-project/' },
-      { link: 'vue/prettier-eslint/' },
       { link: 'vue/v-bind' },
       { link: 'vue/v-on' },
       { link: 'vue/v-for' },
@@ -34,6 +33,7 @@ const sidebarConfigData = [
       { link: 'nodejs/nvm/' },
       { link: 'nodejs/package-manager/' },
       { link: 'nodejs/vite/' },
+      { link: 'nodejs/eslint/' },
     ],
   },
   {
