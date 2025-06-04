@@ -56,3 +56,16 @@ html {
   contain-intrinsic-size: 400px 300px;
   will-change: auto;
 }
+
+/* 確保 Hero 圖片正確定位 */
+.VPHero .VPImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.VPHero .VPImage img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}

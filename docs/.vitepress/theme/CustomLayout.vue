@@ -3,6 +3,7 @@
   import { useRouter, withBase } from 'vitepress';
   import Theme from 'vitepress/theme';
   import Comments from '../components/GiscusComments.vue';
+  import OptimizedHeroImage from '../components/OptimizedHeroImage.vue';
   import TopInfo from '../components/TopInfo.vue';
   import blogStore from '../theme/store';
 
@@ -21,12 +22,20 @@
   <Layout>
     <!-- LCP 優化：預載入首頁關鍵圖片資源 -->
     <template #home-hero-before>
-      <!-- 小型行動裝置優先載入最小圖片 -->
+      <!-- 超小型裝置載入最小圖片 -->
+      <link
+        rel="preload"
+        as="image"
+        :href="withBase('/home-256.webp')"
+        media="(max-width: 320px)"
+        fetchpriority="high"
+      >
+      <!-- 小型行動裝置載入mobile圖片 -->
       <link
         rel="preload"
         as="image"
         :href="withBase('/home-mobile.webp')"
-        media="(max-width: 480px)"
+        media="(min-width: 321px) and (max-width: 480px)"
         fetchpriority="high"
       >
       <!-- 中型行動裝置載入中等圖片 -->
@@ -45,13 +54,17 @@
         media="(min-width: 769px)"
         fetchpriority="high"
       >
-      <link
-        rel="preload"
-        as="image"
-        :href="withBase('/home-256.webp')"
-        media="(max-width: 320px)"
-      >
     </template>
+
+    <!-- 自訂 Hero Image 為響應式版本 -->
+    <template #home-hero-image>
+      <OptimizedHeroImage
+        src="home-512.webp"
+        alt="Charles Blog Hero Image"
+        class="VPImage image-src"
+      />
+    </template>
+
     <template #doc-before>
       <TopInfo v-if="$frontmatter.tags" />
     </template>
