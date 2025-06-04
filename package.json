@@ -1,10 +1,17 @@
 {
   "type": "module",
+  "packageManager": "pnpm@10.11.1",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vitepress build docs ",
     "preview": "vitepress preview docs",
-    "lint:fix": "eslint . --fix"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"**/*.{js,ts,vue,json,md}\"",
+    "format:vue": "prettier --write \"**/*.vue\""
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.8",
@@ -15,13 +22,10 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.13.2",
+    "@stylistic/eslint-plugin": "^4.4.1",
     "eslint": "9.28.0",
     "postcss": "^8.5.4",
     "tailwindcss": "4.1.8",
     "vitepress": "2.0.0-alpha.5"
-  },
-  "engines": {
-    "node": ">=22"
-  },
-  "packageManager": "pnpm@10.11.1"
+  }
 }

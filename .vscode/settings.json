@@ -1,4 +1,17 @@
 {
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
   "[markdown]": {
     "editor.quickSuggestions": {
       "comments": true,
@@ -6,56 +19,6 @@
       "strings": true
     }
   },
-  "better-comments.tags": [
-    {
-      "backgroundColor": "transparent",
-      "bold": true,
-      "color": "#d9444a",
-      "italic": false,
-      "strikethrough": false,
-      "tag": "!",
-      "underline": false
-    },
-    {
-      "backgroundColor": "transparent",
-      "bold": false,
-      "color": "#f5c018",
-      "italic": false,
-      "strikethrough": false,
-      "tag": "?",
-      "underline": false
-    },
-    {
-      "backgroundColor": "transparent",
-      "color": "#fff",
-      "strikethrough": false,
-      "tag": ">"
-    },
-    {
-      "backgroundColor": "transparent",
-      "bold": true,
-      "color": "#b3aff7",
-      "strikethrough": false,
-      "tag": "-"
-    },
-    {
-      "backgroundColor": "transparent",
-      "bold": false,
-      "color": "#474747",
-      "italic": false,
-      "strikethrough": true,
-      "tag": "//",
-      "underline": false
-    },
-    {
-      "backgroundColor": "#21ba45",
-      "bold": true,
-      "color": "#FFF",
-      "strikethrough": false,
-      "tag": "todo",
-      "underline": true
-    }
-  ],
   "cSpell.words": [
     "addtohomescreen",
     "adipiscing",
@@ -184,16 +147,14 @@
     }
   ],
   "versionlens.suggestions.showOnStartup": true,
-  // Disable the default formatter, use eslint instead
-  "prettier.enable": false,
-  "editor.formatOnSave": true, // 存檔時自動格式化
-  //   // Auto fix
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.fixAll.stylelint": "explicit",
-    "source.organizeImports": "never"
-  },
-  // Silent the stylistic rules in you IDE, but still auto fix them
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "vue",
+    "html",
+    "markdown",
+    "json"
+  ],
   "eslint.rules.customizations": [
     {
       "rule": "style/*",
@@ -202,11 +163,6 @@
     },
     {
       "rule": "format/*",
-      "severity": "off",
-      "fixable": true
-    },
-    {
-      "rule": "*-indent",
       "severity": "off",
       "fixable": true
     },
@@ -245,16 +201,5 @@
       "severity": "off",
       "fixable": true
     }
-  ],
-  "eslint.validate": [
-    "javascript",
-    "typescript",
-    "vue",
-    "html",
-    "markdown",
-    "json",
-    "xml",
-    "css",
-    "scss"
   ]
 }
