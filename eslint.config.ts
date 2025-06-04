@@ -2,9 +2,19 @@ import antfu from '@antfu/eslint-config';
 import stylistic from '@stylistic/eslint-plugin';
 
 export default antfu({
-  ignores: ['**/*.md', '.vscode/**'],
+  stylistic: {
+    indent: 2,
+    quotes: 'single',
+  },
+
   typescript: true,
   vue: true,
+  formatters: true,
+
+  ignores: [
+    '**/*.md',
+  ],
+
   plugins: {
     '@stylistic': stylistic,
   },
@@ -33,8 +43,15 @@ export default antfu({
     'prefer-promise-reject-errors': 'error',
     'prefer-const': 'error',
     'vue/singleline-html-element-content-newline': 'off',
-    'vue/max-attributes-per-line': 'off',
     'vue/require-component-is': 'off',
+    'vue/max-attributes-per-line': ['error', {
+      singleline: {
+        max: 1,
+      },
+      multiline: {
+        max: 1,
+      },
+    }],
     'no-console': ['error', { allow: ['warn', 'error'] }],
     // 關閉衝突的規則，只保留 vue/script-indent
     'style/indent': 'off',

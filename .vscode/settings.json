@@ -1,24 +1,75 @@
 {
+  // Disable the default formatter, use eslint instead
+  "prettier.enable": false,
   "editor.formatOnSave": false,
+  // Auto fix
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
   },
-  "[vue]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[markdown]": {
-    "editor.quickSuggestions": {
-      "comments": true,
-      "other": true,
-      "strings": true
+  // Silent the stylistic rules in you IDE, but still auto fix them
+  "eslint.rules.customizations": [
+    {
+      "rule": "style/*",
+      "severity": "off",
+      "fixable": true
+    },
+    {
+      "rule": "format/*",
+      "severity": "off",
+      "fixable": true
+    },
+    {
+      "rule": "*-indent",
+      "severity": "off",
+      "fixable": true
+    },
+    {
+      "rule": "*-spacing",
+      "severity": "off",
+      "fixable": true
+    },
+    {
+      "rule": "*-spaces",
+      "severity": "off",
+      "fixable": true
+    },
+    {
+      "rule": "*-order",
+      "severity": "off",
+      "fixable": true
+    },
+    {
+      "rule": "*-dangle",
+      "severity": "off",
+      "fixable": true
+    },
+    {
+      "rule": "*-newline",
+      "severity": "off",
+      "fixable": true
+    },
+    {
+      "rule": "*quotes",
+      "severity": "off",
+      "fixable": true
+    },
+    {
+      "rule": "*semi",
+      "severity": "off",
+      "fixable": true
     }
-  },
+  ],
+  // Enable eslint for all supported languages
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "vue",
+    "html",
+    "markdown",
+    "json",
+    "css"
+  ],
   "cSpell.words": [
     "addtohomescreen",
     "adipiscing",
@@ -141,66 +192,5 @@
     "Zeabur",
     "Zerotier",
     "zless"
-  ],
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto"
-    }
-  ],
-  "versionlens.suggestions.showOnStartup": true,
-  "eslint.validate": [
-    "javascript",
-    "typescript",
-    "vue",
-    "html",
-    "markdown",
-    "json"
-  ],
-  "eslint.rules.customizations": [
-    {
-      "rule": "style/*",
-      "severity": "off",
-      "fixable": true
-    },
-    {
-      "rule": "format/*",
-      "severity": "off",
-      "fixable": true
-    },
-    {
-      "rule": "*-spacing",
-      "severity": "off",
-      "fixable": true
-    },
-    {
-      "rule": "*-spaces",
-      "severity": "off",
-      "fixable": true
-    },
-    {
-      "rule": "*-order",
-      "severity": "off",
-      "fixable": true
-    },
-    {
-      "rule": "*-dangle",
-      "severity": "off",
-      "fixable": true
-    },
-    {
-      "rule": "*-newline",
-      "severity": "off",
-      "fixable": true
-    },
-    {
-      "rule": "*quotes",
-      "severity": "off",
-      "fixable": true
-    },
-    {
-      "rule": "*semi",
-      "severity": "off",
-      "fixable": true
-    }
   ]
 }
