@@ -22,12 +22,35 @@
     <!-- LCP 優化：預載入首頁關鍵圖片資源 -->
     <template #home-hero-before>
       <!-- 小型行動裝置優先載入最小圖片 -->
-      <link rel="preload" as="image" :href="withBase('/home-mobile.webp')" media="(max-width: 480px)" fetchpriority="high">
+      <link
+        rel="preload"
+        as="image"
+        :href="withBase('/home-mobile.webp')"
+        media="(max-width: 480px)"
+        fetchpriority="high"
+      >
       <!-- 中型行動裝置載入中等圖片 -->
-      <link rel="preload" as="image" :href="withBase('/home-384.webp')" media="(min-width: 481px) and (max-width: 768px)" fetchpriority="high">
+      <link
+        rel="preload"
+        as="image"
+        :href="withBase('/home-384.webp')"
+        media="(min-width: 481px) and (max-width: 768px)"
+        fetchpriority="high"
+      >
       <!-- 桌面裝置載入較大圖片 -->
-      <link rel="preload" as="image" :href="withBase('/home-512.webp')" media="(min-width: 769px)" fetchpriority="high">
-      <link rel="preload" as="image" :href="withBase('/home-256.webp')" media="(max-width: 320px)">
+      <link
+        rel="preload"
+        as="image"
+        :href="withBase('/home-512.webp')"
+        media="(min-width: 769px)"
+        fetchpriority="high"
+      >
+      <link
+        rel="preload"
+        as="image"
+        :href="withBase('/home-256.webp')"
+        media="(max-width: 320px)"
+      >
     </template>
     <template #doc-before>
       <TopInfo v-if="$frontmatter.tags" />
@@ -35,16 +58,17 @@
 
     <template #doc-footer-before>
       <div>
-        <div>
-          <span v-if="$frontmatter.tags"> Tags: </span>
-          <VaButton
-            class="mr-2"
-            v-for="(tag, idx) in $frontmatter.tags" :key="idx" size="small" color="#00897b"
-            @click="searchTags(tag)"
-          >
-            <span> {{ tag }} </span>
-          </VaButton>
-        </div>
+        <span v-if="$frontmatter.tags"> Tags: </span>
+        <VaButton
+          v-for="(tag, idx) in $frontmatter.tags"
+          :key="idx"
+          class="mr-2"
+          size="small"
+          color="#00897b"
+          @click="searchTags(tag)"
+        >
+          <span> {{ tag }} </span>
+        </VaButton>
       </div>
     </template>
 
