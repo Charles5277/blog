@@ -1,8 +1,8 @@
 import DefaultTheme from 'vitepress/theme';
 import { createVuestic } from 'vuestic-ui';
 
-import OptimizedImage from '../components/OptimizedImage.vue';
 import OptimizedHeroImage from '../components/OptimizedHeroImage.vue';
+import OptimizedImage from '../components/OptimizedImage.vue';
 
 import Category from '../components/PostCategory.vue';
 // - components

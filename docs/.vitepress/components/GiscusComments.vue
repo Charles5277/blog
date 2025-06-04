@@ -5,7 +5,11 @@
 </script>
 
 <template>
-  <div v-if="frontmatter.comments !== false" :key="title" class="giscus">
+  <div
+    v-if="frontmatter.comments !== false"
+    :key="title"
+    class="giscus"
+  >
     <component
       is="script"
       src="https://giscus.app/client.js"

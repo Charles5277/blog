@@ -39,5 +39,5 @@
     :height="height"
     :class="props.class"
     :style="imageStyle"
-  />
+  >
 </template>
