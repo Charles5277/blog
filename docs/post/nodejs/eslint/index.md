@@ -1,7 +1,7 @@
 ---
 title: ESLint - 讓你提前修復潛在錯誤，並維持一致的程式碼風格
 description: 這篇文章帶你快速配置新版 ESLint 9.x 的扁平化設定檔，包含格式化與自定義檢測規範。
-datePublished: 2024-10-15
+datePublished: 2025-06-05
 category: Node.js
 tags:
   - ESLint
