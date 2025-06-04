@@ -16,7 +16,7 @@ export function handleHeadMeta(context: TransformContext) {
     'meta',
     {
       property: 'og:title',
-      content: `${title} | Charles 起司的開發技術分享Blog`,
+      content: `${title} | Charles 起司的軟體開發技術分享Blog`,
     },
   ];
   const ogDescription: HeadConfig = [

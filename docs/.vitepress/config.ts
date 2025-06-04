@@ -9,7 +9,7 @@ import sidebar from './utils/sidebar';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: 'zh-TW',
-  title: 'Charles 起司的開發技術分享Blog',
+  title: 'Charles 起司的軟體開發技術分享Blog',
   description: '前端開發學習心得與踩坑經驗',
   cleanUrls: true,
   base: '/', // 根據 repo 名稱設定
@@ -17,7 +17,7 @@ export default defineConfig({
   head: [
     ['meta', { property: 'og:locale', content: 'zh_TW' }],
     ['meta', { property: 'og:type', content: 'website' }],
-    // ['meta', { property: 'og:title', content: 'Charles 起司的開發技術分享 Blog' }],
+    // ['meta', { property: 'og:title', content: 'Charles 起司的軟體開發技術分享 Blog' }],
     // [
     //   'meta',
     //   { property: 'og:description', content: '前端開發學習心得與踩坑經驗' },
@@ -29,7 +29,7 @@ export default defineConfig({
 
     // ['meta', { property: 'twitter:card', content: 'summary' }],
     // ['meta', { property: 'twitter:site', content: 'summary' }],
-    // ['meta', { property: 'twitter:title', content: 'Charles 起司的開發技術分享 Blog' }],
+    // ['meta', { property: 'twitter:title', content: 'Charles 起司的軟體開發技術分享 Blog' }],
     // [
     //   'meta',
     //   {
