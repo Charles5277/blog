@@ -44,7 +44,7 @@
     </template>
 
     <template #doc-after>
-      <Comments />
+      <Comments class="mt-8" />
     </template>
   </Layout>
 </template>
