@@ -165,7 +165,7 @@
   .vp-doc,
   a {
     font-weight: normal !important;
-    color: initial !important;
+    color: var(--vp-c-text) !important;
     text-decoration: none !important;
     text-underline-offset: initial !important;
     transition: none !important;
@@ -174,7 +174,7 @@
   .vp-doc,
   a:hover {
     font-weight: 500 !important;
-    color: var(--vp-c-brand-1) !important;
+    color: var(--vp-c-text) !important;
     text-decoration-thickness: 2px !important;
     text-decoration: underline !important;
     text-underline-offset: 2px !important;

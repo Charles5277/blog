@@ -6,7 +6,7 @@ hero:
   text: 一名前端工程師
   tagline: 歡迎來到我的部落格<br>這裡會分享我的開發學習心得與踩坑經驗
   image: 
-    src: home.webp
+    src: home-512.webp
     alt: Charles Blog Hero Image
   actions:
     - theme: brand

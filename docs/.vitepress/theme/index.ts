@@ -2,6 +2,7 @@ import DefaultTheme from 'vitepress/theme';
 import { createVuestic } from 'vuestic-ui';
 
 import OptimizedImage from '../components/OptimizedImage.vue';
+import OptimizedHeroImage from '../components/OptimizedHeroImage.vue';
 
 import Category from '../components/PostCategory.vue';
 // - components
@@ -19,6 +20,7 @@ export default {
     app.component('PostCategory', Category);
     app.component('RouteCatalog', RouteCatalog);
     app.component('OptimizedImage', OptimizedImage);
+    app.component('OptimizedHeroImage', OptimizedHeroImage);
 
     app.use(createVuestic());
   },

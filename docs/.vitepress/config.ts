@@ -23,9 +23,9 @@ export default defineConfig({
     //   { property: 'og:description', content: '前端開發學習心得與踩坑經驗' },
     // ],
 
-    ['meta', { property: 'og:image', content: 'home.webp' }],
+    ['meta', { property: 'og:image', content: 'home-512.webp' }],
     ['meta', { property: 'og:image:alt', content: 'logo' }],
-    ['meta', { property: 'og:image:type', content: 'image/png' }],
+    ['meta', { property: 'og:image:type', content: 'image/webp' }],
 
     // ['meta', { property: 'twitter:card', content: 'summary' }],
     // ['meta', { property: 'twitter:site', content: 'summary' }],
@@ -37,7 +37,18 @@ export default defineConfig({
     //     content: '前端開發學習心得與踩坑經驗',
     //   },
     // ],
-    ['meta', { property: 'twitter:image', content: 'home.webp' }],
+    ['meta', { property: 'twitter:image', content: 'home-512.webp' }],
+
+    // 行動裝置 LCP 優化
+    ['link', { rel: 'preload', as: 'image', href: '/home-mobile.webp', media: '(max-width: 480px)', fetchpriority: 'high' }],
+    ['link', { rel: 'preload', as: 'image', href: '/home-384.webp', media: '(min-width: 481px) and (max-width: 768px)', fetchpriority: 'high' }],
+    ['link', { rel: 'preload', as: 'image', href: '/home-512.webp', media: '(min-width: 769px)', fetchpriority: 'high' }],
+
+    // DNS 預取和連線優化
+    ['link', { rel: 'dns-prefetch', href: 'https://fonts.googleapis.com' }],
+    ['link', { rel: 'dns-prefetch', href: 'https://www.googletagmanager.com' }],
+    ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com', crossorigin: '' }],
+    ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
 
     [
       'link',
