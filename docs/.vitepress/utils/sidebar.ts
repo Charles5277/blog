@@ -53,6 +53,8 @@ const sidebarConfigData = [
       { link: 'linux/wsl/' },
       { link: 'linux/ubuntu/note' },
       { link: 'linux/ubuntu/sourcelist' },
+      { link: 'linux/ubuntu/sudo-no-password/' },
+
     ],
   },
   {

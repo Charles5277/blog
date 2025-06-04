@@ -1,6 +1,6 @@
 ---
 title: 設定 Prettier + ESLint 讓你的 Vue 專案開發體驗更舒適順暢
-description: 這篇教學將以 ESLint 9 搭配 Prettier 來設定 Vue 3專案的程式碼風格檢查與自動格式化。
+description: 這篇教學將以 ESLint 9 搭配 Prettier 來設定 Vue 3 專案的程式碼風格檢查與自動格式化。
 datePublished: 2024-10-15
 category: Vue.js
 tags:

@@ -1,5 +1,4 @@
 import antfu from '@antfu/eslint-config';
-import stylistic from '@stylistic/eslint-plugin';
 
 export default antfu({
   stylistic: {
@@ -14,10 +13,6 @@ export default antfu({
   ignores: [
     '**/*.md',
   ],
-
-  plugins: {
-    '@stylistic': stylistic,
-  },
   rules: {
     '@stylistic/semi': ['error', 'always'],
     '@stylistic/member-delimiter-style': ['error', {
