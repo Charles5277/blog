@@ -5,13 +5,15 @@ hero:
   name: Hi, 我是 Charles
   text: 一名前端工程師
   tagline: 歡迎來到我的部落格<br>這裡會分享我的開發學習心得與踩坑經驗
-  image: home.webp
+  image: 
+    src: home.webp
+    alt: Charles Blog Hero Image
   actions:
     - theme: brand
-      text: 📖查看文章
+      text: 📖 查看文章
       link: /catalog/
     - theme: alt
-      text: 💻關於我
+      text: 💻 關於我
       link: portfolio/
 
 features:

@@ -106,6 +106,11 @@ export default defineConfig({
         crossorigin: 'anonymous',
       },
     ],
+
+    // Image preloading for LCP optimization
+    ['link', { rel: 'preload', as: 'image', href: '/home-512.webp', fetchpriority: 'high' }],
+    ['link', { rel: 'preload', as: 'image', href: '/home-384.webp', media: '(max-width: 480px)' }],
+    ['link', { rel: 'preload', as: 'image', href: '/home-256.webp', media: '(max-width: 320px)' }],
   ],
   themeConfig: {
     siteTitle: 'Charles Dev Blog',
@@ -195,9 +200,6 @@ export default defineConfig({
     return handleHeadMeta(content);
   },
   vite: {
-    build: {
-      modulePreload: true,
-    },
     plugins: [tailwindcss()],
   },
 });
