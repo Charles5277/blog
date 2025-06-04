@@ -9,9 +9,7 @@
     "build": "vitepress build docs ",
     "preview": "vitepress preview docs",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format": "prettier --write \"**/*.{js,ts,vue,json,md}\"",
-    "format:vue": "prettier --write \"**/*.vue\""
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.8",
