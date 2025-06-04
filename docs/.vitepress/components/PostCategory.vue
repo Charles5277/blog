@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  import { initCategory } from '../theme/utils';
   import { data as posts } from '../theme/posts.data';
+  import blogStore from '../theme/store';
+
+  import { initCategory } from '../theme/utils';
 
   import { getSortedCategories } from '../utils/categories';
-
-  import blogStore from '../theme/store';
 
   const category = initCategory(posts);
 
@@ -30,6 +30,6 @@
         <span class="theme-badge">{{ item }}</span>
       </VaButton>
     </div>
-    <hr class="h-px my-4 bg-gray-200 border-0" />
+    <hr class="h-px my-4 bg-gray-200 border-0">
   </div>
 </template>

@@ -1,15 +1,15 @@
 import DefaultTheme from 'vitepress/theme';
-import './custom.css';
-
 import { createVuestic } from 'vuestic-ui';
 
-// - components
-import Tags from '../components/PostTags.vue';
-import Category from '../components/PostCategory.vue';
-import RouteCatalog from '../components/RouteCatalog.vue';
 import OptimizedImage from '../components/OptimizedImage.vue';
 
+import Category from '../components/PostCategory.vue';
+// - components
+import Tags from '../components/PostTags.vue';
+import RouteCatalog from '../components/RouteCatalog.vue';
 import CustomLayout from './CustomLayout.vue';
+
+import './custom.css';
 
 export default {
   extends: DefaultTheme,

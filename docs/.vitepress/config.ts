@@ -1,9 +1,10 @@
-import { defineConfig, type DefaultTheme } from 'vitepress';
+import type { DefaultTheme } from 'vitepress';
+import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'vitepress';
+
 import { handleHeadMeta } from './utils/handleHeadMeta';
 
 import sidebar from './utils/sidebar';
-
-import tailwindcss from '@tailwindcss/vite';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({

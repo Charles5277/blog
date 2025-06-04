@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  import { initTags } from '../theme/utils';
   import { data as posts } from '../theme/posts.data';
-
   import blogStore from '../theme/store';
+
+  import { initTags } from '../theme/utils';
 
   const tags: object = initTags(posts);
 

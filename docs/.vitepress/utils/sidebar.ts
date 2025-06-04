@@ -1,12 +1,13 @@
-import path from 'node:path';
+import type { DefaultTheme } from 'vitepress';
 import fs from 'node:fs';
-import matter from 'gray-matter';
+import path from 'node:path';
+import process from 'node:process';
 
-import { DefaultTheme } from 'vitepress';
+import matter from 'gray-matter';
 
 const sidebarConfigData = [
   {
-    text: 'Vue',
+    text: 'Vue.js',
     collapsed: true,
     items: [
       { link: 'vue/intro/' },
@@ -84,7 +85,8 @@ function getFrontMatter(filePath: string) {
 
     const { data } = matter(content);
     return data || {};
-  } catch (error) {
+  }
+  catch (error) {
     console.error(`讀取或解析文件 ${filePath} 時發生錯誤:`, error);
     return {};
   }
@@ -107,12 +109,14 @@ function getTextFromLink(link: string): string {
         return title;
       }
       console.warn(`目錄 ${link} 的 index.md 沒有 title frontmatter`);
-    } else {
+    }
+    else {
       console.warn(`找不到目錄型連結的 index.md: ${indexPath}`);
     }
     // 目錄型連結的預設值：移除結尾斜線後取最後一段
     return link.replace(/\/$/, '').split('/').pop() || link;
-  } else {
+  }
+  else {
     // 處理文件型連結
     const filePath = path.join(POST_PATH, `${link}.md`);
     if (fs.existsSync(filePath)) {
@@ -122,7 +126,8 @@ function getTextFromLink(link: string): string {
         return title;
       }
       console.warn(`文件 ${link} 沒有 title frontmatter`);
-    } else {
+    }
+    else {
       console.warn(`找不到文件: ${filePath}`);
     }
     // 文件型連結的預設值：取最後一段檔案名稱

@@ -5,9 +5,9 @@
 
   const { frontmatter } = useData();
 
-  // const props = defineProps<{
-  //   title: string;
-  // }>();
+// const props = defineProps<{
+//   title: string;
+// }>();
 </script>
 
 <template>
@@ -21,14 +21,14 @@
     <span class="px-1"> 📆 </span>
     {{ frontmatter.datePublished.slice(0, 10) }} |
     <span class="px-2">
-      <img :src="`/icons/${getCategoryIcon(frontmatter.category)}-sm.svg`" />
+      <img :src="`/icons/${getCategoryIcon(frontmatter.category)}-sm.svg`">
     </span>
     {{ frontmatter.category }}
   </div>
 
-  <hr class="my-4 h-px bg-gray-300 border-0 dark:bg-gray-500" />
+  <hr class="my-4 h-px bg-gray-300 border-0 dark:bg-gray-500">
   <div class="flex row text-lg">
     <span class="whitespace-normal" v-text="frontmatter.description" />
   </div>
-  <hr class="mb-8 my-4 h-px bg-gray-300 border-0 dark:bg-gray-500" />
+  <hr class="mb-8 my-4 h-px bg-gray-300 border-0 dark:bg-gray-500">
 </template>

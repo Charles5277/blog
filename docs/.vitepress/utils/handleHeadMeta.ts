@@ -1,4 +1,4 @@
-import { type HeadConfig, type TransformContext } from 'vitepress';
+import type { HeadConfig, TransformContext } from 'vitepress';
 
 // - 處理每個頁面 meta 資訊
 export function handleHeadMeta(context: TransformContext) {
@@ -9,14 +9,14 @@ export function handleHeadMeta(context: TransformContext) {
     'meta',
     {
       property: 'og:url',
-      content: addBase(relativePath.slice(0, -3)) + '.html',
+      content: `${addBase(relativePath.slice(0, -3))}.html`,
     },
   ];
   const ogTitle: HeadConfig = [
     'meta',
     {
       property: 'og:title',
-      content: title + ' | Charles 起司的開發技術分享Blog',
+      content: `${title} | Charles 起司的開發技術分享Blog`,
     },
   ];
   const ogDescription: HeadConfig = [
@@ -64,7 +64,8 @@ export function addBase(relativePath: string) {
   const host = 'https://charlestw.dev';
   if (relativePath.startsWith('/')) {
     return host + relativePath;
-  } else {
-    return host + '/' + relativePath;
+  }
+  else {
+    return `${host}/${relativePath}`;
   }
 }

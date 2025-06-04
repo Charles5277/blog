@@ -1,20 +1,20 @@
 <!-- Index.vue -->
 <script setup>
-import { useRouter, withBase } from 'vitepress'
-import Theme from 'vitepress/theme'
-import Comments from '../components/GiscusComments.vue'
-import TopInfo from '../components/TopInfo.vue'
-import blogStore from '../theme/store'
+  import { useRouter, withBase } from 'vitepress';
+  import Theme from 'vitepress/theme';
+  import Comments from '../components/GiscusComments.vue';
+  import TopInfo from '../components/TopInfo.vue';
+  import blogStore from '../theme/store';
 
-const { Layout } = Theme
-const { go } = useRouter()
+  const { Layout } = Theme;
+  const { go } = useRouter();
 
-function searchTags(tag) {
-  blogStore.value.selectedTags = []
-  blogStore.value.selectedCategory = ''
-  blogStore.value.selectedTags.push(tag)
-  go(withBase('/catalog/'))
-}
+  function searchTags(tag) {
+    blogStore.value.selectedTags = [];
+    blogStore.value.selectedCategory = '';
+    blogStore.value.selectedTags.push(tag);
+    go(withBase('/catalog/'));
+  }
 </script>
 
 <template>
@@ -34,10 +34,7 @@ function searchTags(tag) {
         <div>
           <span v-if="$frontmatter.tags"> Tags: </span>
           <VaButton
-            v-for="(tag, idx) in $frontmatter.tags"
-            :key="idx"
-            size="small"
-            color="#00897b"
+            v-for="(tag, idx) in $frontmatter.tags" :key="idx" size="small" color="#00897b"
             @click="searchTags(tag)"
           >
             <span> {{ tag }} </span>

@@ -32,7 +32,7 @@ export const CATEGORY_ICON_MAP: Record<string, string> = CATEGORIES.reduce(
 
 // 分類順序陣列
 export const CATEGORY_ORDER: string[] = CATEGORIES.map(
-  (category) => category.name,
+  category => category.name,
 );
 
 // 工具函數：根據名稱獲取圖標
