@@ -2,7 +2,7 @@
 title: 自動檢查 Git commit 與 branch 名稱的格式
 description: 使用 husky 與 commitlint 來自動檢查 commit 訊息跟 branch 名稱的格式
 datePublished: 2025-01-22
-lastUpdated: 2025-01-22 15:34:00 +8
+lastUpdated: 2025-11-10 16:28:00 +8
 category: Git
 tags:
   - Git
@@ -57,7 +57,13 @@ export default {
 };
 ```
 
-2. 設定 ./husky/commit-msg 檔案，內容如下：
+2. 透過 Husky 在 `commit-msg` hook 觸發 commitlint，確保每次 `git commit` 時都會套用上述規則：
+
+```bash
+pnpm exec husky add .husky/commit-msg "pnpm exec commitlint --edit $1"
+```
+
+3. 若希望提供更友善的錯誤訊息，可將 `./husky/commit-msg` 檔案內容改成：
 
 ```bash
 #!/bin/sh
@@ -87,6 +93,37 @@ if ! echo "$commit_msg" | grep -qE '^(✨ feat|🐛 fix|🧹 chore|🔨 refactor
   exit 1
 fi
 ```
+
+## 使用 lint-staged 在 commit 前自動檢查檔案
+
+除了檢查 commit 訊息外，也可以在提交前自動檢查程式碼品質，確保程式碼狀態良好再進入版本庫。
+
+1. 安裝 [lint-staged](https://github.com/lint-staged/lint-staged)：
+
+```bash
+pnpm add --save-dev lint-staged
+```
+
+2. 新增 `lint-staged.config.js` 檔案，根據專案需求設定要執行的檢查。例如以下會在提交前針對 TS/JS 進行 ESLint、針對 CSS/SCSS 進行 Stylelint，再由 Prettier 格式化所有支援的檔案：
+
+```js
+export default {
+  '*.{ts,tsx,js,jsx,vue}': ['pnpm lint'],
+  '*.{css,scss}': ['pnpm stylelint'],
+  '*': ['pnpm format'],
+};
+```
+
+3. 新增 `./husky/pre-commit` 檔案，讓 Husky 在 `git commit` 時只對 staged 檔案執行上述檢查：
+
+```bash
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+pnpm exec lint-staged
+```
+
+若檢查失敗，commit 會被取消並提示錯誤；修正後重新 `git add`、`git commit` 即可。
 
 ## 針對 branch 名稱的格式檢查
 
