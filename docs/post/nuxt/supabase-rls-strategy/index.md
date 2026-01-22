@@ -8,11 +8,12 @@ tags:
   - Supabase
   - PostgreSQL
   - RLS
+series: nuxt-fullstack
+seriesTitle: Nuxt 4 全棧實戰
+seriesOrder: 7
 ---
 
 # RLS 與「讀 Client，寫 Server」策略
-
-> 系列文章：Nuxt 4 全棧實戰（7/12）
 
 ## 這篇要解決什麼問題
 

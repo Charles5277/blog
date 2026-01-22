@@ -4,6 +4,8 @@ import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 
+import matter from "gray-matter";
+
 const POST_PATH = path.resolve(process.cwd(), "docs", "post");
 
 // 從 sidebar.ts 提取 link 配置
@@ -31,6 +33,54 @@ function extractLinksFromSidebar() {
   }
 
   return Array.from(links);
+}
+
+// 從文章 frontmatter 收集系列文章的 links
+function extractSeriesLinks() {
+  const seriesLinks = new Set();
+
+  function scanDirectory(dir, relativePath = "") {
+    if (!fs.existsSync(dir)) {
+      return;
+    }
+
+    const items = fs.readdirSync(dir);
+
+    for (const item of items) {
+      const fullPath = path.join(dir, item);
+      const stat = fs.statSync(fullPath);
+
+      if (stat.isDirectory()) {
+        // 檢查目錄下的 index.md
+        const indexPath = path.join(fullPath, "index.md");
+        if (fs.existsSync(indexPath)) {
+          const relPath = path.join(relativePath, item);
+          checkSeriesFrontmatter(indexPath, `${relPath}/`, seriesLinks);
+        }
+        scanDirectory(fullPath, path.join(relativePath, item));
+      } else if (item.endsWith(".md") && item !== "index.md") {
+        const relPath = path.join(relativePath, item).replace(/\.md$/, "");
+        checkSeriesFrontmatter(fullPath, relPath, seriesLinks);
+      }
+    }
+  }
+
+  scanDirectory(POST_PATH);
+  return Array.from(seriesLinks);
+}
+
+function checkSeriesFrontmatter(filePath, link, seriesLinks) {
+  try {
+    const content = fs.readFileSync(filePath, "utf-8");
+    const { data } = matter(content);
+
+    // 如果有 series frontmatter，就加入 seriesLinks
+    if (data.series && data.seriesOrder !== undefined) {
+      seriesLinks.add(link.replace(/\\/g, "/"));
+    }
+  } catch {
+    // 忽略解析錯誤
+  }
 }
 
 // 掃描所有 post 目錄下的 .md 文件
@@ -79,20 +129,25 @@ function checkSidebarCoverage() {
   console.log("🔍 檢查 sidebar 配置覆蓋度...\n");
 
   const sidebarLinks = extractLinksFromSidebar();
+  const seriesLinks = extractSeriesLinks();
   const markdownFiles = getAllMarkdownFiles();
+
+  // 合併 sidebar links 和 series links
+  const allConfiguredLinks = [...new Set([...sidebarLinks, ...seriesLinks])];
 
   console.log(`📊 統計資訊：`);
   console.log(`   Sidebar 中的 links: ${sidebarLinks.length}`);
+  console.log(`   系列文章 links: ${seriesLinks.length}`);
   console.log(`   專案中的 .md 文件: ${markdownFiles.length}\n`);
 
   // 轉換文件路徑為 link 格式
   const expectedLinks = markdownFiles.map(convertFilePathToLink);
 
-  // 找出缺失的文件
+  // 找出缺失的文件（不在 sidebar 也不在系列中）
   const missingFiles = [];
 
   for (const expectedLink of expectedLinks) {
-    if (!sidebarLinks.includes(expectedLink)) {
+    if (!allConfiguredLinks.includes(expectedLink)) {
       missingFiles.push(expectedLink);
     }
   }

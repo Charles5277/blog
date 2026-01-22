@@ -8,11 +8,12 @@ tags:
   - TDD
   - Vitest
   - AI
+series: nuxt-fullstack
+seriesTitle: Nuxt 4 全棧實戰
+seriesOrder: 12
 ---
 
 # AI 輔助開發與 CLAUDE.md
-
-> 系列文章：Nuxt 4 全棧實戰（12/12）
 
 ## 這篇要解決什麼問題
 

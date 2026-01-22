@@ -4,6 +4,7 @@ import { useRouter, withBase } from "vitepress";
 import Theme from "vitepress/theme";
 import Comments from "../components/GiscusComments.vue";
 import OptimizedHeroImage from "../components/OptimizedHeroImage.vue";
+import SeriesNav from "../components/SeriesNav.vue";
 import TopInfo from "../components/TopInfo.vue";
 import blogStore from "../theme/store";
 
@@ -70,6 +71,7 @@ function searchTags(tag) {
     </template>
 
     <template #doc-footer-before>
+      <SeriesNav v-if="$frontmatter.series" />
       <div class="mb-4">
         <span v-if="$frontmatter.tags"> Tags: </span>
         <VaButton

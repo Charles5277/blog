@@ -8,11 +8,12 @@ tags:
   - Supabase
   - PostgreSQL
   - RLS
+series: nuxt-fullstack
+seriesTitle: Nuxt 4 全棧實戰
+seriesOrder: 8
 ---
 
 # Database Function 安全規範
-
-> 系列文章：Nuxt 4 全棧實戰（8/12）
 
 ## 這篇要解決什麼問題
 

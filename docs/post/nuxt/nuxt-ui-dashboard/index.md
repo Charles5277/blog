@@ -7,11 +7,12 @@ tags:
   - Nuxt
   - TypeScript
   - Architecture
+series: nuxt-fullstack
+seriesTitle: Nuxt 4 全棧實戰
+seriesOrder: 2
 ---
 
 # Nuxt UI 4 Dashboard 實戰
-
-> 系列文章：Nuxt 4 全棧實戰（2/12）
 
 ## 這篇要解決什麼問題
 

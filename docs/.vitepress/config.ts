@@ -3,6 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vitepress";
 
 import { handleHeadMeta } from "./utils/handleHeadMeta";
+import { getAllSeriesSidebars } from "./utils/seriesSidebar";
 
 import sidebar from "./utils/sidebar";
 
@@ -203,12 +204,7 @@ export default defineConfig({
       text: "在 GitHub 編輯此頁",
     },
     nav: [],
-    sidebar: [
-      {
-        text: "文章分類",
-        items: [{ base: "/", items: sidebarPost() }],
-      },
-    ],
+    sidebar: generateSidebar(),
     socialLinks: [
       {
         icon: "instagram",
@@ -279,4 +275,30 @@ export default defineConfig({
 
 function sidebarPost(): DefaultTheme.SidebarItem[] {
   return sidebar;
+}
+
+// 生成多路徑 sidebar 配置
+// 系列文章使用專屬 sidebar，其他文章使用預設分類 sidebar
+function generateSidebar(): DefaultTheme.Sidebar {
+  const seriesSidebars = getAllSeriesSidebars();
+
+  const defaultSidebar: DefaultTheme.SidebarItem[] = [
+    {
+      text: "文章分類",
+      items: [{ base: "/", items: sidebarPost() }],
+    },
+  ];
+
+  // 如果沒有任何系列文章，回傳預設 sidebar
+  if (Object.keys(seriesSidebars).length === 0) {
+    return defaultSidebar;
+  }
+
+  // 合併系列 sidebar 和預設 sidebar
+  const result: DefaultTheme.Sidebar = {
+    ...seriesSidebars,
+    "/": defaultSidebar,
+  };
+
+  return result;
 }
