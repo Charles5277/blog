@@ -1,0 +1,18 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "import", "unicorn"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2024": true
+  },
+  "rules": {
+    "eqeqeq": "error",
+    "camelcase": "error",
+    "no-await-in-loop": "error",
+    "require-atomic-updates": "error",
+    "max-nested-callbacks": ["warn", { "max": 3 }],
+    "no-return-await": "error"
+  },
+  "ignorePatterns": ["node_modules", "dist", ".vitepress/cache", "**/*.md"]
+}

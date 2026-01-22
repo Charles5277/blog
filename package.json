@@ -1,15 +1,13 @@
 {
   "type": "module",
-  "packageManager": "pnpm@10.11.1",
-  "engines": {
-    "node": ">=22"
-  },
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vitepress build docs ",
     "preview": "vitepress preview docs",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt --write",
+    "fmt:check": "oxfmt --check",
     "check:sidebar": "node scripts/check-sidebar-coverage.js",
     "prepare": "husky"
   },
@@ -21,13 +19,15 @@
     "vuestic-ui": "1.10.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.13.3",
-    "@stylistic/eslint-plugin": "^4.4.1",
-    "eslint": "9.28.0",
-    "eslint-plugin-format": "^1.0.1",
     "husky": "^9.1.7",
+    "oxfmt": "^0.26.0",
+    "oxlint": "^1.41.0",
     "postcss": "^8.5.4",
     "tailwindcss": "4.1.8",
     "vitepress": "2.0.0-alpha.5"
-  }
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.11.1"
 }
