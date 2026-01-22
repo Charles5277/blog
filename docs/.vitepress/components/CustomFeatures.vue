@@ -1,20 +1,16 @@
 <script setup>
-  import VPFeatures from 'vitepress/dist/client/theme-default/components/VPFeatures.vue';
+import VPFeatures from "vitepress/dist/client/theme-default/components/VPFeatures.vue";
 
-  defineProps({
-    noPadding: {
-      type: Boolean,
-      default: false,
-    },
-  });
+defineProps({
+  noPadding: {
+    type: Boolean,
+    default: false,
+  },
+});
 </script>
 
 <template>
-  <VPFeatures
-    class="cfeatures"
-    :class="{ noPadding }"
-    v-bind="$attrs"
-  />
+  <VPFeatures class="cfeatures" :class="{ noPadding }" v-bind="$attrs" />
 </template>
 
 <style scoped>

@@ -1,75 +1,87 @@
-import type { DefaultTheme } from 'vitepress';
-import fs from 'node:fs';
-import path from 'node:path';
-import process from 'node:process';
+import type { DefaultTheme } from "vitepress";
+import fs from "node:fs";
+import path from "node:path";
+import process from "node:process";
 
-import matter from 'gray-matter';
+import matter from "gray-matter";
 
 const sidebarConfigData = [
   {
-    text: 'Vue.js',
+    text: "Vue.js",
     collapsed: true,
     items: [
-      { link: 'vue/intro/' },
-      { link: 'vue/create-project/' },
-      { link: 'vue/v-bind' },
-      { link: 'vue/v-on' },
-      { link: 'vue/v-for' },
+      { link: "vue/intro/" },
+      { link: "vue/create-project/" },
+      { link: "vue/v-bind" },
+      { link: "vue/v-on" },
+      { link: "vue/v-for" },
     ],
   },
   {
-    text: 'Nuxt',
+    text: "Nuxt",
     collapsed: true,
     items: [
-      { link: 'nuxt/nuxt-server-engine-nitro-h3' },
-      { link: 'nuxt/global-type' },
-      { link: 'nuxt/nuxt-import-static-file' },
+      { link: "nuxt/nuxt-server-engine-nitro-h3" },
+      { link: "nuxt/global-type" },
+      { link: "nuxt/nuxt-import-static-file" },
+      // Nuxt 4 全棧實戰系列
+      { link: "nuxt/fullstack-architecture/" },
+      { link: "nuxt/nuxt-ui-dashboard/" },
+      { link: "nuxt/typescript-type-safety/" },
+      { link: "nuxt/better-auth-integration/" },
+      { link: "nuxt/role-based-access-control/" },
+      { link: "nuxt/supabase-local-first/" },
+      { link: "nuxt/supabase-rls-strategy/" },
+      { link: "nuxt/supabase-function-security/" },
+      { link: "nuxt/nitro-api-design/" },
+      { link: "nuxt/pinia-colada-async-state/" },
+      { link: "nuxt/tdd-testing-workflow/" },
+      { link: "nuxt/ai-assisted-claude-md/" },
     ],
   },
   {
-    text: 'Node.js',
+    text: "Node.js",
     collapsed: true,
     items: [
-      { link: 'nodejs/nvm/' },
-      { link: 'nodejs/package-manager/' },
-      { link: 'nodejs/vite/' },
-      { link: 'nodejs/eslint/' },
+      { link: "nodejs/nvm/" },
+      { link: "nodejs/package-manager/" },
+      { link: "nodejs/vite/" },
+      { link: "nodejs/eslint/" },
     ],
   },
   {
-    text: 'VS Code',
+    text: "VS Code",
     collapsed: true,
-    items: [{ link: 'vscode/intro/' }, { link: 'vscode/note' }],
+    items: [{ link: "vscode/intro/" }, { link: "vscode/note" }],
   },
   {
-    text: 'Git',
+    text: "Git",
     collapsed: true,
-    items: [{ link: 'git/husky-and-commitlint' }, { link: 'git/note' }],
+    items: [{ link: "git/husky-and-commitlint" }, { link: "git/note" }],
   },
   {
-    text: 'Linux',
+    text: "Linux",
     collapsed: true,
     items: [
-      { link: 'linux/wsl/' },
-      { link: 'linux/ubuntu/note' },
-      { link: 'linux/ubuntu/sourcelist' },
-      { link: 'linux/ubuntu/sudo-no-password/' },
-
+      { link: "linux/wsl/" },
+      { link: "linux/ubuntu/note" },
+      { link: "linux/ubuntu/sourcelist" },
+      { link: "linux/ubuntu/sudo-no-password/" },
     ],
   },
   {
-    text: 'HTML',
+    text: "HTML",
     collapsed: true,
-    items: [{ link: 'html/note' }],
+    items: [{ link: "html/note" }],
   },
   {
-    text: 'CSS',
+    text: "CSS",
     collapsed: true,
-    items: [{ link: 'css/note' }],
+    items: [{ link: "css/note" }],
   },
 ];
 
-const POST_PATH = path.resolve(process.cwd(), 'docs', 'post');
+const POST_PATH = path.resolve(process.cwd(), "docs", "post");
 
 // 取得 FrontMatter
 function getFrontMatter(filePath: string) {
@@ -79,7 +91,7 @@ function getFrontMatter(filePath: string) {
       return {};
     }
 
-    const content = fs.readFileSync(filePath, 'utf-8');
+    const content = fs.readFileSync(filePath, "utf-8");
     if (!content.trim()) {
       console.warn(`文件為空: ${filePath}`);
       return {};
@@ -87,8 +99,7 @@ function getFrontMatter(filePath: string) {
 
     const { data } = matter(content);
     return data || {};
-  }
-  catch (error) {
+  } catch (error) {
     console.error(`讀取或解析文件 ${filePath} 時發生錯誤:`, error);
     return {};
   }
@@ -97,13 +108,13 @@ function getFrontMatter(filePath: string) {
 // 根據 link 路徑取得 text
 function getTextFromLink(link: string): string {
   if (!link) {
-    console.warn('getTextFromLink: 空的 link 參數');
-    return '';
+    console.warn("getTextFromLink: 空的 link 參數");
+    return "";
   }
 
   // 處理目錄型連結 (以 / 結尾)
-  if (link.endsWith('/')) {
-    const indexPath = path.join(POST_PATH, link, 'index.md');
+  if (link.endsWith("/")) {
+    const indexPath = path.join(POST_PATH, link, "index.md");
     if (fs.existsSync(indexPath)) {
       const frontmatter = getFrontMatter(indexPath);
       const title = frontmatter.title;
@@ -111,14 +122,12 @@ function getTextFromLink(link: string): string {
         return title;
       }
       console.warn(`目錄 ${link} 的 index.md 沒有 title frontmatter`);
-    }
-    else {
+    } else {
       console.warn(`找不到目錄型連結的 index.md: ${indexPath}`);
     }
     // 目錄型連結的預設值：移除結尾斜線後取最後一段
-    return link.replace(/\/$/, '').split('/').pop() || link;
-  }
-  else {
+    return link.replace(/\/$/, "").split("/").pop() || link;
+  } else {
     // 處理文件型連結
     const filePath = path.join(POST_PATH, `${link}.md`);
     if (fs.existsSync(filePath)) {
@@ -128,19 +137,18 @@ function getTextFromLink(link: string): string {
         return title;
       }
       console.warn(`文件 ${link} 沒有 title frontmatter`);
-    }
-    else {
+    } else {
       console.warn(`找不到文件: ${filePath}`);
     }
     // 文件型連結的預設值：取最後一段檔案名稱
-    return link.split('/').pop() || link;
+    return link.split("/").pop() || link;
   }
 }
 
 // 處理 sidebar 項目，自動填入 text
 function processSidebarItems(items: any[]): DefaultTheme.SidebarItem[] {
   return items.map((item) => {
-    if (typeof item === 'string') {
+    if (typeof item === "string") {
       // 如果是字串，轉換為物件格式
       return {
         text: getTextFromLink(item),

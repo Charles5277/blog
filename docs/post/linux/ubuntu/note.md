@@ -7,7 +7,6 @@ category: Linux
 tags:
   - Linux
   - Ubuntu
-
 ---
 
 ### shortcut
@@ -108,7 +107,6 @@ comment
 ```
 
 - 時間
-
   - date (current time and date)
     > 當前時間跟日期
     ```bash
@@ -132,7 +130,6 @@ comment
     ```
 
 - 硬碟資訊
-
   - df (current amount of free space on disk drives)
     > 硬碟空間資訊
     ```bash
@@ -141,7 +138,6 @@ comment
     ![](https://i.imgur.com/paflpni.png)
 
 - 記憶體資訊
-
   - free (amount of free memory)
     > 記憶體使用情況
     ```bash
@@ -150,7 +146,6 @@ comment
     ![](https://i.imgur.com/C1g8rML.png)
 
 - 當前工作目錄
-
   - pwd (print working directory)
     > 顯示當前工作目錄
     ```bash
@@ -159,7 +154,6 @@ comment
     ```
 
 - 當前目錄資訊
-
   - ls (list the files and directories)
 
     > 顯示當前工作目錄中的檔案跟資料夾
@@ -210,7 +204,6 @@ comment
     ![](https://i.imgur.com/QEzRG5g.png)
 
 - 移動目前位置
-
   - cd (change working directory)
 
     ```bash
@@ -232,7 +225,6 @@ comment
     ```
 
 - 檔案內容資訊
-
   - file
     > 獲得 file_name 的資訊
     ```bash
@@ -263,11 +255,9 @@ comment
     ```
 
 - 檔案管理
-
   - cp (copy)
 
     > 複製檔案跟資料夾
-
     - optional
 
       ```bash
@@ -299,7 +289,6 @@ comment
   - mv (move)
 
     > 移動或重新命名檔案跟資料夾
-
     - optional
 
       ```bash
@@ -340,7 +329,6 @@ comment
 
     > ⚠️注意刪除不可逆，刪除資料前要再三注意
     > 如： rm \_.txt 若打成 rm \_ .txt 則相當於先執行 rm \*
-
     - optional
 
       ```bash
@@ -408,7 +396,6 @@ comment
     ```
 
 - 指令、檔案、程式資訊
-
   - type
     > 查詢某個 command 的功能類型
     ```bash
@@ -471,7 +458,6 @@ comment
     ```
 
 - 快捷、別名
-
   - alias
     > 將一連串 command 建立別名
 

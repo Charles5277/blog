@@ -7,7 +7,6 @@ tags:
   - Linux
   - Ubuntu
   - WSL
-
 ---
 
 ## 什麼是 WSL
@@ -64,7 +63,6 @@ dism.exe /online /enable-feature /featurename:Microsoft-Hyper-V-Hypervisor /all 
   ![alt text](image-3.png)
 
 - 透過 VS Code 開啟 WSL
-
   1. 點擊左下角的連結圖示
      ![alt text](image-4.png)
   2. 找到 WSL 選項，第一次會提示需要安裝，點擊後會自動安裝

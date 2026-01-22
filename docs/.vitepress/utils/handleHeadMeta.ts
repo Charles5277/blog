@@ -1,4 +1,4 @@
-import type { HeadConfig, TransformContext } from 'vitepress';
+import type { HeadConfig, TransformContext } from "vitepress";
 
 // - 處理每個頁面 meta 資訊
 export function handleHeadMeta(context: TransformContext) {
@@ -6,43 +6,43 @@ export function handleHeadMeta(context: TransformContext) {
 
   // - 增加 Twitter Card 資訊
   const ogUrl: HeadConfig = [
-    'meta',
+    "meta",
     {
-      property: 'og:url',
+      property: "og:url",
       content: `${addBase(relativePath.slice(0, -3))}.html`,
     },
   ];
   const ogTitle: HeadConfig = [
-    'meta',
+    "meta",
     {
-      property: 'og:title',
+      property: "og:title",
       content: `${title} | Charles 起司的軟體開發技術分享Blog`,
     },
   ];
   const ogDescription: HeadConfig = [
-    'meta',
-    { property: 'og:description', content: description || context.description },
+    "meta",
+    { property: "og:description", content: description || context.description },
   ];
   const ogImage: HeadConfig = [
-    'meta',
-    { property: 'og:image', content: 'https://blog.charlestw.dev/home.webp' },
+    "meta",
+    { property: "og:image", content: "https://blog.charlestw.dev/home.webp" },
   ];
 
   const twitterCard: HeadConfig = [
-    'meta',
-    { name: 'twitter:card', content: 'summary' },
+    "meta",
+    { name: "twitter:card", content: "summary" },
   ];
   const twitterImage: HeadConfig = [
-    'meta',
+    "meta",
     {
-      name: 'twitter:image:src',
-      content: 'https://blog.charlestw.dev/home.webp',
+      name: "twitter:image:src",
+      content: "https://blog.charlestw.dev/home.webp",
     },
   ];
   const twitterDescription: HeadConfig = [
-    'meta',
+    "meta",
     {
-      name: 'twitter:description',
+      name: "twitter:description",
       content: description || context.description,
     },
   ];
@@ -61,11 +61,10 @@ export function handleHeadMeta(context: TransformContext) {
 }
 
 export function addBase(relativePath: string) {
-  const host = 'https://charlestw.dev';
-  if (relativePath.startsWith('/')) {
+  const host = "https://charlestw.dev";
+  if (relativePath.startsWith("/")) {
     return host + relativePath;
-  }
-  else {
+  } else {
     return `${host}/${relativePath}`;
   }
 }

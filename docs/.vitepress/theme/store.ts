@@ -1,4 +1,4 @@
-import { ref, watch } from 'vue';
+import { ref, watch } from "vue";
 
 interface BlogStore {
   pageBarIdx: number;
@@ -12,16 +12,16 @@ interface BlogStore {
 const blogStore = ref<BlogStore>({
   pageBarIdx: 1,
   currentPage: 1,
-  selectedCategory: '',
+  selectedCategory: "",
   selectedTags: [],
-  filterType: '',
-  icon: '',
+  filterType: "",
+  icon: "",
 });
 
 watch(
   () => blogStore.value.selectedCategory,
   (v: string) => {
-    blogStore.value.icon = v || '';
+    blogStore.value.icon = v || "";
   },
 );
 

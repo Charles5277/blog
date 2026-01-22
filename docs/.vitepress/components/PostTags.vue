@@ -1,17 +1,17 @@
 <script setup lang="ts">
-  import { data as posts } from '../theme/posts.data';
-  import blogStore from '../theme/store';
+import { data as posts } from "../theme/posts.data";
+import blogStore from "../theme/store";
 
-  import { initTags } from '../theme/utils';
+import { initTags } from "../theme/utils";
 
-  const tags: object = initTags(posts);
+const tags: object = initTags(posts);
 
-  function selectTag(tag: string) {
-    if (!blogStore.value.selectedTags.includes(tag)) {
-      blogStore.value.selectedTags.push(tag);
-    }
-    blogStore.value.selectedCategory = '';
+function selectTag(tag: string) {
+  if (!blogStore.value.selectedTags.includes(tag)) {
+    blogStore.value.selectedTags.push(tag);
   }
+  blogStore.value.selectedCategory = "";
+}
 </script>
 
 <template>
@@ -50,7 +50,7 @@
 </template>
 
 <style scoped>
-  .vp-doc,
+.vp-doc,
 a {
   font-weight: normal !important;
   color: initial !important;

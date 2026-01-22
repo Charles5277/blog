@@ -1,4 +1,4 @@
-import { ref } from 'vue';
+import { ref } from "vue";
 
 export async function useParseFeatures(arr) {
   const features = ref([]);
@@ -6,7 +6,7 @@ export async function useParseFeatures(arr) {
   const index = arr.value.index;
   // > 如果 index 內的object中，icon、title、details 都是 ''，則不加入features
   index.forEach((item) => {
-    if (item.icon !== '' && item.title !== '' && item.details !== '') {
+    if (item.icon !== "" && item.title !== "" && item.details !== "") {
       features.value.push(item);
     }
   });

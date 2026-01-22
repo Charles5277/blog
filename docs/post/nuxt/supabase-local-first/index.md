@@ -62,12 +62,12 @@ tags:
 
 ### 為什麼不能直接改遠端？
 
-| 問題 | 後果 |
-|-----|------|
-| 無版本控制 | 無法追蹤誰改了什麼 |
-| 無法復原 | 出錯時難以回滾 |
+| 問題       | 後果                     |
+| ---------- | ------------------------ |
+| 無版本控制 | 無法追蹤誰改了什麼       |
+| 無法復原   | 出錯時難以回滾           |
 | 環境不一致 | 本地與遠端 Schema 不同步 |
-| 測試困難 | 直接在正式環境測試 |
+| 測試困難   | 直接在正式環境測試       |
 
 ---
 
@@ -140,13 +140,13 @@ supabase migration new update_users_and_add_posts_and_fix_policies
 
 ## 命名規則
 
-| 項目 | 規則 | 範例 |
-|-----|------|------|
-| 表名 | snake_case 複數 | `users`, `tool_inserts` |
-| 欄位 | snake_case | `created_at`, `user_id` |
-| 函式 | snake_case | `get_user_role` |
-| Enum | snake_case | `user_role` |
-| Migration | snake_case 描述 | `add_users_table` |
+| 項目      | 規則            | 範例                    |
+| --------- | --------------- | ----------------------- |
+| 表名      | snake_case 複數 | `users`, `tool_inserts` |
+| 欄位      | snake_case      | `created_at`, `user_id` |
+| 函式      | snake_case      | `get_user_role`         |
+| Enum      | snake_case      | `user_role`             |
+| Migration | snake_case 描述 | `add_users_table`       |
 
 ---
 
@@ -154,13 +154,13 @@ supabase migration new update_users_and_add_posts_and_fix_policies
 
 ### 什麼可以用 GUI
 
-| 功能 | 可否使用 | 備註 |
-|-----|---------|------|
-| 查看資料 | ✅ | 無需額外動作 |
-| 查看 RLS Policy | ✅ | 方便除錯 |
-| 快速 PoC | ⚠️ | 用完必須 `db diff` 產出 migration |
-| 建立函式 | ❌ | 無法控制 `search_path` |
-| 直接匯入 SQL | ❌ | 可能與 Repo 不同步 |
+| 功能            | 可否使用 | 備註                              |
+| --------------- | -------- | --------------------------------- |
+| 查看資料        | ✅       | 無需額外動作                      |
+| 查看 RLS Policy | ✅       | 方便除錯                          |
+| 快速 PoC        | ⚠️       | 用完必須 `db diff` 產出 migration |
+| 建立函式        | ❌       | 無法控制 `search_path`            |
+| 直接匯入 SQL    | ❌       | 可能與 Repo 不同步                |
 
 ### GUI 變更後的處理
 
@@ -244,6 +244,7 @@ supabase migration list --linked
 **問題**：在 Supabase Studio 新增欄位，但本地沒有對應的 migration。
 
 **後果**：
+
 - 本地 `db reset` 後欄位消失
 - 其他開發者環境不一致
 - TypeScript 類型與實際 Schema 不同步

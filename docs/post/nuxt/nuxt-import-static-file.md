@@ -48,8 +48,8 @@ public/
 
 ```vue
 <script setup>
-  // 取得 public/ 目錄中的 JSON 數據
-  const { data: config } = await useFetch('/data.json');
+// 取得 public/ 目錄中的 JSON 數據
+const { data: config } = await useFetch("/data.json");
 </script>
 
 <template>
@@ -113,7 +113,7 @@ public/
 
 ```ts
 export default defineEventHandler(async () => {
-  const data = await useStorage('assets:server').getItem('data.json');
+  const data = await useStorage("assets:server").getItem("data.json");
   return data;
 });
 ```
@@ -122,7 +122,7 @@ export default defineEventHandler(async () => {
 
 ```vue
 <script setup>
-  const { data } = await useFetch('/api/data');
+const { data } = await useFetch("/api/data");
 </script>
 <template>
   <div>
@@ -141,8 +141,8 @@ export default defineNuxtConfig({
   nitro: {
     serverAssets: [
       {
-        baseName: 'templates',
-        dir: './templates', // 存放在 /server/templates 中
+        baseName: "templates",
+        dir: "./templates", // 存放在 /server/templates 中
       },
     ],
   },
@@ -152,7 +152,7 @@ export default defineNuxtConfig({
 然後在 handler 內用 `useStorage('assets:templates')` 讀取：
 
 ```ts
-const html = await useStorage('assets:templates').getItem('success.html');
+const html = await useStorage("assets:templates").getItem("success.html");
 ```
 
 ---

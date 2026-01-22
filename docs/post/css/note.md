@@ -7,7 +7,6 @@ category: CSS
 tags:
   - Frontend
   - CSS
-
 ---
 
 ## 基本框架
@@ -188,7 +187,7 @@ tags:
 
   ```css
   /* css */
-  input[type='text'] {
+  input[type="text"] {
     color: black;
   }
   ```
@@ -198,10 +197,10 @@ tags:
 - pseudo-class (偽 class)
 
   ```css
-  input[type='text'] {
+  input[type="text"] {
     color: black;
   }
-  input[type='text']:hover {
+  input[type="text"]:hover {
     color: red;
   }
   ```
@@ -227,7 +226,6 @@ tags:
 - Inheritance (繼承)
 
   常見會繼承的 tag
-
   - color
 
   - font-family
@@ -249,7 +247,6 @@ tags:
   > 當 Element 被不同來源的 CSS 重複設定時
 
   > 處理原則：Priority (優先度) => Specificity (特定度) => Order Rule (順序規則)
-
   - Priority
     1. Inline
     2. User Stylesheet (內部順序由 Specificity 決定)
@@ -279,7 +276,6 @@ tags:
   ```
 
 - text-align：block element 或 table cell 中，內容的水平對齊位置
-
   - center：置中對齊
   - right：靠右對齊
   - justify：左右對齊
@@ -298,7 +294,6 @@ tags:
   ```
 
 - text-decoration：文字線段修飾特效
-
   - none：無線段特效
   - underline：底線
   - line-though：刪除線
@@ -329,20 +324,19 @@ tags:
 
   ```css
   p {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
   }
   ```
 
   > "設定字型", 備援字型 1, 備援字型 2
-
   - 指定 Local font 做為顯示字體
     ```css
     @font-face {
-      font-family: 'font_001';
+      font-family: "font_001";
       src: url(./font_001.ttf);
     }
     * {
-      font-family: 'font_001';
+      font-family: "font_001";
     }
     ```
 
@@ -357,7 +351,7 @@ tags:
 
   ```css
   /* css */
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: "Noto Sans TC", sans-serif;
   ```
 
 - text-indent：段落第一行縮排字元
@@ -453,7 +447,6 @@ tags:
 ## background
 
 - background-color
-
   - transparent
 
   ```css
@@ -473,7 +466,6 @@ tags:
   ```
 
 - background-size
-
   - auto：保持原尺寸
   - contain：等比例縮放，不剪裁拉伸。
 
@@ -522,7 +514,6 @@ tags:
   ```
 
 - padding (留白)：介在 context 跟 border 之間的距離夾層，使用 padding 屬性調整大小
-
   - padding-top
   - padding-right
   - padding-bottom
@@ -580,7 +571,6 @@ tags:
   > 當對 box 設定 height 使用 % 時，由於 parent element 預設 height 是 auto，因此會導致計算結果 Undefined，除非有先對 parent (如 html, body) 設定 height 為 100%
 
   > 絕大多數情況不用設定 box 的高度，如果有設定要考慮 overflow (內容超過設定容量) 的處理方式：
-
   - visible：(預設) content 不會被修剪，會直接呈現在元素框外
   - hidden：直接裁切，溢出部分隱藏，不會有滾動軸
   - scroll：顯示滾動軸
@@ -608,7 +598,6 @@ tags:
 ## Display
 
 - outer display type
-
   - block：寬高可指定，會換行
   - inline：寬高不可指定，不會換行
   - inline-block：寬高可指定，不會換行
@@ -838,14 +827,17 @@ tags:
 - element 跟圖片皆使用 relative unit
   > rem、%、vw、vh etc.
 - Media query：定義在不同寬度時要採用的 css
+
   ```css
   @media not|only mediator and (mediafeature and|or|not mediafeature) {
     /*CSS-Code;*/
   }
   ```
+
   - max-width：最大寬度 (<=)
   - min-width：最小寬度 (>=)
     sample
+
   ```css
   @media (max-width: 767px) {
   }
@@ -858,8 +850,10 @@ tags:
   @media (min-width: 1200px) {
   }
   ```
+
   ![](https://blog.hinablue.me/content/images/2014/Nov/responsive-reference.png)
   [🔗設定臨界點與 max、min 使用思路](https://blog.hinablue.me/css-media-query-tips/)
+
 - 使用 Flexbox 自動排版 > 讓容器改變寬高跟順序，以最好填充可利用空間 - flex container > `display: flex` 是一種 inner display type
 
   ````
@@ -1054,7 +1048,7 @@ tags:
   //創建_font.scss檔案
 
   //於main.scss檔案進行import
-  @import './font';
+  @import "./font";
   ```
 
 - mixin：相當於 function 或 method

@@ -7,7 +7,6 @@ category: Vue.js
 tags:
   - Vue
   - Frontend
-
 ---
 
 v-for 是 Vue 提供的 [🔗 指令 (directive)](https://vuejs.org/api/built-in-directives.html#v-for) 之一，用於在 `<template>` 中遍歷數據。如同普遍高階程式語言常用的 for 迴圈，在渲染介面元素時，透過這個指令可以直覺且高效的產生動態且大量的數據。

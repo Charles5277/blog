@@ -6,7 +6,6 @@ lastUpdated: 2024-09-22 07:17:00 +8
 category: VS Code
 tags:
   - VS Code
-
 ---
 
 ## Shortcut
@@ -67,7 +66,6 @@ tags:
 - [git-commit-plugin with gitmoji](https://marketplace.visualstudio.com/items?itemName=devCharles5277.git-commit-plugin-with-gitmoji&ssr=false#overview)
 
   > VS Code 最方便的 Git Commit Extension
-
   - 功能介紹
 
     > 互動式介面創建約定式提交
@@ -81,14 +79,12 @@ tags:
     > 使讓多人協作 repo 時，commit 風格統一
 
 - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
-
   - 顯示當前行的 git blame (最後一次編輯的人是誰、commit 訊息)
     > ![](https://i.imgur.com/0wQND1c.png)
   - 選取兩個 commit 進行 diff 比較
     > ![](https://i.imgur.com/x5GpL0k.png)
 
 - [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
-
   - 以圖像化表示 branch 跟 commit 紀錄，方便直觀進行 git command 快捷操作
     > ![](https://i.imgur.com/LiAIhw1.png)
 
@@ -97,7 +93,6 @@ tags:
   > 註解顏色分類功能
   > 使用方式可自定義
   > 範例：\ <img src="https://i.imgur.com/vaN4nYi.png" width="50%">
-
   - setting.json
     ```json
     "better-comments.tags": [

@@ -1,21 +1,21 @@
 <!-- Index.vue -->
 <script setup>
-  import { useRouter, withBase } from 'vitepress';
-  import Theme from 'vitepress/theme';
-  import Comments from '../components/GiscusComments.vue';
-  import OptimizedHeroImage from '../components/OptimizedHeroImage.vue';
-  import TopInfo from '../components/TopInfo.vue';
-  import blogStore from '../theme/store';
+import { useRouter, withBase } from "vitepress";
+import Theme from "vitepress/theme";
+import Comments from "../components/GiscusComments.vue";
+import OptimizedHeroImage from "../components/OptimizedHeroImage.vue";
+import TopInfo from "../components/TopInfo.vue";
+import blogStore from "../theme/store";
 
-  const { Layout } = Theme;
-  const { go } = useRouter();
+const { Layout } = Theme;
+const { go } = useRouter();
 
-  function searchTags(tag) {
-    blogStore.value.selectedTags = [];
-    blogStore.value.selectedCategory = '';
-    blogStore.value.selectedTags.push(tag);
-    go(withBase('/catalog/'));
-  }
+function searchTags(tag) {
+  blogStore.value.selectedTags = [];
+  blogStore.value.selectedCategory = "";
+  blogStore.value.selectedTags.push(tag);
+  go(withBase("/catalog/"));
+}
 </script>
 
 <template>
@@ -29,7 +29,7 @@
         :href="withBase('/home-256.webp')"
         media="(max-width: 320px)"
         fetchpriority="high"
-      >
+      />
       <!-- 小型行動裝置載入mobile圖片 -->
       <link
         rel="preload"
@@ -37,7 +37,7 @@
         :href="withBase('/home-mobile.webp')"
         media="(min-width: 321px) and (max-width: 480px)"
         fetchpriority="high"
-      >
+      />
       <!-- 中型行動裝置載入中等圖片 -->
       <link
         rel="preload"
@@ -45,7 +45,7 @@
         :href="withBase('/home-384.webp')"
         media="(min-width: 481px) and (max-width: 768px)"
         fetchpriority="high"
-      >
+      />
       <!-- 桌面裝置載入較大圖片 -->
       <link
         rel="preload"
@@ -53,7 +53,7 @@
         :href="withBase('/home-512.webp')"
         media="(min-width: 769px)"
         fetchpriority="high"
-      >
+      />
     </template>
 
     <!-- 自訂 Hero Image 為響應式版本 -->

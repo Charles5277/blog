@@ -1,106 +1,102 @@
 <script setup lang="ts">
-  import type { Post } from '../theme/posts.data';
-  import { withBase } from 'vitepress';
+import type { Post } from "../theme/posts.data";
+import { withBase } from "vitepress";
 
-  import { computed, ref, watch } from 'vue';
-  import { data as posts } from '../theme/posts.data';
+import { computed, ref, watch } from "vue";
+import { data as posts } from "../theme/posts.data";
 
-  import blogStore from '../theme/store';
+import blogStore from "../theme/store";
 
-  import { initCategory, initTags } from '../theme/utils';
+import { initCategory, initTags } from "../theme/utils";
 
-  import { getCategoryIcon } from '../utils/categories';
+import { getCategoryIcon } from "../utils/categories";
 
-  const tags = initTags(posts);
-  const category = initCategory(posts);
+const tags = initTags(posts);
+const category = initCategory(posts);
 
-  // - 篩選文章
-  const filteredPosts = computed(() => {
-    let arr: Post[] = [];
-    const selectedTags = blogStore.value.selectedTags;
-    const selectedCategory = blogStore.value.selectedCategory;
+// - 篩選文章
+const filteredPosts = computed(() => {
+  let arr: Post[] = [];
+  const selectedTags = blogStore.value.selectedTags;
+  const selectedCategory = blogStore.value.selectedCategory;
 
-    if (selectedCategory) {
-      // - 以 category 單選篩選
-      arr = category[selectedCategory];
-    }
-    else if (selectedTags.length > 0) {
-      // - 以 tags 複選篩選
-      const addItemIfNeeded = (item: Post) => {
-        if (!arr.includes(item)) {
-          const hasAllTags = selectedTags.every(selectedTag =>
-            item.tags.includes(selectedTag),
-          );
-          if (hasAllTags) {
-            arr.push(item);
-          }
+  if (selectedCategory) {
+    // - 以 category 單選篩選
+    arr = category[selectedCategory];
+  } else if (selectedTags.length > 0) {
+    // - 以 tags 複選篩選
+    const addItemIfNeeded = (item: Post) => {
+      if (!arr.includes(item)) {
+        const hasAllTags = selectedTags.every((selectedTag) =>
+          item.tags.includes(selectedTag),
+        );
+        if (hasAllTags) {
+          arr.push(item);
         }
-      };
+      }
+    };
 
-      selectedTags.forEach((tag) => {
-        const items = tags[tag] || [];
-        items.forEach(addItemIfNeeded);
-      });
-    }
-    else {
-      // > 如果沒有選擇類別或標籤，顯示所有文章
-      arr = posts;
-    }
-
-    // - 按日期排序並處理 url
-    arr.sort((a, b) => {
-      return (
-        new Date(b.date.string).getTime() - new Date(a.date.string).getTime()
-      );
+    selectedTags.forEach((tag) => {
+      const items = tags[tag] || [];
+      items.forEach(addItemIfNeeded);
     });
-
-    return arr;
-  });
-
-  const postTitle = computed(() => {
-    if (
-      blogStore.value.selectedCategory === ''
-      && blogStore.value.selectedTags.length === 0
-    ) {
-      return '最新文章';
-    }
-    else if (filteredPosts.value.length === 0) {
-      return '無符合篩選條件的文章';
-    }
-    else {
-      return '篩選貼文';
-    }
-  });
-
-  // - 文章分頁
-  const itemsPerPage = 5;
-  const currentPage = ref(1);
-
-  const paginatedPosts = computed(() => {
-    const startIdx = (currentPage.value - 1) * itemsPerPage;
-    const endIdx = startIdx + itemsPerPage;
-
-    const posts = filteredPosts.value.slice(startIdx, endIdx);
-
-    posts.map((item) => {
-      item.url = item.url.replace('/post', '');
-      return item;
-    });
-
-    return posts;
-  });
-
-  const pages = computed(() => {
-    return Math.ceil(filteredPosts.value.length / itemsPerPage);
-  });
-
-  function goToPage(page: number) {
-    currentPage.value = page;
+  } else {
+    // > 如果沒有選擇類別或標籤，顯示所有文章
+    arr = posts;
   }
 
-  watch(filteredPosts, () => {
-    currentPage.value = 1;
+  // - 按日期排序並處理 url
+  arr.sort((a, b) => {
+    return (
+      new Date(b.date.string).getTime() - new Date(a.date.string).getTime()
+    );
   });
+
+  return arr;
+});
+
+const postTitle = computed(() => {
+  if (
+    blogStore.value.selectedCategory === "" &&
+    blogStore.value.selectedTags.length === 0
+  ) {
+    return "最新文章";
+  } else if (filteredPosts.value.length === 0) {
+    return "無符合篩選條件的文章";
+  } else {
+    return "篩選貼文";
+  }
+});
+
+// - 文章分頁
+const itemsPerPage = 5;
+const currentPage = ref(1);
+
+const paginatedPosts = computed(() => {
+  const startIdx = (currentPage.value - 1) * itemsPerPage;
+  const endIdx = startIdx + itemsPerPage;
+
+  const posts = filteredPosts.value.slice(startIdx, endIdx);
+
+  posts.map((item) => {
+    item.url = item.url.replace("/post", "");
+    return item;
+  });
+
+  return posts;
+});
+
+const pages = computed(() => {
+  return Math.ceil(filteredPosts.value.length / itemsPerPage);
+});
+
+function goToPage(page: number) {
+  currentPage.value = page;
+}
+
+watch(filteredPosts, () => {
+  currentPage.value = 1;
+});
 </script>
 
 <template>
@@ -109,12 +105,9 @@
       {{ postTitle }}
     </div>
     <div v-if="blogStore.selectedCategory !== ''">
-      <h3
-        id="tagName"
-        class="pb-2 flex row items-center"
-      >
+      <h3 id="tagName" class="pb-2 flex row items-center">
         <span class="mr-4">
-          <img :src="`/icons/${getCategoryIcon(blogStore.icon)}-md.svg`">
+          <img :src="`/icons/${getCategoryIcon(blogStore.icon)}-md.svg`" />
         </span>
 
         <span>{{ blogStore.selectedCategory }}</span>
@@ -135,10 +128,7 @@
                 v-if="blogStore.selectedCategory === ''"
                 v-text="`${post.category} | `"
               />
-              <a
-                :href="withBase(post.url)"
-                class="hover:underline"
-              >
+              <a :href="withBase(post.url)" class="hover:underline">
                 {{ post.title }}
               </a>
             </li>
@@ -150,7 +140,7 @@
       </div>
     </dl>
 
-    <hr>
+    <hr />
 
     <div class="flex justify-center">
       <VaPagination
@@ -164,11 +154,11 @@
       />
     </div>
   </div>
-  <hr class="h-px my-4 bg-gray-200 border-0">
+  <hr class="h-px my-4 bg-gray-200 border-0" />
 </template>
 
 <style scoped>
-  .vp-doc,
+.vp-doc,
 a {
   font-weight: normal !important;
   color: var(--vp-c-text) !important;

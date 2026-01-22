@@ -49,13 +49,13 @@ server/
 
 ### 路由命名規則
 
-| 檔案名稱 | HTTP 方法 | 路徑 |
-|---------|----------|------|
-| `index.get.ts` | GET | `/api/v1/users` |
-| `index.post.ts` | POST | `/api/v1/users` |
-| `[id]/index.get.ts` | GET | `/api/v1/users/:id` |
-| `[id]/index.patch.ts` | PATCH | `/api/v1/users/:id` |
-| `[id]/index.delete.ts` | DELETE | `/api/v1/users/:id` |
+| 檔案名稱               | HTTP 方法 | 路徑                |
+| ---------------------- | --------- | ------------------- |
+| `index.get.ts`         | GET       | `/api/v1/users`     |
+| `index.post.ts`        | POST      | `/api/v1/users`     |
+| `[id]/index.get.ts`    | GET       | `/api/v1/users/:id` |
+| `[id]/index.patch.ts`  | PATCH     | `/api/v1/users/:id` |
+| `[id]/index.delete.ts` | DELETE    | `/api/v1/users/:id` |
 
 ### 為什麼使用 `[id]/index.*.ts` 而非 `[id].*.ts`
 
@@ -77,36 +77,40 @@ server/
 export default defineEventHandler(async (event) => {
   // 1. 權限檢查（最先執行）
   const { user } = await requireUserSession(event, {
-    user: { role: ['admin', 'manager', 'staff'] },
-  })
+    user: { role: ["admin", "manager", "staff"] },
+  });
 
   // 2. 驗證請求資料（Query 或 Body）
-  const body = await readValidatedBody(event, createResourceSchema.parse)
+  const body = await readValidatedBody(event, createResourceSchema.parse);
 
   // 3. 取得 Supabase Client
-  const supabase = await getSupabaseWithContext(event)
-  const db = supabase.schema('your_schema')
+  const supabase = await getSupabaseWithContext(event);
+  const db = supabase.schema("your_schema");
 
   // 4. 執行業務邏輯
-  const { data, error } = await db.from('resources').insert(body).select().single()
+  const { data, error } = await db
+    .from("resources")
+    .insert(body)
+    .select()
+    .single();
 
   // 5. 錯誤處理
   if (error) {
-    throw createError({ statusCode: 500, message: '操作失敗' })
+    throw createError({ statusCode: 500, message: "操作失敗" });
   }
 
   // 6. 記錄操作日誌（寫入操作）
-  await db.from('operation_logs').insert({
+  await db.from("operation_logs").insert({
     user_id: user.id,
-    action: 'create',
-    target_type: 'resource',
+    action: "create",
+    target_type: "resource",
     target_id: data.id.toString(),
-  })
+  });
 
   // 7. 回傳統一格式
-  setResponseStatus(event, 201)
-  return { data }
-})
+  setResponseStatus(event, 201);
+  return { data };
+});
 ```
 
 ---
@@ -117,7 +121,7 @@ export default defineEventHandler(async (event) => {
 
 ```typescript
 // shared/types/resources.ts
-import { z } from 'zod'
+import { z } from "zod";
 
 // 共用分頁查詢 Schema（可複用）
 export const paginationQuerySchema = z.object({
@@ -125,35 +129,35 @@ export const paginationQuerySchema = z.object({
   pageSize: z.coerce.number().int().positive().max(1000).default(10),
   search: z.string().optional(),
   sortBy: z.string().optional(),
-  sortDir: z.enum(['asc', 'desc']).default('desc'),
-})
+  sortDir: z.enum(["asc", "desc"]).default("desc"),
+});
 
 // 新增資源 Schema
 export const createResourceSchema = z.object({
-  name: z.string().min(1, '名稱必填').max(200),
+  name: z.string().min(1, "名稱必填").max(200),
   description: z.string().max(500).nullable().optional(),
-})
+});
 
 // 更新資源 Schema（所有欄位變成可選）
-export const updateResourceSchema = createResourceSchema.partial()
+export const updateResourceSchema = createResourceSchema.partial();
 
 // 路徑參數 Schema
 export const idParamSchema = z.object({
   id: z.coerce.number().int().positive(),
-})
+});
 ```
 
 ### 在 API 中使用驗證
 
 ```typescript
 // GET 請求：驗證 Query Parameters
-const query = await getValidatedQuery(event, paginationQuerySchema.parse)
+const query = await getValidatedQuery(event, paginationQuerySchema.parse);
 
 // POST/PATCH 請求：驗證 Request Body
-const body = await readValidatedBody(event, createResourceSchema.parse)
+const body = await readValidatedBody(event, createResourceSchema.parse);
 
 // 路徑參數驗證
-const params = await getValidatedRouterParams(event, idParamSchema.parse)
+const params = await getValidatedRouterParams(event, idParamSchema.parse);
 ```
 
 ### 驗證失敗自動回應
@@ -176,25 +180,25 @@ const params = await getValidatedRouterParams(event, idParamSchema.parse)
 
 ```typescript
 // 基本用法：僅檢查是否登入
-const { user } = await requireUserSession(event)
+const { user } = await requireUserSession(event);
 
 // 指定允許的角色
 const { user } = await requireUserSession(event, {
-  user: { role: ['admin', 'manager'] },
-})
+  user: { role: ["admin", "manager"] },
+});
 
 // 取得完整 session 資訊
-const { user, session } = await requireUserSession(event)
+const { user, session } = await requireUserSession(event);
 ```
 
 ### 角色檢查順序
 
-| 角色 | 權限等級 | 可存取範圍 |
-|-----|---------|----------|
-| `admin` | 最高 | 完整系統管理 |
-| `manager` | 高 | 部門管理、資料 CRUD |
-| `staff` | 中 | 基本資料讀取 |
-| `unauthorized` | 最低 | 無權限（等待授權） |
+| 角色           | 權限等級 | 可存取範圍          |
+| -------------- | -------- | ------------------- |
+| `admin`        | 最高     | 完整系統管理        |
+| `manager`      | 高       | 部門管理、資料 CRUD |
+| `staff`        | 中       | 基本資料讀取        |
+| `unauthorized` | 最低     | 無權限（等待授權）  |
 
 ---
 
@@ -245,10 +249,10 @@ return { data: resource }
 ```typescript
 interface DeleteResponse {
   data: {
-    id: number
-    deleted_at: string | null  // 軟刪除時間
-    hard_deleted: boolean      // 是否永久刪除
-  }
+    id: number;
+    deleted_at: string | null; // 軟刪除時間
+    hard_deleted: boolean; // 是否永久刪除
+  };
 }
 ```
 
@@ -258,14 +262,14 @@ interface DeleteResponse {
 
 ### 錯誤類型與狀態碼
 
-| 狀態碼 | 使用情境 |
-|-------|---------|
-| 400 | 請求格式錯誤、驗證失敗 |
-| 401 | 未認證（未登入） |
-| 403 | 無權限（已登入但權限不足） |
-| 404 | 資源不存在 |
-| 409 | 資源衝突（如重複的 unique key） |
-| 500 | 伺服器內部錯誤 |
+| 狀態碼 | 使用情境                        |
+| ------ | ------------------------------- |
+| 400    | 請求格式錯誤、驗證失敗          |
+| 401    | 未認證（未登入）                |
+| 403    | 無權限（已登入但權限不足）      |
+| 404    | 資源不存在                      |
+| 409    | 資源衝突（如重複的 unique key） |
+| 500    | 伺服器內部錯誤                  |
 
 ### createError 用法
 
@@ -273,33 +277,33 @@ interface DeleteResponse {
 // 400 Bad Request
 throw createError({
   statusCode: 400,
-  statusMessage: 'Bad Request',
-  message: '缺少必要參數',
-})
+  statusMessage: "Bad Request",
+  message: "缺少必要參數",
+});
 
 // 404 Not Found
 if (!data) {
   throw createError({
     statusCode: 404,
-    message: '找不到指定的資源',
-  })
+    message: "找不到指定的資源",
+  });
 }
 
 // 409 Conflict（唯一約束違反）
-if (error?.code === '23505') {
+if (error?.code === "23505") {
   throw createError({
     statusCode: 409,
-    message: '資料重複，請檢查輸入',
-  })
+    message: "資料重複，請檢查輸入",
+  });
 }
 
 // 500 Internal Server Error
 if (error) {
-  console.error('Database error:', error)
+  console.error("Database error:", error);
   throw createError({
     statusCode: 500,
-    message: '操作失敗，請稍後再試',
-  })
+    message: "操作失敗，請稍後再試",
+  });
 }
 ```
 
@@ -312,8 +316,10 @@ if (error) {
 ```typescript
 // 多欄位搜尋（使用 OR 條件）
 if (query.search) {
-  const searchStr = `%${query.search}%`
-  dbQuery = dbQuery.or(`name.ilike.${searchStr},description.ilike.${searchStr}`)
+  const searchStr = `%${query.search}%`;
+  dbQuery = dbQuery.or(
+    `name.ilike.${searchStr},description.ilike.${searchStr}`,
+  );
 }
 ```
 
@@ -321,21 +327,21 @@ if (query.search) {
 
 ```typescript
 // 動態排序
-const sortDirAsc = query.sortDir === 'asc'
-dbQuery = dbQuery.order(query.sortBy || 'id', { ascending: sortDirAsc })
+const sortDirAsc = query.sortDir === "asc";
+dbQuery = dbQuery.order(query.sortBy || "id", { ascending: sortDirAsc });
 ```
 
 ### 分頁實作
 
 ```typescript
 // 計算 range
-const from = (query.page - 1) * query.pageSize
-const to = from + query.pageSize - 1
+const from = (query.page - 1) * query.pageSize;
+const to = from + query.pageSize - 1;
 
 // 執行分頁查詢
 const { data, count, error } = await dbQuery
-  .select('*', { count: 'exact' })
-  .range(from, to)
+  .select("*", { count: "exact" })
+  .range(from, to);
 ```
 
 ---
@@ -346,45 +352,45 @@ const { data, count, error } = await dbQuery
 
 ```typescript
 // server/api/v1/resources/index.get.ts
-import { getSupabaseWithContext } from '~~/server/utils/supabase'
-import { paginationQuerySchema } from '~~/shared/types/resources'
+import { getSupabaseWithContext } from "~~/server/utils/supabase";
+import { paginationQuerySchema } from "~~/shared/types/resources";
 
 export default defineEventHandler(async (event) => {
   // 1. 權限檢查
-  await requireUserSession(event)
+  await requireUserSession(event);
 
   // 2. 驗證查詢參數
-  const query = await getValidatedQuery(event, paginationQuerySchema.parse)
+  const query = await getValidatedQuery(event, paginationQuerySchema.parse);
 
   // 3. 取得 Supabase Client
-  const supabase = await getSupabaseWithContext(event)
-  const db = supabase.schema('your_schema')
+  const supabase = await getSupabaseWithContext(event);
+  const db = supabase.schema("your_schema");
 
   // 4. 建立查詢
   let dbQuery = db
-    .from('resources')
-    .select('*', { count: 'exact' })
-    .is('deleted_at', null)
+    .from("resources")
+    .select("*", { count: "exact" })
+    .is("deleted_at", null);
 
   // 5. 搜尋條件
   if (query.search) {
-    const searchStr = `%${query.search}%`
-    dbQuery = dbQuery.or(`name.ilike.${searchStr}`)
+    const searchStr = `%${query.search}%`;
+    dbQuery = dbQuery.or(`name.ilike.${searchStr}`);
   }
 
   // 6. 排序
-  dbQuery = dbQuery.order(query.sortBy || 'id', {
-    ascending: query.sortDir === 'asc',
-  })
+  dbQuery = dbQuery.order(query.sortBy || "id", {
+    ascending: query.sortDir === "asc",
+  });
 
   // 7. 分頁
-  const from = (query.page - 1) * query.pageSize
-  const to = from + query.pageSize - 1
-  const { data, count, error } = await dbQuery.range(from, to)
+  const from = (query.page - 1) * query.pageSize;
+  const to = from + query.pageSize - 1;
+  const { data, count, error } = await dbQuery.range(from, to);
 
   // 8. 錯誤處理
   if (error) {
-    throw createError({ statusCode: 500, message: '載入資料失敗' })
+    throw createError({ statusCode: 500, message: "載入資料失敗" });
   }
 
   // 9. 回應
@@ -396,110 +402,110 @@ export default defineEventHandler(async (event) => {
       total: count || 0,
       totalPages: Math.ceil((count || 0) / query.pageSize),
     },
-  }
-})
+  };
+});
 ```
 
 ### POST 新增 API
 
 ```typescript
 // server/api/v1/resources/index.post.ts
-import { getSupabaseWithContext } from '~~/server/utils/supabase'
-import { createResourceSchema } from '~~/shared/types/resources'
+import { getSupabaseWithContext } from "~~/server/utils/supabase";
+import { createResourceSchema } from "~~/shared/types/resources";
 
 export default defineEventHandler(async (event) => {
   // 1. 權限檢查
   const { user } = await requireUserSession(event, {
-    user: { role: ['admin', 'manager'] },
-  })
+    user: { role: ["admin", "manager"] },
+  });
 
   // 2. 驗證請求資料
-  const body = await readValidatedBody(event, createResourceSchema.parse)
+  const body = await readValidatedBody(event, createResourceSchema.parse);
 
   // 3. 取得 Supabase Client
-  const supabase = await getSupabaseWithContext(event)
-  const db = supabase.schema('your_schema')
+  const supabase = await getSupabaseWithContext(event);
+  const db = supabase.schema("your_schema");
 
   // 4. 新增資料
   const { data, error } = await db
-    .from('resources')
+    .from("resources")
     .insert({ ...body, created_by: user.id })
     .select()
-    .single()
+    .single();
 
   // 5. 錯誤處理
-  if (error?.code === '23505') {
-    throw createError({ statusCode: 409, message: '資料重複' })
+  if (error?.code === "23505") {
+    throw createError({ statusCode: 409, message: "資料重複" });
   }
   if (error) {
-    throw createError({ statusCode: 500, message: '新增失敗' })
+    throw createError({ statusCode: 500, message: "新增失敗" });
   }
 
   // 6. 記錄操作日誌
-  await db.from('operation_logs').insert({
+  await db.from("operation_logs").insert({
     user_id: user.id,
-    action: 'create',
-    target_type: 'resource',
+    action: "create",
+    target_type: "resource",
     target_id: data.id.toString(),
     details: body,
-  })
+  });
 
   // 7. 回應
-  setResponseStatus(event, 201)
-  return { data }
-})
+  setResponseStatus(event, 201);
+  return { data };
+});
 ```
 
 ### PATCH 更新 API
 
 ```typescript
 // server/api/v1/resources/[id]/index.patch.ts
-import { getSupabaseWithContext } from '~~/server/utils/supabase'
-import { updateResourceSchema, idParamSchema } from '~~/shared/types/resources'
+import { getSupabaseWithContext } from "~~/server/utils/supabase";
+import { updateResourceSchema, idParamSchema } from "~~/shared/types/resources";
 
 export default defineEventHandler(async (event) => {
   // 1. 權限檢查
   const { user } = await requireUserSession(event, {
-    user: { role: ['admin', 'manager'] },
-  })
+    user: { role: ["admin", "manager"] },
+  });
 
   // 2. 驗證參數與請求資料
-  const params = await getValidatedRouterParams(event, idParamSchema.parse)
-  const body = await readValidatedBody(event, updateResourceSchema.parse)
+  const params = await getValidatedRouterParams(event, idParamSchema.parse);
+  const body = await readValidatedBody(event, updateResourceSchema.parse);
 
   // 3. 取得 Supabase Client
-  const supabase = await getSupabaseWithContext(event)
-  const db = supabase.schema('your_schema')
+  const supabase = await getSupabaseWithContext(event);
+  const db = supabase.schema("your_schema");
 
   // 4. 更新資料
   const { data, error } = await db
-    .from('resources')
+    .from("resources")
     .update({ ...body, updated_at: new Date().toISOString() })
-    .eq('id', params.id)
-    .is('deleted_at', null)
+    .eq("id", params.id)
+    .is("deleted_at", null)
     .select()
-    .single()
+    .single();
 
   // 5. 錯誤處理
   if (!data) {
-    throw createError({ statusCode: 404, message: '找不到指定的資源' })
+    throw createError({ statusCode: 404, message: "找不到指定的資源" });
   }
   if (error) {
-    throw createError({ statusCode: 500, message: '更新失敗' })
+    throw createError({ statusCode: 500, message: "更新失敗" });
   }
 
   // 6. 記錄操作日誌
-  await db.from('operation_logs').insert({
+  await db.from("operation_logs").insert({
     user_id: user.id,
-    action: 'update',
-    target_type: 'resource',
+    action: "update",
+    target_type: "resource",
     target_id: params.id.toString(),
     details: body,
-  })
+  });
 
   // 7. 回應
-  return { data }
-})
+  return { data };
+});
 ```
 
 ---
@@ -536,10 +542,10 @@ server/api/v1/users/
 
 ```typescript
 // ❌ 錯誤：不會自動轉換
-z.number()  // '1' 會驗證失敗
+z.number(); // '1' 會驗證失敗
 
 // ✅ 正確：自動將字串轉為數字
-z.coerce.number().int().positive()  // '1' → 1
+z.coerce.number().int().positive(); // '1' → 1
 ```
 
 ### 忘記過濾軟刪除資料
@@ -550,10 +556,7 @@ z.coerce.number().int().positive()  // '1' → 1
 
 ```typescript
 // ✅ 正確：排除已軟刪除的資料
-const { data } = await db
-  .from('resources')
-  .select('*')
-  .is('deleted_at', null)  // 必須加這行
+const { data } = await db.from("resources").select("*").is("deleted_at", null); // 必須加這行
 ```
 
 ---

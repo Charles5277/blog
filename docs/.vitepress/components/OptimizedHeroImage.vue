@@ -1,60 +1,57 @@
 <script setup lang="ts">
-  import { withBase } from 'vitepress';
-  import { onMounted, ref } from 'vue';
+import { withBase } from "vitepress";
+import { onMounted, ref } from "vue";
 
-  interface Props {
-    src: string;
-    alt: string;
-    class?: string;
-    lazy?: boolean; // 是否使用 lazy loading
-    priority?: boolean; // 是否為優先載入（如 hero image）
-  }
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  lazy?: boolean; // 是否使用 lazy loading
+  priority?: boolean; // 是否為優先載入（如 hero image）
+}
 
-  const props = withDefaults(defineProps<Props>(), {
-    lazy: true,
-    priority: false,
-  });
+const props = withDefaults(defineProps<Props>(), {
+  lazy: true,
+  priority: false,
+});
 
-  const imgRef = ref<HTMLImageElement>();
-  const isLoaded = ref(false);
-  const currentSrc = ref('');
+const imgRef = ref<HTMLImageElement>();
+const isLoaded = ref(false);
+const currentSrc = ref("");
 
-  // 根據裝置選擇最適合的圖片
-  function selectOptimalImage() {
-    const width = window.innerWidth;
+// 根據裝置選擇最適合的圖片
+function selectOptimalImage() {
+  const width = window.innerWidth;
 
-    if (props.src === 'home.webp' || props.src === 'home-512.webp') {
-      if (width <= 320) {
-        return withBase('/home-256.webp');
-      }
-      else if (width <= 480) {
-        return withBase('/home-mobile.webp');
-      }
-      else if (width <= 768) {
-        return withBase('/home-384.webp');
-      }
-      else {
-        return withBase('/home-512.webp');
-      }
+  if (props.src === "home.webp" || props.src === "home-512.webp") {
+    if (width <= 320) {
+      return withBase("/home-256.webp");
+    } else if (width <= 480) {
+      return withBase("/home-mobile.webp");
+    } else if (width <= 768) {
+      return withBase("/home-384.webp");
+    } else {
+      return withBase("/home-512.webp");
     }
-
-    return withBase(`/${props.src}`);
   }
 
-  // 處理圖片載入完成
-  function handleImageLoad() {
-    isLoaded.value = true;
-  }
+  return withBase(`/${props.src}`);
+}
 
-  // 處理圖片載入錯誤
-  function handleImageError() {
-    console.warn(`Failed to load image: ${currentSrc.value}`);
-  }
+// 處理圖片載入完成
+function handleImageLoad() {
+  isLoaded.value = true;
+}
 
-  onMounted(() => {
-    // 設置圖片來源
-    currentSrc.value = selectOptimalImage();
-  });
+// 處理圖片載入錯誤
+function handleImageError() {
+  console.warn(`Failed to load image: ${currentSrc.value}`);
+}
+
+onMounted(() => {
+  // 設置圖片來源
+  currentSrc.value = selectOptimalImage();
+});
 </script>
 
 <template>
@@ -68,7 +65,7 @@
     decoding="async"
     @load="handleImageLoad"
     @error="handleImageError"
-  >
+  />
 </template>
 
 <style scoped>

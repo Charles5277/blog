@@ -163,77 +163,41 @@ export function getServerSupabaseClient(): SupabaseClient&lt;Database&gt; {
 ### Props 最佳實踐
 
 ```vue
-&lt;script setup lang="ts"&gt;
-// ✅ 推薦：使用 interface 定義 Props
-interface Props {
-  userId: string
-  showAvatar?: boolean
-  role: 'admin' | 'manager' | 'staff'
-}
-
-// 不需要 const props =，除非在 script 中使用
-defineProps&lt;Props&gt;()
-
-// 如果需要在 script 中使用 props
-const props = defineProps&lt;Props&gt;()
-console.log(props.userId)
-&lt;/script&gt;
+&lt;script setup lang="ts"&gt; // ✅ 推薦：使用 interface 定義 Props interface
+Props { userId: string showAvatar?: boolean role: 'admin' | 'manager' | 'staff'
+} // 不需要 const props =，除非在 script 中使用 defineProps&lt;Props&gt;() //
+如果需要在 script 中使用 props const props = defineProps&lt;Props&gt;()
+console.log(props.userId) &lt;/script&gt;
 ```
 
 ### Props 解構與預設值
 
 ```vue
-&lt;script setup lang="ts"&gt;
-interface Props {
-  title: string
-  count?: number
-  items?: string[]
-}
-
-// Vue 3.5+ 可以直接解構並設定預設值
-const { title, count = 0, items = [] } = defineProps&lt;Props&gt;()
-&lt;/script&gt;
+&lt;script setup lang="ts"&gt; interface Props { title: string count?: number
+items?: string[] } // Vue 3.5+ 可以直接解構並設定預設值 const { title, count =
+0, items = [] } = defineProps&lt;Props&gt;() &lt;/script&gt;
 ```
 
 ### Emits 類型定義
 
 ```vue
-&lt;script setup lang="ts"&gt;
-// ✅ 推薦：使用元組語法定義參數
-const emit = defineEmits&lt;{
-  update: [value: string]
-  delete: [id: string, reason?: string]
-  close: []  // 無參數事件
-}&gt;()
-
-// 使用時有完整類型檢查
-emit('update', 'new value')  // ✅
-emit('update', 123)          // ❌ 類型錯誤
-emit('delete', 'id-123')     // ✅
-emit('close')                // ✅
-&lt;/script&gt;
+&lt;script setup lang="ts"&gt; // ✅ 推薦：使用元組語法定義參數 const emit =
+defineEmits&lt;{ update: [value: string] delete: [id: string, reason?: string]
+close: [] // 無參數事件 }&gt;() // 使用時有完整類型檢查 emit('update', 'new
+value') // ✅ emit('update', 123) // ❌ 類型錯誤 emit('delete', 'id-123') // ✅
+emit('close') // ✅ &lt;/script&gt;
 ```
 
 ### defineModel 雙向綁定
 
 ```vue
-&lt;script setup lang="ts"&gt;
-// 基本用法
-const modelValue = defineModel&lt;string&gt;()
-
-// 具名 v-model
-const firstName = defineModel&lt;string&gt;('firstName')
-const lastName = defineModel&lt;string&gt;('lastName')
-
-// 帶預設值
-const count = defineModel&lt;number&gt;('count', { default: 0 })
-&lt;/script&gt;
-
-&lt;!-- 父元件使用 --&gt;
-&lt;UserForm
-  v-model:first-name="user.firstName"
-  v-model:last-name="user.lastName"
-/&gt;
+&lt;script setup lang="ts"&gt; // 基本用法 const modelValue =
+defineModel&lt;string&gt;() // 具名 v-model const firstName =
+defineModel&lt;string&gt;('firstName') const lastName =
+defineModel&lt;string&gt;('lastName') // 帶預設值 const count =
+defineModel&lt;number&gt;('count', { default: 0 }) &lt;/script&gt; &lt;!--
+父元件使用 --&gt; &lt;UserForm v-model:first-name="user.firstName"
+v-model:last-name="user.lastName" /&gt;
 ```
 
 ---
@@ -354,14 +318,14 @@ export default defineEventHandler(async (event): Promise&lt;PaginatedResponse&lt
 ```typescript
 // ❌ 錯誤：假設所有欄位都存在
 interface User {
-  id: string
-  name: string  // 實際上資料庫允許 null
-  email: string
+  id: string;
+  name: string; // 實際上資料庫允許 null
+  email: string;
 }
 
 // API 回傳 { id: '1', name: null, email: 'test@example.com' }
-const user = await fetchUser()
-console.log(user.name.toUpperCase())  // Runtime Error: Cannot read property 'toUpperCase' of null
+const user = await fetchUser();
+console.log(user.name.toUpperCase()); // Runtime Error: Cannot read property 'toUpperCase' of null
 ```
 
 **解決**：類型定義要反映真實資料結構。
@@ -369,13 +333,13 @@ console.log(user.name.toUpperCase())  // Runtime Error: Cannot read property 'to
 ```typescript
 // ✅ 正確：使用自動產生的類型或明確標記 nullable
 interface User {
-  id: string
-  name: string | null  // 明確標記可為 null
-  email: string
+  id: string;
+  name: string | null; // 明確標記可為 null
+  email: string;
 }
 
 // 使用時檢查
-const displayName = user.name ?? '未設定名稱'
+const displayName = user.name ?? "未設定名稱";
 ```
 
 ### Supabase 查詢類型遺失
@@ -412,13 +376,13 @@ pnpm typecheck  # 驗證類型正確性
 
 ## 類型檔案位置規範
 
-| 類型種類 | 位置 | 說明 |
-|---------|------|------|
-| 資料庫類型 | `app/types/database.types.ts` | 自動產生，勿手動編輯 |
-| 全域通用 | `shared/types/index.d.ts` | `Maybe<T>` 等全域類型 |
-| Client 專用 | `app/types/` | 元件、Store 相關類型 |
-| Server 專用 | `server/types/` | API、認證相關類型 |
-| Zod Schema | 與 API 同檔 | 請求驗證 Schema |
+| 類型種類    | 位置                          | 說明                  |
+| ----------- | ----------------------------- | --------------------- |
+| 資料庫類型  | `app/types/database.types.ts` | 自動產生，勿手動編輯  |
+| 全域通用    | `shared/types/index.d.ts`     | `Maybe<T>` 等全域類型 |
+| Client 專用 | `app/types/`                  | 元件、Store 相關類型  |
+| Server 專用 | `server/types/`               | API、認證相關類型     |
+| Zod Schema  | 與 API 同檔                   | 請求驗證 Schema       |
 
 ---
 

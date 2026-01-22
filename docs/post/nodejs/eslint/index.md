@@ -10,7 +10,6 @@ tags:
   - Nuxt
   - JavaScript
   - TypeScript
-
 ---
 
 ## 認識 ESLint
@@ -26,9 +25,9 @@ ESLint 是一種 Linter 工具，主要用於檢查 JavaScript 和 TypeScript �
 ## 準備環境
 
 - Node.js v18.18.0 或以上版本
-> [🔗 參考文章](/nodejs/nvm/)
+  > [🔗 參考文章](/nodejs/nvm/)
 - pnpm 或其他套件管理工具
-> [🔗 參考文章](/nodejs/package-manager/)
+  > [🔗 參考文章](/nodejs/package-manager/)
 
 ## 安裝 ESLint
 
@@ -36,27 +35,33 @@ ESLint 是一種 Linter 工具，主要用於檢查 JavaScript 和 TypeScript �
 並且透過 [🔗 GitHub - antfu/eslint-config](https://github.com/antfu/eslint-config) 這個套件來快速配置 ESLint。
 
 - 執行以下指令安裝 ESLint 與準備好的設定檔
+
 ```bash
 pnpm dlx @antfu/eslint-config@latest
 ```
 
 如果專案沒有初始化 git 或是還有未 commit 的變動，會出現以下提示：
+
 > ![alt text](image.png)
-透過方向鍵選擇 yes 並按 Enter 執行即可
+> 透過方向鍵選擇 yes 並按 Enter 執行即可
 
 - 選擇你的專案框架類型
-> ![alt text](image-1.png)
-此處我們用空白鍵選 Vue，若為 Nuxt 框架一樣可以選擇 Vue。
+
+  > ![alt text](image-1.png)
+  > 此處我們用空白鍵選 Vue，若為 Nuxt 框架一樣可以選擇 Vue。
 
 - 選擇是否需要額外的 utils
-> ![alt text](image-2.png)
-若有需要可以選取，此處我們不選擇，直接按 Enter 繼續即可。
+
+  > ![alt text](image-2.png)
+  > 若有需要可以選取，此處我們不選擇，直接按 Enter 繼續即可。
 
 - 自動更新 vscode 的設定檔
-> ![alt text](image-3.png)
-建議選 yes，這只會影響到當前專案的 VS Code 設定檔，不會影響到全域設定。
+
+  > ![alt text](image-3.png)
+  > 建議選 yes，這只會影響到當前專案的 VS Code 設定檔，不會影響到全域設定。
 
 - 安裝依賴套件
+
 ```bash
 pnpm install
 ```
@@ -79,6 +84,7 @@ pnpm install
 這樣就完成了 ESLint 的安裝與基本配置。
 
 ## 安裝 VS Code 擴充套件
+
 為了在 VS Code 中更好地使用 ESLint，我們需要安裝相關的擴充套件。
 
 > [🔗 ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
@@ -122,47 +128,51 @@ export default antfu({
 以下是我習慣的 VS Code 設定檔，包含了 ESLint 與 Prettier 的整合，讓程式碼格式化與檢查更為一致。
 
 ```js
-import antfu from '@antfu/eslint-config';
+import antfu from "@antfu/eslint-config";
 
 export default antfu({
   vue: true,
   typescript: true,
 
-  ignores: [
-    '**/*.md',
-  ],
+  ignores: ["**/*.md"],
 
   rules: {
-    '@stylistic/semi': ['error', 'always'],
-    '@stylistic/member-delimiter-style': ['error', {
-      multiline: {
-        delimiter: 'semi',
-        requireLast: true,
+    "@stylistic/semi": ["error", "always"],
+    "@stylistic/member-delimiter-style": [
+      "error",
+      {
+        multiline: {
+          delimiter: "semi",
+          requireLast: true,
+        },
+        singleline: {
+          delimiter: "semi",
+          requireLast: false,
+        },
       },
-      singleline: {
-        delimiter: 'semi',
-        requireLast: false,
+    ],
+    "no-useless-escape": "off",
+    camelcase: "error",
+    "vue/eqeqeq": "error",
+    "no-await-in-loop": "error",
+    "require-atomic-updates": "error",
+    "max-nested-callbacks": ["warn", 3],
+    "no-return-await": "error",
+    "vue/singleline-html-element-content-newline": "off",
+    "vue/require-component-is": "off",
+    "vue/max-attributes-per-line": [
+      "error",
+      {
+        singleline: {
+          max: 1,
+        },
+        multiline: {
+          max: 1,
+        },
       },
-    }],
-    'no-useless-escape': 'off',
-    'camelcase': 'error',
-    'vue/eqeqeq': 'error',
-    'no-await-in-loop': 'error',
-    'require-atomic-updates': 'error',
-    'max-nested-callbacks': ['warn', 3],
-    'no-return-await': 'error',
-    'vue/singleline-html-element-content-newline': 'off',
-    'vue/require-component-is': 'off',
-    'vue/max-attributes-per-line': ['error', {
-      singleline: {
-        max: 1,
-      },
-      multiline: {
-        max: 1,
-      },
-    }],
-    'style/indent': 'off',
-    'vue/script-indent': ['error', 2, { baseIndent: 1 }],
+    ],
+    "style/indent": "off",
+    "vue/script-indent": ["error", 2, { baseIndent: 1 }],
   },
 });
 ```

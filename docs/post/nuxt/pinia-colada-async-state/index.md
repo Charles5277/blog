@@ -30,23 +30,23 @@ tags:
 
 ### vs TanStack Query
 
-| 特性 | Pinia Colada | TanStack Query |
-|-----|-------------|----------------|
-| Vue 整合 | 原生支援 | 需要 adapter |
-| Pinia 整合 | 無縫整合 | 獨立運作 |
-| 學習曲線 | 較低 | 較高 |
-| 生態系 | 較新 | 成熟 |
-| DevTools | Vue DevTools 原生支援 | 需要獨立擴充 |
-| Bundle Size | 較小 | 較大 |
+| 特性        | Pinia Colada          | TanStack Query |
+| ----------- | --------------------- | -------------- |
+| Vue 整合    | 原生支援              | 需要 adapter   |
+| Pinia 整合  | 無縫整合              | 獨立運作       |
+| 學習曲線    | 較低                  | 較高           |
+| 生態系      | 較新                  | 成熟           |
+| DevTools    | Vue DevTools 原生支援 | 需要獨立擴充   |
+| Bundle Size | 較小                  | 較大           |
 
 ### vs 純 Pinia
 
-| 特性 | Pinia Colada | 純 Pinia |
-|-----|-------------|----------|
-| 快取管理 | 內建 | 需手動實作 |
-| Loading/Error 狀態 | 自動追蹤 | 需手動管理 |
-| 自動重新查詢 | 內建支援 | 需手動實作 |
-| 樂觀更新 | 內建支援 | 需手動實作 |
+| 特性               | Pinia Colada | 純 Pinia   |
+| ------------------ | ------------ | ---------- |
+| 快取管理           | 內建         | 需手動實作 |
+| Loading/Error 狀態 | 自動追蹤     | 需手動管理 |
+| 自動重新查詢       | 內建支援     | 需手動實作 |
+| 樂觀更新           | 內建支援     | 需手動實作 |
 
 ---
 
@@ -63,11 +63,8 @@ pnpm add @pinia/colada
 ```typescript
 // nuxt.config.ts
 export default defineNuxtConfig({
-  modules: [
-    '@pinia/nuxt',
-    '@pinia/colada-nuxt',
-  ],
-})
+  modules: ["@pinia/nuxt", "@pinia/colada-nuxt"],
+});
 ```
 
 ---
@@ -88,10 +85,10 @@ app/
 
 ### queries/ vs stores/ 的分工
 
-| 目錄 | 用途 | 範例 |
-|-----|------|------|
+| 目錄       | 用途            | 範例                     |
+| ---------- | --------------- | ------------------------ |
 | `queries/` | Server 資料快取 | 列表、單筆資料、下拉選項 |
-| `stores/` | Client 狀態 | 使用者偏好、UI 狀態 |
+| `stores/`  | Client 狀態     | 使用者偏好、UI 狀態      |
 
 ---
 
@@ -101,28 +98,28 @@ app/
 
 ```typescript
 // app/queries/users.ts
-import { useQuery } from '@pinia/colada'
+import { useQuery } from "@pinia/colada";
 
 export function useUsersQuery() {
   return useQuery({
-    key: ['users'],
-    query: () => $fetch('/api/v1/users'),
-  })
+    key: ["users"],
+    query: () => $fetch("/api/v1/users"),
+  });
 }
 
 // 在元件中使用
-const { data, status, error, refetch } = useUsersQuery()
+const { data, status, error, refetch } = useUsersQuery();
 ```
 
 ### 回傳值說明
 
-| 屬性 | 類型 | 說明 |
-|-----|------|------|
-| `data` | `Ref&lt;T \| undefined&gt;` | 查詢結果 |
-| `status` | `Ref&lt;'pending' \| 'success' \| 'error'&gt;` | 查詢狀態 |
-| `error` | `Ref&lt;Error \| null&gt;` | 錯誤物件 |
-| `isLoading` | `ComputedRef&lt;boolean&gt;` | 是否載入中 |
-| `refetch` | `() =&gt; Promise` | 手動重新查詢 |
+| 屬性        | 類型                                           | 說明         |
+| ----------- | ---------------------------------------------- | ------------ |
+| `data`      | `Ref&lt;T \| undefined&gt;`                    | 查詢結果     |
+| `status`    | `Ref&lt;'pending' \| 'success' \| 'error'&gt;` | 查詢狀態     |
+| `error`     | `Ref&lt;Error \| null&gt;`                     | 錯誤物件     |
+| `isLoading` | `ComputedRef&lt;boolean&gt;`                   | 是否載入中   |
+| `refetch`   | `() =&gt; Promise`                             | 手動重新查詢 |
 
 ### 帶參數的查詢
 
@@ -200,41 +197,33 @@ export function useRoleOptionsQuery() {
 ### 基本用法
 
 ```typescript
-import { useMutation, useQueryClient } from '@pinia/colada'
+import { useMutation, useQueryClient } from "@pinia/colada";
 
 export function useCreateUserMutation() {
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
 
   return useMutation({
     mutation: (data: CreateUserInput) =>
-      $fetch('/api/v1/users', {
-        method: 'POST',
+      $fetch("/api/v1/users", {
+        method: "POST",
         body: data,
       }),
     onSuccess: () => {
       // 成功後使 users 列表快取失效
-      queryClient.invalidateQueries({ key: ['users'] })
+      queryClient.invalidateQueries({ key: ["users"] });
     },
-  })
+  });
 }
 ```
 
 ### 在元件中使用
 
 ```vue
-&lt;script setup lang="ts"&gt;
-const { mutate, status, error } = useCreateUserMutation()
-const toast = useToast()
-
-async function handleSubmit(formData: CreateUserInput) {
-  try {
-    await mutate(formData)
-    toast.add({ title: '新增成功', color: 'green' })
-  } catch (e) {
-    toast.add({ title: '新增失敗', color: 'red' })
-  }
-}
-&lt;/script&gt;
+&lt;script setup lang="ts"&gt; const { mutate, status, error } =
+useCreateUserMutation() const toast = useToast() async function
+handleSubmit(formData: CreateUserInput) { try { await mutate(formData)
+toast.add({ title: '新增成功', color: 'green' }) } catch (e) { toast.add({
+title: '新增失敗', color: 'red' }) } } &lt;/script&gt;
 ```
 
 ### 更新與刪除
@@ -242,35 +231,35 @@ async function handleSubmit(formData: CreateUserInput) {
 ```typescript
 // 更新
 export function useUpdateUserMutation() {
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
 
   return useMutation({
     mutation: ({ id, data }: { id: string; data: UpdateUserInput }) =>
       $fetch(`/api/v1/users/${id}`, {
-        method: 'PATCH',
+        method: "PATCH",
         body: data,
       }),
     onSuccess: (result, { id }) => {
       // 使單筆和列表快取都失效
-      queryClient.invalidateQueries({ key: ['users', id] })
-      queryClient.invalidateQueries({ key: ['users', 'list'] })
+      queryClient.invalidateQueries({ key: ["users", id] });
+      queryClient.invalidateQueries({ key: ["users", "list"] });
     },
-  })
+  });
 }
 
 // 刪除
 export function useDeleteUserMutation() {
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
 
   return useMutation({
     mutation: (id: string) =>
       $fetch(`/api/v1/users/${id}`, {
-        method: 'DELETE',
+        method: "DELETE",
       }),
     onSuccess: () => {
-      queryClient.invalidateQueries({ key: ['users'] })
+      queryClient.invalidateQueries({ key: ["users"] });
     },
-  })
+  });
 }
 ```
 
@@ -284,44 +273,44 @@ export function useDeleteUserMutation() {
 
 ```typescript
 export function useUpdateUserMutation() {
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
 
   return useMutation({
     mutation: ({ id, data }: { id: string; data: UpdateUserInput }) =>
       $fetch(`/api/v1/users/${id}`, {
-        method: 'PATCH',
+        method: "PATCH",
         body: data,
       }),
 
     onMutate: async ({ id, data }) => {
       // 1. 取消正在進行的查詢（避免覆蓋樂觀更新）
-      await queryClient.cancelQueries({ key: ['users', id] })
+      await queryClient.cancelQueries({ key: ["users", id] });
 
       // 2. 保存舊資料（用於回滾）
-      const previousUser = queryClient.getQueryData(['users', id])
+      const previousUser = queryClient.getQueryData(["users", id]);
 
       // 3. 樂觀更新快取
-      queryClient.setQueryData(['users', id], (old: User) => ({
+      queryClient.setQueryData(["users", id], (old: User) => ({
         ...old,
         ...data,
-      }))
+      }));
 
       // 4. 回傳 context 供 onError 使用
-      return { previousUser }
+      return { previousUser };
     },
 
     onError: (error, { id }, context) => {
       // 錯誤時回滾到舊資料
       if (context?.previousUser) {
-        queryClient.setQueryData(['users', id], context.previousUser)
+        queryClient.setQueryData(["users", id], context.previousUser);
       }
     },
 
     onSettled: (result, error, { id }) => {
       // 無論成功或失敗，最後都重新查詢確保資料正確
-      queryClient.invalidateQueries({ key: ['users', id] })
+      queryClient.invalidateQueries({ key: ["users", id] });
     },
-  })
+  });
 }
 ```
 
@@ -366,42 +355,42 @@ export function useUpdateUserMutation() {
 
 ```typescript
 useQuery({
-  key: ['users'],
-  query: () => $fetch('/api/v1/users'),
-  staleTime: 5 * 60 * 1000,   // 5 分鐘內視為新鮮，不會重新請求
-  gcTime: 10 * 60 * 1000,     // 10 分鐘後從記憶體清除
-})
+  key: ["users"],
+  query: () => $fetch("/api/v1/users"),
+  staleTime: 5 * 60 * 1000, // 5 分鐘內視為新鮮，不會重新請求
+  gcTime: 10 * 60 * 1000, // 10 分鐘後從記憶體清除
+});
 ```
 
-| 參數 | 說明 | 建議值 |
-|-----|------|--------|
-| `staleTime` | 資料多久後視為過期 | 依資料變動頻率設定 |
-| `gcTime` | 快取保留多久後清除 | 通常設為 staleTime 的 2 倍 |
+| 參數        | 說明               | 建議值                     |
+| ----------- | ------------------ | -------------------------- |
+| `staleTime` | 資料多久後視為過期 | 依資料變動頻率設定         |
+| `gcTime`    | 快取保留多久後清除 | 通常設為 staleTime 的 2 倍 |
 
 ### 不同資料的快取策略
 
 ```typescript
 // 變動頻繁的資料（如儀表板）
 useQuery({
-  key: ['dashboard'],
-  query: () => $fetch('/api/v1/dashboard'),
-  staleTime: 30 * 1000,       // 30 秒
+  key: ["dashboard"],
+  query: () => $fetch("/api/v1/dashboard"),
+  staleTime: 30 * 1000, // 30 秒
   refetchInterval: 60 * 1000, // 每分鐘自動重新查詢
-})
+});
 
 // 較少變動的資料（如下拉選項）
 useQuery({
-  key: ['options', 'categories'],
-  query: () => $fetch('/api/v1/categories'),
-  staleTime: 30 * 60 * 1000,  // 30 分鐘
-})
+  key: ["options", "categories"],
+  query: () => $fetch("/api/v1/categories"),
+  staleTime: 30 * 60 * 1000, // 30 分鐘
+});
 
 // 幾乎不變的資料（如設定）
 useQuery({
-  key: ['config'],
-  query: () => $fetch('/api/v1/config'),
-  staleTime: Infinity,        // 永不過期
-})
+  key: ["config"],
+  query: () => $fetch("/api/v1/config"),
+  staleTime: Infinity, // 永不過期
+});
 ```
 
 ---
@@ -411,26 +400,26 @@ useQuery({
 ### 使快取失效
 
 ```typescript
-const queryClient = useQueryClient()
+const queryClient = useQueryClient();
 
 // 使特定查詢失效
-queryClient.invalidateQueries({ key: ['users', '123'] })
+queryClient.invalidateQueries({ key: ["users", "123"] });
 
 // 使所有 users 相關查詢失效
-queryClient.invalidateQueries({ key: ['users'] })
+queryClient.invalidateQueries({ key: ["users"] });
 
 // 使所有查詢失效
-queryClient.invalidateQueries()
+queryClient.invalidateQueries();
 ```
 
 ### 直接設定快取資料
 
 ```typescript
 // 設定快取資料（不觸發重新查詢）
-queryClient.setQueryData(['users', '123'], newUserData)
+queryClient.setQueryData(["users", "123"], newUserData);
 
 // 取得快取資料
-const cachedUser = queryClient.getQueryData(['users', '123'])
+const cachedUser = queryClient.getQueryData(["users", "123"]);
 ```
 
 ---
@@ -441,20 +430,20 @@ const cachedUser = queryClient.getQueryData(['users', '123'])
 
 ```typescript
 // app/stores/userPreferences.ts
-export const useUserPreferencesStore = defineStore('user-preferences', () => {
-  const primaryColor = ref('blue')
-  const sidebarCollapsed = ref(false)
+export const useUserPreferencesStore = defineStore("user-preferences", () => {
+  const primaryColor = ref("blue");
+  const sidebarCollapsed = ref(false);
 
   function setPrimaryColor(color: string) {
-    primaryColor.value = color
+    primaryColor.value = color;
   }
 
   return {
     primaryColor: readonly(primaryColor),
     sidebarCollapsed,
     setPrimaryColor,
-  }
-})
+  };
+});
 ```
 
 ### Query 管理 Server 資料
@@ -462,26 +451,22 @@ export const useUserPreferencesStore = defineStore('user-preferences', () => {
 ```typescript
 // app/queries/users.ts
 export function useCurrentUserQuery() {
-  const { user } = useUserSession()
+  const { user } = useUserSession();
 
   return useQuery({
-    key: () => ['users', user.value?.id],
+    key: () => ["users", user.value?.id],
     query: () => $fetch(`/api/v1/users/${user.value?.id}`),
-    enabled: () => !!user.value?.id,  // 只在登入後查詢
-  })
+    enabled: () => !!user.value?.id, // 只在登入後查詢
+  });
 }
 ```
 
 ### 組合使用
 
 ```vue
-&lt;script setup lang="ts"&gt;
-// Client 狀態用 Store
-const preferencesStore = useUserPreferencesStore()
-const { primaryColor } = storeToRefs(preferencesStore)
-
-// Server 資料用 Query
-const { data: user, isLoading } = useCurrentUserQuery()
+&lt;script setup lang="ts"&gt; // Client 狀態用 Store const preferencesStore =
+useUserPreferencesStore() const { primaryColor } = storeToRefs(preferencesStore)
+// Server 資料用 Query const { data: user, isLoading } = useCurrentUserQuery()
 &lt;/script&gt;
 ```
 
@@ -496,10 +481,10 @@ const { data: user, isLoading } = useCurrentUserQuery()
 ```typescript
 // ❌ 錯誤：key 不一致
 // query
-useQuery({ key: ['user', userId] })
+useQuery({ key: ["user", userId] });
 
 // mutation invalidate
-queryClient.invalidateQueries({ key: ['users', userId] })  // users vs user
+queryClient.invalidateQueries({ key: ["users", userId] }); // users vs user
 ```
 
 **解決**：統一 key 命名規則。
@@ -518,9 +503,9 @@ queryClient.invalidateQueries({ key: ['users', userId] })  // users vs user
 ```typescript
 // ❌ 錯誤：會發送 /api/v1/users/undefined
 useQuery({
-  key: () => ['users', toValue(userId)],
+  key: () => ["users", toValue(userId)],
   query: () => $fetch(`/api/v1/users/${toValue(userId)}`),
-})
+});
 ```
 
 **解決**：加上 enabled 條件。
@@ -528,10 +513,10 @@ useQuery({
 ```typescript
 // ✅ 正確：userId 存在才查詢
 useQuery({
-  key: () => ['users', toValue(userId)],
+  key: () => ["users", toValue(userId)],
   query: () => $fetch(`/api/v1/users/${toValue(userId)}`),
   enabled: () => !!toValue(userId),
-})
+});
 ```
 
 ### 樂觀更新沒有回滾

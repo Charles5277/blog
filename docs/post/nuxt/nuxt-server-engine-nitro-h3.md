@@ -39,7 +39,7 @@ H3 是 Nitro 內部使用的極簡 HTTP 框架，專為現代全端與 Serverles
 export default defineEventHandler(async (event) => {
   const body = await readBody(event); // 讀取請求主體
   const query = getQuery(event); // 取得查詢參數
-  setCookie(event, 'session', 'abc123'); // 設定 Cookie
+  setCookie(event, "session", "abc123"); // 設定 Cookie
   return { body, query };
 });
 ```
@@ -59,7 +59,7 @@ export default defineEventHandler(async (event) => {
 ```ts
 // server/api/hello.ts
 export default defineEventHandler((event) => {
-  const ua = event.node.req.headers['user-agent'];
+  const ua = event.node.req.headers["user-agent"];
   return { message: `Hello! You are using ${ua}` };
 });
 ```

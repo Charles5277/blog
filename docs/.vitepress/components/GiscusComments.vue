@@ -1,15 +1,11 @@
 <script setup lang="ts">
-  import { useData } from 'vitepress';
+import { useData } from "vitepress";
 
-  const { title, frontmatter } = useData();
+const { title, frontmatter } = useData();
 </script>
 
 <template>
-  <div
-    v-if="frontmatter.comments !== false"
-    :key="title"
-    class="giscus"
-  >
+  <div v-if="frontmatter.comments !== false" :key="title" class="giscus">
     <component
       is="script"
       src="https://giscus.app/client.js"

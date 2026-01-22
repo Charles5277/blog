@@ -6,7 +6,6 @@ category: Vue.js
 tags:
   - Vue
   - Frontend
-
 ---
 
 用於建立面向於 Desktop, Mobile, WebGL, Terminal 應用程式的前端。

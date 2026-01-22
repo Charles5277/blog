@@ -1,4 +1,4 @@
-import type { Post } from './posts.data';
+import type { Post } from "./posts.data";
 
 interface Data {
   [key: string]: Post[];

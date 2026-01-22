@@ -7,7 +7,6 @@ category: Git
 tags:
   - Git
   - VS Code
-
 ---
 
 ## 參考教學：
@@ -161,22 +160,18 @@ git config --global user.email "Email"
 > 這個 git config 檔案設定了一些 Git 與 VS Code 的整合設定，讓你可以在使用 Git 時使用 VS Code 作為編輯器、差異檢視工具和合併工具。以下是各個設定的指令說明：
 
 1. 編輯器設定:
-
    - 指令: `git config --global core.editor "code --wait"`
    - 功能: 將 VS Code 設定為全域（global）的 Git 編輯器，使用 `code --wait` 命令開啟 VS Code 並等待編輯器關閉後再繼續 Git 操作。
 
 2. 差異檢視工具設定:
-
    - 指令: `git config --global diff.tool vscode`
    - 功能: 設定 VS Code 為差異檢視工具，當使用 `git diff` 命令時，Git 會使用 VS Code 來顯示差異。
 
 3. VS Code 差異檢視工具設定:
-
    - 指令: `git config --global difftool.vscode.cmd "code --wait --diff $LOCAL $REMOTE"`
    - 功能: 設定使用 VS Code 作為差異檢視工具的命令，當你執行 `git difftool` 命令時，Git 會使用 VS Code 打開兩個檔案的差異。
 
 4. 合併工具設定:
-
    - 指令: `git config --global merge.tool vscode`
    - 功能: 設定 VS Code 為合併工具，當執行 `git merge` 命令時，Git 會使用 VS Code 來進行合併操作。
 
@@ -344,7 +339,6 @@ Date:   Sat Mar 25 15:40:00 2023 +0800
 - `<type>`
 
   > 以我使用 extension 所自訂的 config 為例，提供了以下這些，有些版本可能不會拆分這麼多細項，只需與協作夥伴協調好要使用的 type 清單即可
-
   - 🔀merge
     > 合併分支
   - 🧹chore
@@ -700,7 +694,6 @@ HEAD\~1
 - `git remote`
 
   > 查看 remote repo 列表的 branch 簡稱
-
   - `git remote add <remote repo簡稱的branch簡稱> <url>`
     > 添加 remote repo
   - `git remote -v`
@@ -868,7 +861,6 @@ HEAD\~1
 - `git config`
 
   > 設定檔相關操作
-
   - `git config --list`
     > 查看目前設定檔
 
@@ -879,7 +871,6 @@ HEAD\~1
 - `git commit -m "<填寫說明訊息>"`
 
   > 將 stage 區提交到 local repo，並加上 commit log
-
   - `git commit --amend -m "要修改的訊息"`
     > 修改最近一次的 commit 訊息，或是連同檔案修改內容一同變更
 
@@ -889,7 +880,6 @@ HEAD\~1
   > 不會查看到已經斷開連接 (沒有任何 branch 或 HEAD 綁定) 的 commit，需要的話請往下使用 git reflog
 
 - `git switch`
-
   - `git switch <branch>`
     > 切換 HEAD 到指定分支
     > 需要先清空 worktree
@@ -907,7 +897,6 @@ HEAD\~1
 - `git remote`
 
   > 查看 remote repo 的 branch 列表
-
   - `git remote add <remote repo的branch簡稱> <url>`
     > 添加 remote repo
     > 可以在一個 local repo 中添加多個 remote repo branch
@@ -919,7 +908,6 @@ HEAD\~1
 - `git push`
 
   > 將 local repo 更新到 remote repo
-
   - `git push`
     > 推送到 Remote Repo 預設的名稱：origin，到預設的分支：main
     > 等同 git push origin main
@@ -931,7 +919,6 @@ HEAD\~1
   > 將 remote repo 更新到 local repo
 
 - `git branch`
-
   - `git branch -a`
     > 查看所有現有分支
   - `git branch <新分支名稱>`
@@ -944,7 +931,6 @@ HEAD\~1
     > 將某個分支更名
 
 - `git merge`
-
   - `git merge <分支名稱>`
     > 將 HEAD 指向的 branch 跟 <分支名稱合併>
   - `git merge <分支名稱> --no-ff`
@@ -959,7 +945,6 @@ HEAD\~1
 - `git cherry-pick <hash>`
 
   > 將某個 commit 單獨複製到當前分支上
-
   - `git cherry-pick <start-hash>..<end-hash>`
     > 將 start 到 end 的 commit 都擷取
 
@@ -968,7 +953,6 @@ HEAD\~1
   > 將指定 commit 單獨複製到指定分支上 (而非當前分支)
 
 - `git restore`
-
   - `git restore <file_name>`
     > 將檔案的變更捨棄 (只限定未放到 stage 區的 workdir 變更)
     > 預設即為 - W (worktree)
@@ -990,7 +974,6 @@ HEAD\~1
   > 預設就是 mixed，所以可以不用加
   > 將 HEAD 指向的 branch 帶到指定的 commit 節點上
   > 原本位置的 commit 檔案狀態回到 workdir
-
   - `git reset <hash>/HEAD~數字 --soft`
     > 同 mixed，差在退回 stage 而不是 workdir
   - `git reset <hash> --hard`
@@ -1004,14 +987,12 @@ HEAD\~1
 - `git rebase`
 
   > 重新訂定該 branch 的基底 (起點)
-
   - `git rebase -i HEAD~數字`
     > 將同 branch 上多個 commit 濃縮合併
   - `git rebase <目標分支>`
     > 將當前 branch 追朔到根源，剪下後接到 <目標分支> 上
 
 - `git revert`
-
   - `git revert <指定的commit>`
     > 否定某個 commit 紀錄，自動進行反操作，試圖回到其 commit 的上一版狀態
   - `git revert <指定的commit> -m <parent_number>`
@@ -1028,7 +1009,6 @@ HEAD\~1
 - `git stash`
 
   > 將 worktree 打包隱藏
-
   - `git stash -u`
 
     > 將.gitignore 的檔案也加入
@@ -1046,7 +1026,6 @@ HEAD\~1
 
   > 使用 stash@{n} 即可指定第 n 個 stash
   > 若使用 stash 則指定目前最新的
-
   - `git stash show`
     > 顯示最新 stash 的詳情
   - `git stash@{n} branch <branch_name>`

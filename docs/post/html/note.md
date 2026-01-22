@@ -7,7 +7,6 @@ category: HTML
 tags:
   - Frontend
   - HTML
-
 ---
 
 ## 基本框架
@@ -282,13 +281,13 @@ tags:
     </form>
 
     <script>
-      let checkbox = document.querySelector('#show');
-      let password = document.querySelector('#password');
-      checkbox.addEventListener('click', () => {
-        if (password.type == 'password') {
-          password.type = 'text';
+      let checkbox = document.querySelector("#show");
+      let password = document.querySelector("#password");
+      checkbox.addEventListener("click", () => {
+        if (password.type == "password") {
+          password.type = "text";
         } else {
-          password.type = 'password';
+          password.type = "password";
         }
       });
     </script>

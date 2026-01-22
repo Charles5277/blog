@@ -1,20 +1,20 @@
 <script setup lang="ts">
-  import { data as posts } from '../theme/posts.data';
-  import blogStore from '../theme/store';
+import { data as posts } from "../theme/posts.data";
+import blogStore from "../theme/store";
 
-  import { initCategory } from '../theme/utils';
+import { initCategory } from "../theme/utils";
 
-  import { getSortedCategories } from '../utils/categories';
+import { getSortedCategories } from "../utils/categories";
 
-  const category = initCategory(posts);
+const category = initCategory(posts);
 
-  // - 自定義排序
-  const sortedCategory = getSortedCategories(Object.keys(category));
+// - 自定義排序
+const sortedCategory = getSortedCategories(Object.keys(category));
 
-  function categorySwitcher(item: string) {
-    blogStore.value.selectedCategory = item;
-    blogStore.value.selectedTags = [];
-  }
+function categorySwitcher(item: string) {
+  blogStore.value.selectedCategory = item;
+  blogStore.value.selectedTags = [];
+}
 </script>
 
 <template>
@@ -30,6 +30,6 @@
         <span class="theme-badge">{{ item }}</span>
       </VaButton>
     </div>
-    <hr class="h-px my-4 bg-gray-200 border-0">
+    <hr class="h-px my-4 bg-gray-200 border-0" />
   </div>
 </template>

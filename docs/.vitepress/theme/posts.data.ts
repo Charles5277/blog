@@ -1,4 +1,4 @@
-import { createContentLoader } from 'vitepress';
+import { createContentLoader } from "vitepress";
 
 interface Post {
   title: string;
@@ -15,7 +15,7 @@ interface Post {
 declare const data: Post[];
 export { data, Post };
 
-export default createContentLoader('post/**/*.md', {
+export default createContentLoader("post/**/*.md", {
   excerpt: true,
   transform(raw): Post[] {
     return raw
@@ -31,15 +31,15 @@ export default createContentLoader('post/**/*.md', {
   },
 });
 
-function formatDate(raw: string): Post['date'] {
+function formatDate(raw: string): Post["date"] {
   const date = new Date(raw);
 
   return {
     time: +date,
-    string: date.toLocaleDateString('zh-TW', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
+    string: date.toLocaleDateString("zh-TW", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
     }),
   };
 }

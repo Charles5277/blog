@@ -30,29 +30,29 @@ tags:
 
 ```typescript
 // server/types/auth.d.ts
-type UserRole = 'admin' | 'manager' | 'staff' | 'unauthorized'
+type UserRole = "admin" | "manager" | "staff" | "unauthorized";
 
 // 角色階層：admin > manager > staff > unauthorized
 ```
 
 ### 角色說明
 
-| 角色 | 說明 | 典型使用場景 |
-|-----|------|-------------|
-| `admin` | 系統管理員 | 完整系統控制權 |
-| `manager` | 管理者 | 管理資源與使用者 |
-| `staff` | 一般員工 | 日常操作權限 |
-| `unauthorized` | 未授權 | 新註冊用戶預設 |
+| 角色           | 說明       | 典型使用場景     |
+| -------------- | ---------- | ---------------- |
+| `admin`        | 系統管理員 | 完整系統控制權   |
+| `manager`      | 管理者     | 管理資源與使用者 |
+| `staff`        | 一般員工   | 日常操作權限     |
+| `unauthorized` | 未授權     | 新註冊用戶預設   |
 
 ### 權限矩陣
 
-| 功能 | admin | manager | staff | unauthorized |
-|-----|-------|---------|-------|--------------|
-| 系統設定 | ✅ | ❌ | ❌ | ❌ |
-| 使用者管理 | ✅ | ✅ | ❌ | ❌ |
-| 資料編輯 | ✅ | ✅ | ✅ | ❌ |
-| 資料檢視 | ✅ | ✅ | ✅ | ❌ |
-| 登入頁面 | ❌ | ❌ | ❌ | ✅ |
+| 功能       | admin | manager | staff | unauthorized |
+| ---------- | ----- | ------- | ----- | ------------ |
+| 系統設定   | ✅    | ❌      | ❌    | ❌           |
+| 使用者管理 | ✅    | ✅      | ❌    | ❌           |
+| 資料編輯   | ✅    | ✅      | ✅    | ❌           |
+| 資料檢視   | ✅    | ✅      | ✅    | ❌           |
+| 登入頁面   | ❌    | ❌      | ❌    | ✅           |
 
 ---
 
@@ -221,33 +221,33 @@ export default defineEventHandler(async (event) =&gt; {
 export default defineNuxtConfig({
   routeRules: {
     // 公開頁面
-    '/login': { auth: 'guest' },
-    '/register': { auth: 'guest' },
+    "/login": { auth: "guest" },
+    "/register": { auth: "guest" },
 
     // 需要登入
-    '/dashboard/**': { auth: 'user' },
+    "/dashboard/**": { auth: "user" },
 
     // 管理員專用
-    '/admin/**': {
-      auth: { user: { role: 'admin' } },
+    "/admin/**": {
+      auth: { user: { role: "admin" } },
     },
 
     // 管理者以上
-    '/manage/**': {
-      auth: { user: { role: ['admin', 'manager'] } },
+    "/manage/**": {
+      auth: { user: { role: ["admin", "manager"] } },
     },
   },
-})
+});
 ```
 
 ### 路由規則說明
 
-| 規則 | 意義 |
-|-----|------|
-| `auth: 'guest'` | 僅未登入用戶可存取 |
-| `auth: 'user'` | 需要登入（任何角色） |
-| `auth: { user: { role: 'admin' } }` | 需要特定角色 |
-| `auth: { user: { role: ['a', 'b'] } }` | 需要任一角色 |
+| 規則                                   | 意義                 |
+| -------------------------------------- | -------------------- |
+| `auth: 'guest'`                        | 僅未登入用戶可存取   |
+| `auth: 'user'`                         | 需要登入（任何角色） |
+| `auth: { user: { role: 'admin' } }`    | 需要特定角色         |
+| `auth: { user: { role: ['a', 'b'] } }` | 需要任一角色         |
 
 ---
 
@@ -256,51 +256,24 @@ export default defineNuxtConfig({
 ### 使用 definePageMeta
 
 ```vue
-&lt;!-- pages/admin/settings.vue --&gt;
-&lt;script setup lang="ts"&gt;
-definePageMeta({
-  auth: {
-    user: { role: 'admin' }
-  }
-})
-&lt;/script&gt;
-
-&lt;template&gt;
-  &lt;div&gt;
-    &lt;h1&gt;系統設定&lt;/h1&gt;
-    &lt;!-- 只有 admin 看得到 --&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
+&lt;!-- pages/admin/settings.vue --&gt; &lt;script setup lang="ts"&gt;
+definePageMeta({ auth: { user: { role: 'admin' } } }) &lt;/script&gt;
+&lt;template&gt; &lt;div&gt; &lt;h1&gt;系統設定&lt;/h1&gt; &lt;!-- 只有 admin
+看得到 --&gt; &lt;/div&gt; &lt;/template&gt;
 ```
 
 ### 條件顯示 UI 元素
 
 ```vue
-&lt;script setup lang="ts"&gt;
-const { user } = useUserSession()
-
-const canManageUsers = computed(() =&gt; {
-  return ['admin', 'manager'].includes(user.value?.role ?? '')
-})
-
-const canEditSettings = computed(() =&gt; {
-  return user.value?.role === 'admin'
-})
-&lt;/script&gt;
-
-&lt;template&gt;
-  &lt;UNavigationMenu :items="menuItems"&gt;
-    &lt;!-- 根據權限顯示選單項目 --&gt;
-  &lt;/UNavigationMenu&gt;
-
-  &lt;UButton v-if="canManageUsers" to="/manage/users"&gt;
-    使用者管理
-  &lt;/UButton&gt;
-
-  &lt;UButton v-if="canEditSettings" to="/admin/settings"&gt;
-    系統設定
-  &lt;/UButton&gt;
-&lt;/template&gt;
+&lt;script setup lang="ts"&gt; const { user } = useUserSession() const
+canManageUsers = computed(() =&gt; { return ['admin',
+'manager'].includes(user.value?.role ?? '') }) const canEditSettings =
+computed(() =&gt; { return user.value?.role === 'admin' }) &lt;/script&gt;
+&lt;template&gt; &lt;UNavigationMenu :items="menuItems"&gt; &lt;!--
+根據權限顯示選單項目 --&gt; &lt;/UNavigationMenu&gt; &lt;UButton
+v-if="canManageUsers" to="/manage/users"&gt; 使用者管理 &lt;/UButton&gt;
+&lt;UButton v-if="canEditSettings" to="/admin/settings"&gt; 系統設定
+&lt;/UButton&gt; &lt;/template&gt;
 ```
 
 ---
@@ -366,16 +339,16 @@ export function useMenuItems() {
 ```typescript
 // ❌ 錯誤：只檢查登入狀態
 if (!loggedIn.value) {
-  return navigateTo('/login')
+  return navigateTo("/login");
 }
 // 新用戶（unauthorized）會通過檢查
 
 // ✅ 正確：同時檢查角色
 if (!loggedIn.value) {
-  return navigateTo('/login')
+  return navigateTo("/login");
 }
-if (user.value?.role === 'unauthorized') {
-  return navigateTo('/forbidden')
+if (user.value?.role === "unauthorized") {
+  return navigateTo("/forbidden");
 }
 ```
 
@@ -404,17 +377,17 @@ export default defineEventHandler(async (event) =&gt; {
 ```typescript
 // app/utils/permission.ts - 集中管理
 export const PERMISSIONS = {
-  MANAGE_USERS: ['admin', 'manager'],
-  EDIT_SETTINGS: ['admin'],
-  VIEW_DATA: ['admin', 'manager', 'staff'],
-} as const
+  MANAGE_USERS: ["admin", "manager"],
+  EDIT_SETTINGS: ["admin"],
+  VIEW_DATA: ["admin", "manager", "staff"],
+} as const;
 
 export function can(
   userRole: string | undefined,
-  permission: keyof typeof PERMISSIONS
+  permission: keyof typeof PERMISSIONS,
 ): boolean {
-  if (!userRole) return false
-  return PERMISSIONS[permission].includes(userRole as any)
+  if (!userRole) return false;
+  return PERMISSIONS[permission].includes(userRole as any);
 }
 ```
 

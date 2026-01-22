@@ -40,12 +40,12 @@ declare global {
 // ❌ 這些都會產生型別錯誤
 const user: User = null; // API 回應可能為空值
 const found: User = users.find((u) => u.id === 3); // find() 可能回傳空值
-const element: HTMLElement = document.querySelector('.btn'); // DOM 查詢可能為空值
+const element: HTMLElement = document.querySelector(".btn"); // DOM 查詢可能為空值
 
 // ✅ 使用 Maybe<T> 正確處理空值
 const user: Maybe<User> = null;
 const found: Maybe<User> = users.find((u) => u.id === 3) ?? null;
-const element: Maybe<HTMLElement> = document.querySelector('.btn');
+const element: Maybe<HTMLElement> = document.querySelector(".btn");
 ```
 
 接下來我們看看實際專案中如何應用這個型別。
@@ -60,20 +60,18 @@ const element: Maybe<HTMLElement> = document.querySelector('.btn');
 
 ```vue
 <script setup lang="ts">
-  interface User {
-    id: number;
-    name: string;
-    avatar?: string;
-  }
+interface User {
+  id: number;
+  name: string;
+  avatar?: string;
+}
 
-  // 使用 Maybe<T> 明確表示 API 可能回傳空值
-  const { data: currentUser } = await useFetch<Maybe<User>>('/api/user/me');
+// 使用 Maybe<T> 明確表示 API 可能回傳空值
+const { data: currentUser } = await useFetch<Maybe<User>>("/api/user/me");
 
-  // 安全地使用資料
-  const username = computed(() => currentUser?.name ?? '訪客');
-  const userAvatar = computed(
-    () => currentUser?.avatar ?? '/default-avatar.png',
-  );
+// 安全地使用資料
+const username = computed(() => currentUser?.name ?? "訪客");
+const userAvatar = computed(() => currentUser?.avatar ?? "/default-avatar.png");
 </script>
 
 <template>
@@ -111,11 +109,11 @@ DOM 查詢方法可能回傳空值：
 
 ```typescript
 // 使用 Maybe<T> 處理可能的空值
-const button: Maybe<HTMLButtonElement> = document.querySelector('#submit-btn');
+const button: Maybe<HTMLButtonElement> = document.querySelector("#submit-btn");
 
 // 安全地操作 DOM 元素
 const handleClick = () => {
-  button?.setAttribute('disabled', 'true');
+  button?.setAttribute("disabled", "true");
 };
 ```
 
@@ -123,21 +121,21 @@ const handleClick = () => {
 
 ```vue
 <script setup lang="ts">
-  // 使用 Maybe<T> 表示載入狀態
-  const posts: Ref<Maybe<BlogPost[]>> = ref(null);
-  const error: Ref<Maybe<string>> = ref(null);
+// 使用 Maybe<T> 表示載入狀態
+const posts: Ref<Maybe<BlogPost[]>> = ref(null);
+const error: Ref<Maybe<string>> = ref(null);
 
-  const fetchPosts = async () => {
-    try {
-      const { data: response } = await useFetch<BlogPost[]>('/api/posts');
-      posts.value = response.value;
-    } catch (err) {
-      error.value = '載入失敗';
-      posts.value = null;
-    }
-  };
+const fetchPosts = async () => {
+  try {
+    const { data: response } = await useFetch<BlogPost[]>("/api/posts");
+    posts.value = response.value;
+  } catch (err) {
+    error.value = "載入失敗";
+    posts.value = null;
+  }
+};
 
-  const postCount = computed(() => posts.value?.length ?? 0);
+const postCount = computed(() => posts.value?.length ?? 0);
 </script>
 
 <template>

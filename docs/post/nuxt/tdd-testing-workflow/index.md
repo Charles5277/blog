@@ -29,12 +29,12 @@ tags:
 
 ### 為什麼要先寫測試？
 
-| 傳統開發 | TDD 開發 |
-|---------|---------|
+| 傳統開發           | TDD 開發       |
+| ------------------ | -------------- |
 | 寫完程式碼再補測試 | 先寫測試再實作 |
-| 測試變成負擔 | 測試驅動設計 |
-| 「測試是選項」 | 「測試是必須」 |
-| 容易遺漏邊界案例 | 先思考邊界案例 |
+| 測試變成負擔       | 測試驅動設計   |
+| 「測試是選項」     | 「測試是必須」 |
+| 容易遺漏邊界案例   | 先思考邊界案例 |
 
 ### Red → Green → Refactor
 
@@ -67,26 +67,26 @@ tags:
 
 ```typescript
 // test/unit/utils/formatPrice.test.ts
-import { describe, it, expect } from 'vitest'
-import { formatPrice } from '~/utils/formatPrice'
+import { describe, it, expect } from "vitest";
+import { formatPrice } from "~/utils/formatPrice";
 
-describe('formatPrice', () => {
-  it('should format positive number', () => {
-    expect(formatPrice(1000)).toBe('$1,000')
-  })
+describe("formatPrice", () => {
+  it("should format positive number", () => {
+    expect(formatPrice(1000)).toBe("$1,000");
+  });
 
-  it('should format zero', () => {
-    expect(formatPrice(0)).toBe('$0')
-  })
+  it("should format zero", () => {
+    expect(formatPrice(0)).toBe("$0");
+  });
 
-  it('should format decimal number', () => {
-    expect(formatPrice(1234.56)).toBe('$1,234.56')
-  })
+  it("should format decimal number", () => {
+    expect(formatPrice(1234.56)).toBe("$1,234.56");
+  });
 
-  it('should handle negative number', () => {
-    expect(formatPrice(-500)).toBe('-$500')
-  })
-})
+  it("should handle negative number", () => {
+    expect(formatPrice(-500)).toBe("-$500");
+  });
+});
 ```
 
 執行測試：
@@ -101,13 +101,13 @@ pnpm vitest run test/unit/utils/formatPrice.test.ts
 ```typescript
 // app/utils/formatPrice.ts
 export function formatPrice(value: number): string {
-  const isNegative = value < 0
-  const absValue = Math.abs(value)
-  const formatted = absValue.toLocaleString('en-US', {
+  const isNegative = value < 0;
+  const absValue = Math.abs(value);
+  const formatted = absValue.toLocaleString("en-US", {
     minimumFractionDigits: 0,
     maximumFractionDigits: 2,
-  })
-  return isNegative ? `-$${formatted}` : `$${formatted}`
+  });
+  return isNegative ? `-$${formatted}` : `$${formatted}`;
 }
 ```
 
@@ -145,10 +145,10 @@ test/
 
 ### 單元測試 vs Nuxt 環境測試
 
-| 類型 | 檔案命名 | 環境 | 速度 | 用途 |
-|-----|---------|------|------|------|
-| 單元測試 | `*.test.ts` | Node | 快 | 純函式、utils、services |
-| Nuxt 測試 | `*.nuxt.test.ts` | Nuxt | 慢 | 元件、composables、plugins |
+| 類型      | 檔案命名         | 環境 | 速度 | 用途                       |
+| --------- | ---------------- | ---- | ---- | -------------------------- |
+| 單元測試  | `*.test.ts`      | Node | 快   | 純函式、utils、services    |
+| Nuxt 測試 | `*.nuxt.test.ts` | Nuxt | 慢   | 元件、composables、plugins |
 
 ### 選擇原則
 
@@ -180,9 +180,9 @@ Nuxt 4 整合了 Vitest，使用 `@nuxt/test-utils` 提供完整的測試支援�
 // nuxt.config.ts
 export default defineNuxtConfig({
   modules: [
-    '@nuxt/test-utils/module', // 加入測試模組
+    "@nuxt/test-utils/module", // 加入測試模組
   ],
-})
+});
 ```
 
 ### package.json scripts
@@ -205,74 +205,74 @@ export default defineNuxtConfig({
 
 ```typescript
 // test/unit/utils/parseDate.test.ts
-import { describe, it, expect } from 'vitest'
-import { parseDate, formatDate } from '~/utils/date'
+import { describe, it, expect } from "vitest";
+import { parseDate, formatDate } from "~/utils/date";
 
-describe('parseDate', () => {
-  it('should parse ISO string', () => {
-    const result = parseDate('2024-01-15T10:30:00Z')
-    expect(result.getFullYear()).toBe(2024)
-    expect(result.getMonth()).toBe(0) // 0-indexed
-    expect(result.getDate()).toBe(15)
-  })
+describe("parseDate", () => {
+  it("should parse ISO string", () => {
+    const result = parseDate("2024-01-15T10:30:00Z");
+    expect(result.getFullYear()).toBe(2024);
+    expect(result.getMonth()).toBe(0); // 0-indexed
+    expect(result.getDate()).toBe(15);
+  });
 
-  it('should return null for invalid date', () => {
-    expect(parseDate('invalid')).toBeNull()
-  })
-})
+  it("should return null for invalid date", () => {
+    expect(parseDate("invalid")).toBeNull();
+  });
+});
 
-describe('formatDate', () => {
-  it('should format date to YYYY-MM-DD', () => {
-    const date = new Date('2024-01-15')
-    expect(formatDate(date)).toBe('2024-01-15')
-  })
-})
+describe("formatDate", () => {
+  it("should format date to YYYY-MM-DD", () => {
+    const date = new Date("2024-01-15");
+    expect(formatDate(date)).toBe("2024-01-15");
+  });
+});
 ```
 
 ### 測試 Zod Schema
 
 ```typescript
 // test/unit/schemas/user.test.ts
-import { describe, it, expect } from 'vitest'
-import { createUserSchema } from '~/schemas/user'
+import { describe, it, expect } from "vitest";
+import { createUserSchema } from "~/schemas/user";
 
-describe('createUserSchema', () => {
-  it('should validate valid input', () => {
+describe("createUserSchema", () => {
+  it("should validate valid input", () => {
     const input = {
-      name: 'John Doe',
-      email: 'john@example.com',
-      role: 'staff',
-    }
+      name: "John Doe",
+      email: "john@example.com",
+      role: "staff",
+    };
 
-    const result = createUserSchema.safeParse(input)
-    expect(result.success).toBe(true)
-  })
+    const result = createUserSchema.safeParse(input);
+    expect(result.success).toBe(true);
+  });
 
-  it('should reject invalid email', () => {
+  it("should reject invalid email", () => {
     const input = {
-      name: 'John Doe',
-      email: 'invalid-email',
-      role: 'staff',
-    }
+      name: "John Doe",
+      email: "invalid-email",
+      role: "staff",
+    };
 
-    const result = createUserSchema.safeParse(input)
-    expect(result.success).toBe(false)
+    const result = createUserSchema.safeParse(input);
+    expect(result.success).toBe(false);
     if (!result.success) {
-      expect(result.error.issues[0].path).toContain('email')
+      expect(result.error.issues[0].path).toContain("email");
     }
-  })
+  });
 
-  it('should reject empty name', () => {
+  it("should reject empty name", () => {
     const input = {
-      name: '',
-      email: 'john@example.com',
-      role: 'staff',
-    }
+      name: "",
+      email: "john@example.com",
+      role: "staff",
+    };
 
-    const result = createUserSchema.safeParse(input)
-    expect(result.success).toBe(false)
-  })
-})
+    const result = createUserSchema.safeParse(input);
+    expect(result.success).toBe(false);
+  });
+});
 ```
 
 ---
@@ -283,72 +283,72 @@ describe('createUserSchema', () => {
 
 ```typescript
 // test/nuxt/composables/useCounter.nuxt.test.ts
-import { describe, it, expect } from 'vitest'
-import { mountSuspended } from '@nuxt/test-utils/runtime'
-import { useCounter } from '~/composables/useCounter'
+import { describe, it, expect } from "vitest";
+import { mountSuspended } from "@nuxt/test-utils/runtime";
+import { useCounter } from "~/composables/useCounter";
 
-describe('useCounter', () => {
-  it('should initialize with default value', async () => {
+describe("useCounter", () => {
+  it("should initialize with default value", async () => {
     const wrapper = await mountSuspended({
       setup() {
-        const { count } = useCounter()
-        return { count }
+        const { count } = useCounter();
+        return { count };
       },
-      template: '<div>{{ count }}</div>',
-    })
+      template: "<div>{{ count }}</div>",
+    });
 
-    expect(wrapper.text()).toBe('0')
-  })
+    expect(wrapper.text()).toBe("0");
+  });
 
-  it('should increment count', async () => {
+  it("should increment count", async () => {
     const wrapper = await mountSuspended({
       setup() {
-        const { count, increment } = useCounter()
-        return { count, increment }
+        const { count, increment } = useCounter();
+        return { count, increment };
       },
       template: '<button @click="increment">{{ count }}</button>',
-    })
+    });
 
-    await wrapper.trigger('click')
-    expect(wrapper.text()).toBe('1')
-  })
-})
+    await wrapper.trigger("click");
+    expect(wrapper.text()).toBe("1");
+  });
+});
 ```
 
 ### 測試元件
 
 ```typescript
 // test/nuxt/components/UserCard.nuxt.test.ts
-import { describe, it, expect } from 'vitest'
-import { mountSuspended } from '@nuxt/test-utils/runtime'
-import UserCard from '~/components/UserCard.vue'
+import { describe, it, expect } from "vitest";
+import { mountSuspended } from "@nuxt/test-utils/runtime";
+import UserCard from "~/components/UserCard.vue";
 
-describe('UserCard', () => {
+describe("UserCard", () => {
   const mockUser = {
-    id: '1',
-    name: 'John Doe',
-    email: 'john@example.com',
-    role: 'admin',
-  }
+    id: "1",
+    name: "John Doe",
+    email: "john@example.com",
+    role: "admin",
+  };
 
-  it('should render user name', async () => {
+  it("should render user name", async () => {
     const wrapper = await mountSuspended(UserCard, {
       props: { user: mockUser },
-    })
+    });
 
-    expect(wrapper.text()).toContain('John Doe')
-  })
+    expect(wrapper.text()).toContain("John Doe");
+  });
 
-  it('should emit edit event on button click', async () => {
+  it("should emit edit event on button click", async () => {
     const wrapper = await mountSuspended(UserCard, {
       props: { user: mockUser },
-    })
+    });
 
-    await wrapper.find('[data-testid="edit-button"]').trigger('click')
-    expect(wrapper.emitted('edit')).toBeTruthy()
-    expect(wrapper.emitted('edit')![0]).toEqual([mockUser.id])
-  })
-})
+    await wrapper.find('[data-testid="edit-button"]').trigger("click");
+    expect(wrapper.emitted("edit")).toBeTruthy();
+    expect(wrapper.emitted("edit")![0]).toEqual([mockUser.id]);
+  });
+});
 ```
 
 ---
@@ -359,35 +359,35 @@ describe('UserCard', () => {
 
 ```typescript
 // test/unit/services/api.test.ts
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from "vitest";
 
 // Mock $fetch
-vi.mock('#app', () => ({
+vi.mock("#app", () => ({
   $fetch: vi.fn(),
-}))
+}));
 
-import { $fetch } from '#app'
-import { fetchUsers } from '~/services/api'
+import { $fetch } from "#app";
+import { fetchUsers } from "~/services/api";
 
-describe('fetchUsers', () => {
+describe("fetchUsers", () => {
   beforeEach(() => {
-    vi.clearAllMocks()
-  })
+    vi.clearAllMocks();
+  });
 
-  it('should return users from API', async () => {
-    const mockUsers = [{ id: '1', name: 'John' }]
-    vi.mocked($fetch).mockResolvedValue({ data: mockUsers })
+  it("should return users from API", async () => {
+    const mockUsers = [{ id: "1", name: "John" }];
+    vi.mocked($fetch).mockResolvedValue({ data: mockUsers });
 
-    const result = await fetchUsers()
-    expect(result).toEqual(mockUsers)
-  })
+    const result = await fetchUsers();
+    expect(result).toEqual(mockUsers);
+  });
 
-  it('should handle API error', async () => {
-    vi.mocked($fetch).mockRejectedValue(new Error('Network error'))
+  it("should handle API error", async () => {
+    vi.mocked($fetch).mockRejectedValue(new Error("Network error"));
 
-    await expect(fetchUsers()).rejects.toThrow('Network error')
-  })
-})
+    await expect(fetchUsers()).rejects.toThrow("Network error");
+  });
+});
 ```
 
 ### Mock Supabase
@@ -403,12 +403,12 @@ export function createMockSupabase() {
     delete: vi.fn().mockReturnThis(),
     eq: vi.fn().mockReturnThis(),
     single: vi.fn(),
-  }
+  };
 }
 
 // 使用
-const mockSupabase = createMockSupabase()
-mockSupabase.single.mockResolvedValue({ data: mockUser, error: null })
+const mockSupabase = createMockSupabase();
+mockSupabase.single.mockResolvedValue({ data: mockUser, error: null });
 ```
 
 ---
@@ -456,10 +456,7 @@ pnpm check
 // package.json
 {
   "lint-staged": {
-    "*.{js,ts,vue}": [
-      "oxlint --fix",
-      "oxfmt"
-    ]
+    "*.{js,ts,vue}": ["oxlint --fix", "oxfmt"]
   }
 }
 ```
@@ -476,22 +473,22 @@ export default defineNuxtConfig({
   // ...
   vitest: {
     coverage: {
-      reporter: ['text', 'html'],
-      include: ['app/**/*.ts', 'server/**/*.ts'],
-      exclude: ['**/*.d.ts', '**/types/**'],
+      reporter: ["text", "html"],
+      include: ["app/**/*.ts", "server/**/*.ts"],
+      exclude: ["**/*.d.ts", "**/types/**"],
     },
   },
-})
+});
 ```
 
 ### 覆蓋率目標
 
-| 類型 | 建議覆蓋率 | 說明 |
-|-----|----------|------|
-| Utils/Helpers | 90%+ | 純函式應該高覆蓋 |
-| Services | 80%+ | 業務邏輯核心 |
-| Composables | 70%+ | 視複雜度調整 |
-| Components | 60%+ | 重點測試互動邏輯 |
+| 類型          | 建議覆蓋率 | 說明             |
+| ------------- | ---------- | ---------------- |
+| Utils/Helpers | 90%+       | 純函式應該高覆蓋 |
+| Services      | 80%+       | 業務邏輯核心     |
+| Composables   | 70%+       | 視複雜度調整     |
+| Components    | 60%+       | 重點測試互動邏輯 |
 
 ---
 
@@ -513,13 +510,13 @@ export default defineNuxtConfig({
 // 確保 Mock 行為與實際一致
 vi.mocked($fetch).mockImplementation(async (url, options) => {
   // 模擬真實的錯誤回應格式
-  if (url === '/api/v1/users') {
+  if (url === "/api/v1/users") {
     throw createError({
       statusCode: 401,
-      message: '未授權',
-    })
+      message: "未授權",
+    });
   }
-})
+});
 ```
 
 ### 非同步測試超時
@@ -530,9 +527,13 @@ vi.mocked($fetch).mockImplementation(async (url, options) => {
 
 ```typescript
 // 設定適當的超時時間
-it('should fetch data', async () => {
-  // ...
-}, { timeout: 10000 }) // 10 秒超時
+it(
+  "should fetch data",
+  async () => {
+    // ...
+  },
+  { timeout: 10000 },
+); // 10 秒超時
 
 // 或全域設定
 // vitest.config.ts
@@ -540,7 +541,7 @@ export default defineConfig({
   test: {
     testTimeout: 10000,
   },
-})
+});
 ```
 
 ### 測試相互影響
@@ -552,17 +553,17 @@ export default defineConfig({
 **解決**：
 
 ```typescript
-import { beforeEach, afterEach } from 'vitest'
+import { beforeEach, afterEach } from "vitest";
 
 beforeEach(() => {
   // 每個測試前重置狀態
-  vi.clearAllMocks()
-})
+  vi.clearAllMocks();
+});
 
 afterEach(() => {
   // 每個測試後清理
-  vi.restoreAllMocks()
-})
+  vi.restoreAllMocks();
+});
 ```
 
 ---
@@ -573,37 +574,37 @@ afterEach(() => {
 
 ```typescript
 // 1. 測試行為，而非實作細節
-it('should display error message when login fails', () => {
+it("should display error message when login fails", () => {
   // 測試使用者看到的結果
-})
+});
 
 // 2. 使用有意義的測試名稱
-it('should return empty array when no users match filter', () => {})
+it("should return empty array when no users match filter", () => {});
 
 // 3. 每個測試只測試一件事
-it('should validate email format', () => {
-  expect(validateEmail('invalid')).toBe(false)
-})
+it("should validate email format", () => {
+  expect(validateEmail("invalid")).toBe(false);
+});
 
-it('should accept valid email', () => {
-  expect(validateEmail('test@example.com')).toBe(true)
-})
+it("should accept valid email", () => {
+  expect(validateEmail("test@example.com")).toBe(true);
+});
 
 // 4. 測試邊界案例
-describe('pagination', () => {
-  it('should handle empty data', () => {})
-  it('should handle single page', () => {})
-  it('should handle last page', () => {})
-})
+describe("pagination", () => {
+  it("should handle empty data", () => {});
+  it("should handle single page", () => {});
+  it("should handle last page", () => {});
+});
 ```
 
 ### ❌ Don'ts
 
 ```typescript
 // 1. 不要測試框架本身
-it('should render component', () => {
+it("should render component", () => {
   // Vue 會渲染元件，不需要測試這個
-})
+});
 
 // 2. 不要測試私有方法
 // 私有方法會透過公開方法被測試到
@@ -612,7 +613,7 @@ it('should render component', () => {
 // Mock 太多會讓測試失去意義
 
 // 4. 不要忽略測試
-it.skip('should work', () => {})  // ❌ 禁止
+it.skip("should work", () => {}); // ❌ 禁止
 ```
 
 ---

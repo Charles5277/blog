@@ -7,7 +7,6 @@ category: Vue.js
 tags:
   - Vue
   - Frontend
-
 ---
 
 v-on 是 Vue 提供的[🔗 指令 (directive)](https://vuejs.org/api/built-in-directives.html#built-in-directives#v-on) 之一，用來綁定事件。透過 v-on 可以讓元素觸發事件，例如點擊、滑鼠移入、滑鼠移出等事件發生時，執行指定的方法。

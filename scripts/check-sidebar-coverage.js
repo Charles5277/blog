@@ -1,21 +1,24 @@
 #!/usr/bin/env node
 
-import fs from 'node:fs';
-import path from 'node:path';
-import process from 'node:process';
+import fs from "node:fs";
+import path from "node:path";
+import process from "node:process";
 
-const POST_PATH = path.resolve(process.cwd(), 'docs', 'post');
+const POST_PATH = path.resolve(process.cwd(), "docs", "post");
 
 // 從 sidebar.ts 提取 link 配置
 function extractLinksFromSidebar() {
-  const sidebarPath = path.resolve(process.cwd(), 'docs/.vitepress/utils/sidebar.ts');
+  const sidebarPath = path.resolve(
+    process.cwd(),
+    "docs/.vitepress/utils/sidebar.ts",
+  );
 
   if (!fs.existsSync(sidebarPath)) {
-    console.error('❌ 找不到 sidebar.ts 文件');
+    console.error("❌ 找不到 sidebar.ts 文件");
     process.exit(1);
   }
 
-  const content = fs.readFileSync(sidebarPath, 'utf-8');
+  const content = fs.readFileSync(sidebarPath, "utf-8");
 
   // 提取 sidebarConfigData 中的所有 link
   const links = new Set();
@@ -34,7 +37,7 @@ function extractLinksFromSidebar() {
 function getAllMarkdownFiles() {
   const files = [];
 
-  function scanDirectory(dir, relativePath = '') {
+  function scanDirectory(dir, relativePath = "") {
     if (!fs.existsSync(dir)) {
       return;
     }
@@ -47,9 +50,10 @@ function getAllMarkdownFiles() {
 
       if (stat.isDirectory()) {
         scanDirectory(fullPath, path.join(relativePath, item));
-      }
- else if (item.endsWith('.md')) {
-        const relativeFilePath = path.join(relativePath, item).replace(/\\/g, '/');
+      } else if (item.endsWith(".md")) {
+        const relativeFilePath = path
+          .join(relativePath, item)
+          .replace(/\\/g, "/");
         files.push(relativeFilePath);
       }
     }
@@ -62,17 +66,17 @@ function getAllMarkdownFiles() {
 // 將文件路徑轉換為 sidebar link 格式
 function convertFilePathToLink(filePath) {
   // 如果是 index.md，轉換為目錄格式（以 / 結尾）
-  if (filePath.endsWith('/index.md')) {
-    return filePath.replace('/index.md', '/');
+  if (filePath.endsWith("/index.md")) {
+    return filePath.replace("/index.md", "/");
   }
 
   // 移除 .md 擴展名
-  return filePath.replace(/\.md$/, '');
+  return filePath.replace(/\.md$/, "");
 }
 
 // 主檢查邏輯
 function checkSidebarCoverage() {
-  console.log('🔍 檢查 sidebar 配置覆蓋度...\n');
+  console.log("🔍 檢查 sidebar 配置覆蓋度...\n");
 
   const sidebarLinks = extractLinksFromSidebar();
   const markdownFiles = getAllMarkdownFiles();
@@ -100,11 +104,10 @@ function checkSidebarCoverage() {
     if (!expectedLinks.includes(link)) {
       // 檢查對應的文件是否存在
       let filePath;
-      if (link.endsWith('/')) {
+      if (link.endsWith("/")) {
         // 目錄型 link
-        filePath = path.join(POST_PATH, link, 'index.md');
-      }
- else {
+        filePath = path.join(POST_PATH, link, "index.md");
+      } else {
         // 文件型 link
         filePath = path.join(POST_PATH, `${link}.md`);
       }
@@ -117,29 +120,30 @@ function checkSidebarCoverage() {
 
   // 輸出結果
   if (missingFiles.length === 0 && extraLinks.length === 0) {
-    console.log('✅ 所有 Markdown 文件都已包含在 sidebar 配置中！');
+    console.log("✅ 所有 Markdown 文件都已包含在 sidebar 配置中！");
     return true;
-  }
- else {
-    console.log('❌ 發現不一致的地方：\n');
+  } else {
+    console.log("❌ 發現不一致的地方：\n");
 
     if (missingFiles.length > 0) {
-      console.log('📝 以下文件未包含在 sidebar 配置中：');
+      console.log("📝 以下文件未包含在 sidebar 配置中：");
       missingFiles.forEach((file) => {
         console.log(`   - ${file}`);
       });
-      console.log('');
+      console.log("");
     }
 
     if (extraLinks.length > 0) {
-      console.log('🔗 以下 sidebar links 指向不存在的文件：');
+      console.log("🔗 以下 sidebar links 指向不存在的文件：");
       extraLinks.forEach((link) => {
         console.log(`   - ${link}`);
       });
-      console.log('');
+      console.log("");
     }
 
-    console.log('💡 請更新 docs/.vitepress/utils/sidebar.ts 中的 sidebarConfigData');
+    console.log(
+      "💡 請更新 docs/.vitepress/utils/sidebar.ts 中的 sidebarConfigData",
+    );
     return false;
   }
 }

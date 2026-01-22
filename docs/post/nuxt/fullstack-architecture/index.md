@@ -28,13 +28,13 @@ tags:
 
 ### 核心技術
 
-| 層級 | 技術 | 選擇理由 |
-|------|------|----------|
-| **框架** | Nuxt 4 | Vue 3 生態系最成熟的全棧框架 |
-| **UI** | Nuxt UI 4 | 官方 UI 庫，Dashboard 元件完整 |
-| **資料庫** | Supabase | PostgreSQL + 即時訂閱 + Auth + Storage |
-| **部署** | Cloudflare Workers | Edge Runtime，全球低延遲 |
-| **狀態管理** | Pinia + Pinia Colada | 輕量 + 內建非同步狀態管理 |
+| 層級         | 技術                 | 選擇理由                               |
+| ------------ | -------------------- | -------------------------------------- |
+| **框架**     | Nuxt 4               | Vue 3 生態系最成熟的全棧框架           |
+| **UI**       | Nuxt UI 4            | 官方 UI 庫，Dashboard 元件完整         |
+| **資料庫**   | Supabase             | PostgreSQL + 即時訂閱 + Auth + Storage |
+| **部署**     | Cloudflare Workers   | Edge Runtime，全球低延遲               |
+| **狀態管理** | Pinia + Pinia Colada | 輕量 + 內建非同步狀態管理              |
 
 ### 為什麼選 Nuxt 4
 
@@ -56,39 +56,39 @@ tags:
 
 ```typescript
 export default defineNuxtConfig({
-  compatibilityDate: '2025-05-15',
-  ssr: false,  // SPA 模式
+  compatibilityDate: "2025-05-15",
+  ssr: false, // SPA 模式
 
   modules: [
-    '@nuxt/ui',
-    '@nuxt/test-utils/module',
-    '@nuxt/image',
-    '@nuxtjs/supabase',
-    '@pinia/nuxt',
-    '@vueuse/nuxt',
-    '@sentry/nuxt/module',
-    '@onmax/nuxt-better-auth',
-    '@pinia/colada-nuxt',
-    'nuxt-charts',
+    "@nuxt/ui",
+    "@nuxt/test-utils/module",
+    "@nuxt/image",
+    "@nuxtjs/supabase",
+    "@pinia/nuxt",
+    "@vueuse/nuxt",
+    "@sentry/nuxt/module",
+    "@onmax/nuxt-better-auth",
+    "@pinia/colada-nuxt",
+    "nuxt-charts",
   ],
 
   // 元件目錄配置：移除路徑前綴
   components: [
     {
-      path: '~/components',
-      pathPrefix: false,  // MachineTable.vue → <MachineTable />
+      path: "~/components",
+      pathPrefix: false, // MachineTable.vue → <MachineTable />
     },
   ],
 
   // Nitro 配置：部署到 Cloudflare Workers
   nitro: {
-    preset: 'cloudflare_module',
+    preset: "cloudflare_module",
     cloudflare: {
       deployConfig: true,
       nodeCompat: true,
     },
   },
-})
+});
 ```
 
 ### 關於 ssr: false

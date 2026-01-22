@@ -126,12 +126,12 @@ $$;
 
 ### 選擇建議
 
-| 場景 | 建議 |
-|-----|------|
-| 一般查詢/更新 | SECURITY INVOKER |
-| 管理員功能 | SECURITY DEFINER + 權限檢查 |
-| 跨使用者操作 | SECURITY DEFINER + 權限檢查 |
-| 系統維護 | SECURITY DEFINER + 僅限 service_role |
+| 場景          | 建議                                 |
+| ------------- | ------------------------------------ |
+| 一般查詢/更新 | SECURITY INVOKER                     |
+| 管理員功能    | SECURITY DEFINER + 權限檢查          |
+| 跨使用者操作  | SECURITY DEFINER + 權限檢查          |
+| 系統維護      | SECURITY DEFINER + 僅限 service_role |
 
 ---
 
@@ -186,11 +186,11 @@ supabase db lint --level warning
 
 ### 常見警告與修正
 
-| 警告 | 原因 | 修正 |
-|-----|------|------|
-| `function_search_path_mutable` | 函式缺少 `SET search_path = ''` | 加入 `SET search_path = ''` |
-| `security_invoker_not_set` | View 缺少 `security_invoker` | 加入 `WITH (security_invoker = true)` |
-| `rls_disabled` | 表沒有啟用 RLS | `ALTER TABLE ... ENABLE ROW LEVEL SECURITY` |
+| 警告                           | 原因                            | 修正                                        |
+| ------------------------------ | ------------------------------- | ------------------------------------------- |
+| `function_search_path_mutable` | 函式缺少 `SET search_path = ''` | 加入 `SET search_path = ''`                 |
+| `security_invoker_not_set`     | View 缺少 `security_invoker`    | 加入 `WITH (security_invoker = true)`       |
+| `rls_disabled`                 | 表沒有啟用 RLS                  | `ALTER TABLE ... ENABLE ROW LEVEL SECURITY` |
 
 ### 提交前檢查
 

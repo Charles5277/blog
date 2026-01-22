@@ -78,9 +78,9 @@ ALTER TABLE public.users FORCE ROW LEVEL SECURITY;
 
 ### 為什麼這樣設計
 
-| 操作 | 端點 | 原因 |
-|-----|------|------|
-| SELECT | Client | RLS 保護，減少延遲，即時性高 |
+| 操作                 | 端點   | 原因                             |
+| -------------------- | ------ | -------------------------------- |
+| SELECT               | Client | RLS 保護，減少延遲，即時性高     |
 | INSERT/UPDATE/DELETE | Server | 集中權限檢查、日誌記錄、業務驗證 |
 
 ### Client 端唯讀查詢
@@ -247,11 +247,13 @@ CREATE INDEX idx_resources_department ON public.resources(department_id);
 這是最常見的 RLS 陷阱：
 
 **症狀**：
+
 1. API 回傳成功
 2. Toast 顯示「儲存成功」
 3. 重新整理後資料沒變
 
 **原因**：
+
 - service_role 繞過了 SELECT policy（所以能讀到資料）
 - 但 UPDATE/DELETE policy 沒有加 service_role 繞過
 - 結果：UPDATE 執行但影響 0 行（因為 RLS 過濾掉了）
@@ -299,12 +301,12 @@ USING (public.can_read_resource(your_table.id))
 
 ## 常見問題速查
 
-| 症狀 | 原因 | 解法 |
-|-----|------|------|
-| Toast 成功但資料沒變 | 缺少 service_role 繞過 | 加上 `(SELECT auth.role()) = 'service_role'` |
-| 查詢回傳空陣列 | RLS 未開放讀取 | 檢查 SELECT policy |
-| 查詢很慢 | Policy 中有複雜子查詢 | 改用 helper 函式或加索引 |
-| API 回傳 HTML | 路由衝突 | 避免同目錄下同時用 `[id].ts` 和 `[id]/xxx.ts` |
+| 症狀                 | 原因                   | 解法                                          |
+| -------------------- | ---------------------- | --------------------------------------------- |
+| Toast 成功但資料沒變 | 缺少 service_role 繞過 | 加上 `(SELECT auth.role()) = 'service_role'`  |
+| 查詢回傳空陣列       | RLS 未開放讀取         | 檢查 SELECT policy                            |
+| 查詢很慢             | Policy 中有複雜子查詢  | 改用 helper 函式或加索引                      |
+| API 回傳 HTML        | 路由衝突               | 避免同目錄下同時用 `[id].ts` 和 `[id]/xxx.ts` |
 
 ---
 

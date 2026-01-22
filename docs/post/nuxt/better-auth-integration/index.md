@@ -28,13 +28,13 @@ tags:
 
 Supabase 確實提供內建的 Auth 功能，但我們選擇 `@onmax/nuxt-better-auth` 的原因：
 
-| 比較項目 | Supabase Auth | nuxt-better-auth |
-|---------|--------------|------------------|
-| Session 管理 | 自己的 Session 機制 | 標準 HTTP-only Cookie |
-| 與 Nuxt 整合 | 需額外設定 | 原生支援 |
-| 自訂使用者欄位 | 受限於 auth.users | 完全自訂 |
-| 多 Provider 支援 | 良好 | 優秀 |
-| 角色權限 | 需自行實作 | 內建支援 |
+| 比較項目         | Supabase Auth       | nuxt-better-auth      |
+| ---------------- | ------------------- | --------------------- |
+| Session 管理     | 自己的 Session 機制 | 標準 HTTP-only Cookie |
+| 與 Nuxt 整合     | 需額外設定          | 原生支援              |
+| 自訂使用者欄位   | 受限於 auth.users   | 完全自訂              |
+| 多 Provider 支援 | 良好                | 優秀                  |
+| 角色權限         | 需自行實作          | 內建支援              |
 
 **關鍵決策**：我們使用 `@nuxtjs/supabase` **僅作為資料庫存取**，認證完全交給 `@onmax/nuxt-better-auth`。
 
@@ -83,18 +83,18 @@ pnpm add @onmax/nuxt-better-auth
 ```typescript
 export default defineNuxtConfig({
   modules: [
-    '@onmax/nuxt-better-auth',
-    '@nuxtjs/supabase',  // 僅作資料庫存取
+    "@onmax/nuxt-better-auth",
+    "@nuxtjs/supabase", // 僅作資料庫存取
     // ...
   ],
-})
+});
 ```
 
 ### Server 端設定
 
 ```typescript
 // server/auth.config.ts
-import { defineServerAuth } from '@onmax/nuxt-better-auth/config'
+import { defineServerAuth } from "@onmax/nuxt-better-auth/config";
 
 export default defineServerAuth({
   // 啟用 Email + Password 認證（開發測試用）
@@ -113,14 +113,14 @@ export default defineServerAuth({
     expiresIn: 60 * 60 * 24 * 7, // 7 天
     updateAge: 60 * 60 * 24, // 每 24 小時更新
   },
-})
+});
 ```
 
 ### Client 端設定
 
 ```typescript
 // app/auth.config.ts
-import { defineClientAuth } from '@onmax/nuxt-better-auth/config'
+import { defineClientAuth } from "@onmax/nuxt-better-auth/config";
 
 export default defineClientAuth({
   // 可在此加入 client-side plugins
@@ -128,7 +128,7 @@ export default defineClientAuth({
   //   twoFactorClient(),
   //   passkeyClient(),
   // ]
-})
+});
 ```
 
 ---
@@ -138,85 +138,49 @@ export default defineClientAuth({
 ### useUserSession 核心用法
 
 ```vue
-&lt;script setup lang="ts"&gt;
-const { user, loggedIn, signIn, signOut, fetch } = useUserSession()
-
-// 檢查登入狀態
-if (loggedIn.value) {
-  console.log('使用者已登入:', user.value)
-}
-&lt;/script&gt;
+&lt;script setup lang="ts"&gt; const { user, loggedIn, signIn, signOut, fetch }
+= useUserSession() // 檢查登入狀態 if (loggedIn.value) {
+console.log('使用者已登入:', user.value) } &lt;/script&gt;
 ```
 
 ### API 說明
 
 ```typescript
 const {
-  user,      // Ref&lt;User | null&gt; - 當前使用者資料
-  loggedIn,  // ComputedRef&lt;boolean&gt; - 是否已登入
-  signIn,    // { social, email, ... } - 登入方法
-  signOut,   // () =&gt; Promise&lt;void&gt; - 登出
-  fetch,     // () =&gt; Promise&lt;void&gt; - 重新取得 session
-} = useUserSession()
+  user, // Ref&lt;User | null&gt; - 當前使用者資料
+  loggedIn, // ComputedRef&lt;boolean&gt; - 是否已登入
+  signIn, // { social, email, ... } - 登入方法
+  signOut, // () =&gt; Promise&lt;void&gt; - 登出
+  fetch, // () =&gt; Promise&lt;void&gt; - 重新取得 session
+} = useUserSession();
 ```
 
 ### OAuth 社交登入
 
 ```vue
-&lt;template&gt;
-  &lt;UButton @click="loginWithGoogle" icon="i-lucide-chrome"&gt;
-    使用 Google 登入
-  &lt;/UButton&gt;
-&lt;/template&gt;
-
-&lt;script setup lang="ts"&gt;
-const { signIn } = useUserSession()
-
-async function loginWithGoogle() {
-  await signIn.social({ provider: 'google' })
-  // 登入成功後會自動導向 callback URL
-}
-&lt;/script&gt;
+&lt;template&gt; &lt;UButton @click="loginWithGoogle" icon="i-lucide-chrome"&gt;
+使用 Google 登入 &lt;/UButton&gt; &lt;/template&gt; &lt;script setup
+lang="ts"&gt; const { signIn } = useUserSession() async function
+loginWithGoogle() { await signIn.social({ provider: 'google' }) //
+登入成功後會自動導向 callback URL } &lt;/script&gt;
 ```
 
 ### Email/Password 登入
 
 ```vue
-&lt;script setup lang="ts"&gt;
-const { signIn } = useUserSession()
-const toast = useToast()
-
-const email = ref('')
-const password = ref('')
-
-async function handleLogin() {
-  try {
-    await signIn.email(
-      { email: email.value, password: password.value },
-      { onSuccess: () =&gt; navigateTo('/') }
-    )
-  } catch (error) {
-    toast.add({
-      title: '登入失敗',
-      description: '請檢查帳號密碼是否正確',
-      color: 'red',
-    })
-  }
-}
-&lt;/script&gt;
+&lt;script setup lang="ts"&gt; const { signIn } = useUserSession() const toast =
+useToast() const email = ref('') const password = ref('') async function
+handleLogin() { try { await signIn.email( { email: email.value, password:
+password.value }, { onSuccess: () =&gt; navigateTo('/') } ) } catch (error) {
+toast.add({ title: '登入失敗', description: '請檢查帳號密碼是否正確', color:
+'red', }) } } &lt;/script&gt;
 ```
 
 ### 登出
 
 ```vue
-&lt;script setup lang="ts"&gt;
-const { signOut } = useUserSession()
-
-async function handleLogout() {
-  await signOut()
-  navigateTo('/login')
-}
-&lt;/script&gt;
+&lt;script setup lang="ts"&gt; const { signOut } = useUserSession() async
+function handleLogout() { await signOut() navigateTo('/login') } &lt;/script&gt;
 ```
 
 ---
@@ -275,13 +239,13 @@ export default defineEventHandler(async (event) =&gt; {
 
 ```typescript
 // server/types/auth.d.ts
-declare module '@onmax/nuxt-better-auth' {
+declare module "@onmax/nuxt-better-auth" {
   interface User {
-    id: string
-    email: string
-    name?: string
-    picture?: string
-    role: 'admin' | 'manager' | 'staff' | 'unauthorized'
+    id: string;
+    email: string;
+    name?: string;
+    picture?: string;
+    role: "admin" | "manager" | "staff" | "unauthorized";
   }
 }
 ```
@@ -289,10 +253,10 @@ declare module '@onmax/nuxt-better-auth' {
 ### 使用擴充後的型別
 
 ```typescript
-const { user } = await requireUserSession(event)
+const { user } = await requireUserSession(event);
 // user.role 現在有完整的類型提示：'admin' | 'manager' | 'staff' | 'unauthorized'
 
-if (user.role === 'admin') {
+if (user.role === "admin") {
   // 管理員專屬邏輯
 }
 ```
@@ -306,11 +270,11 @@ if (user.role === 'admin') {
 ```typescript
 export default defineNuxtConfig({
   routeRules: {
-    '/admin/**': { auth: { user: { role: 'admin' } } },
-    '/login': { auth: 'guest' },      // 僅訪客可存取
-    '/dashboard/**': { auth: 'user' }, // 需登入
+    "/admin/**": { auth: { user: { role: "admin" } } },
+    "/login": { auth: "guest" }, // 僅訪客可存取
+    "/dashboard/**": { auth: "user" }, // 需登入
   },
-})
+});
 ```
 
 ### Client 端 Middleware
@@ -367,9 +331,9 @@ NUXT_OAUTH_GOOGLE_CLIENT_SECRET=your-google-client-secret
 export default defineServerAuth({
   session: {
     expiresIn: 60 * 60 * 24 * 7, // 設定足夠長的過期時間
-    updateAge: 60 * 60 * 24,     // 自動更新機制
+    updateAge: 60 * 60 * 24, // 自動更新機制
   },
-})
+});
 ```
 
 ### OAuth Callback URL 錯誤
@@ -389,8 +353,8 @@ export default defineServerAuth({
 
 ```typescript
 // middleware/auth.global.ts
-if (user.value?.role === 'unauthorized') {
-  return navigateTo('/forbidden')
+if (user.value?.role === "unauthorized") {
+  return navigateTo("/forbidden");
 }
 ```
 
@@ -398,12 +362,12 @@ if (user.value?.role === 'unauthorized') {
 
 ## 錯誤處理建議
 
-| 情境 | 錯誤碼 | 建議處理 |
-|-----|-------|---------|
-| 未登入 | 401 | 導向 `/login` |
-| 無權限 | 403 | 導向 `/forbidden` 或顯示錯誤訊息 |
-| OAuth 取消 | - | 提示「登入取消」，留在登入頁 |
-| Session 過期 | 401 | 重新導向登入 |
+| 情境         | 錯誤碼 | 建議處理                         |
+| ------------ | ------ | -------------------------------- |
+| 未登入       | 401    | 導向 `/login`                    |
+| 無權限       | 403    | 導向 `/forbidden` 或顯示錯誤訊息 |
+| OAuth 取消   | -      | 提示「登入取消」，留在登入頁     |
+| Session 過期 | 401    | 重新導向登入                     |
 
 ---
 

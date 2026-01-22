@@ -25,35 +25,18 @@
   },
   "<script setup>": {
     "prefix": "setup",
-    "body": [
-      "<script setup>",
-      "  $1",
-      "</script>"
-    ],
+    "body": ["<script setup>", "  $1", "</script>"],
   },
   "template slot": {
     "prefix": "slotTemplate",
-    "body": [
-      "<template #$1>",
-      "  $2",
-      "</template>"
-    ],
+    "body": ["<template #$1>", "  $2", "</template>"],
   },
   "template #prepend": {
     "prefix": "prependSlot",
-    "body": [
-      "<template #prepend>",
-      "  $1",
-      "</template>"
-    ],
+    "body": ["<template #prepend>", "  $1", "</template>"],
   },
   "template #append": {
     "prefix": "appendSlot",
-    "body": [
-      "<template #append>",
-      "  $1",
-      "</template>"
-    ],
+    "body": ["<template #append>", "  $1", "</template>"],
   },
-
 }

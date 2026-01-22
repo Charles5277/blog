@@ -1,5 +1,5 @@
 <script setup>
-  import FilterPost from './FilterPost.vue';
+import FilterPost from "./FilterPost.vue";
 </script>
 
 <template>

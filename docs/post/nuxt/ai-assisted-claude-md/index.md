@@ -39,6 +39,7 @@ CLAUDE.md 是專案的「AI 使用手冊」，告訴 AI：
 4. 語言偏好與溝通方式
 
 沒有 CLAUDE.md，AI 會：
+
 - 使用自己的預設風格
 - 不知道專案的特殊規範
 - 可能踩到已知的坑
@@ -55,14 +56,14 @@ CLAUDE.md 是專案的「AI 使用手冊」，告訴 AI：
 ```markdown
 ## 📑 目錄導覽
 
-| 章節 | 說明 | 重要性 |
-|-----|------|--------|
-| 語言偏好 | 繁體中文規範 | 🔴 必讀 |
-| Standards | 核心技術規範 | 🔴 必讀 |
-| Development Workflow | TDD 開發流程 | 🔴 必讀 |
-| Database Guidelines | Supabase 規範 | 🔴 必讀 |
-| Vue Component Conventions | 元件撰寫規範 | 🟡 參考 |
-| Git Commit Conventions | Commit 格式 | 🟡 參考 |
+| 章節                      | 說明          | 重要性  |
+| ------------------------- | ------------- | ------- |
+| 語言偏好                  | 繁體中文規範  | 🔴 必讀 |
+| Standards                 | 核心技術規範  | 🔴 必讀 |
+| Development Workflow      | TDD 開發流程  | 🔴 必讀 |
+| Database Guidelines       | Supabase 規範 | 🔴 必讀 |
+| Vue Component Conventions | 元件撰寫規範  | 🟡 參考 |
+| Git Commit Conventions    | Commit 格式   | 🟡 參考 |
 ```
 
 ### CLAUDE.md 核心章節
@@ -84,16 +85,19 @@ CLAUDE.md 是專案的「AI 使用手冊」，告訴 AI：
 **MUST FOLLOW THESE RULES, NO EXCEPTIONS**
 
 ### Core Technologies
+
 - **Stack**: Nuxt 4, Vue 3, TypeScript, Tailwind CSS, Nuxt UI
 - **Patterns**: ALWAYS use Composition API + `<script setup>`
 - **Type Safety**: prefer `interface` over `type`
 
 ### Code Style
+
 - **Styling**: ALWAYS use TailwindCSS, NEVER manual CSS
 - **Colors**: DO NOT hard code colors
 - **Exports**: ALWAYS prefer named exports
 
 ### Development Environment
+
 - **Dev Server**: NEVER launch it yourself
 - **TDD**: 先寫測試，再實作
 ```
@@ -172,25 +176,25 @@ AI Skills 解決這個問題：
 └── ...
 ```
 
-| Skill | 用途 |
-|-------|------|
-| `nuxt` | Nuxt 4 框架開發 |
-| `nuxt-ui` | Nuxt UI 4 元件使用 |
-| `nuxt-better-auth` | 認證整合 |
-| `vue` | Vue 3 Composition API |
-| `vueuse` | VueUse composables |
-| `reka-ui` | Headless UI 元件 |
+| Skill              | 用途                  |
+| ------------------ | --------------------- |
+| `nuxt`             | Nuxt 4 框架開發       |
+| `nuxt-ui`          | Nuxt UI 4 元件使用    |
+| `nuxt-better-auth` | 認證整合              |
+| `vue`              | Vue 3 Composition API |
+| `vueuse`           | VueUse composables    |
+| `reka-ui`          | Headless UI 元件      |
 
 ### 情境 Skills（本地維護）
 
 當特定開發情境發生時自動載入：
 
-| Skill | 觸發時機 | 說明 |
-|-------|---------|------|
-| `supabase-rls` | 建立 RLS Policy 時 | RLS 設計規範 |
-| `supabase-migration` | 建立 migration 時 | Local-First 流程 |
-| `server-api` | 建立 Server API 時 | Zod 驗證、權限檢查 |
-| `pinia-store` | 建立 Pinia Store 時 | Composition API 寫法 |
+| Skill                | 觸發時機            | 說明                 |
+| -------------------- | ------------------- | -------------------- |
+| `supabase-rls`       | 建立 RLS Policy 時  | RLS 設計規範         |
+| `supabase-migration` | 建立 migration 時   | Local-First 流程     |
+| `server-api`         | 建立 Server API 時  | Zod 驗證、權限檢查   |
+| `pinia-store`        | 建立 Pinia Store 時 | Composition API 寫法 |
 
 ### Skill 結構範例
 
@@ -198,6 +202,7 @@ AI Skills 解決這個問題：
 # Nuxt UI v4
 
 ## When to Use
+
 - Installing/configuring @nuxt/ui
 - Using UI components (Button, Card, Table, Form, etc.)
 - Customizing theme
@@ -207,17 +212,17 @@ AI Skills 解決這個問題：
 
 ## Available Guidance
 
-| File | Topics |
-|------|--------|
-| references/installation.md | Nuxt/Vue setup |
-| references/theming.md | Semantic colors, CSS variables |
-| components/*.md | Per-component details |
+| File                       | Topics                         |
+| -------------------------- | ------------------------------ |
+| references/installation.md | Nuxt/Vue setup                 |
+| references/theming.md      | Semantic colors, CSS variables |
+| components/\*.md           | Per-component details          |
 
 ## Quick Reference
 
 // nuxt.config.ts
 export default defineNuxtConfig({
-  modules: ['@nuxt/ui'],
+modules: ['@nuxt/ui'],
 })
 ```
 
@@ -266,15 +271,15 @@ Generated with [Claude Code](https://claude.ai/code)
 Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
-| Emoji | Type | Description |
-|-------|------|-------------|
-| ✨ | feat | New feature |
-| 🐛 | fix | Bug fix |
-| 🧹 | chore | Maintenance |
-| 🔨 | refactor | Refactoring |
-| 🧪 | test | Testing |
-| 📝 | docs | Documentation |
-| 🚀 | deploy | Deployment |
+| Emoji | Type     | Description   |
+| ----- | -------- | ------------- |
+| ✨    | feat     | New feature   |
+| 🐛    | fix      | Bug fix       |
+| 🧹    | chore    | Maintenance   |
+| 🔨    | refactor | Refactoring   |
+| 🧪    | test     | Testing       |
+| 📝    | docs     | Documentation |
+| 🚀    | deploy   | Deployment    |
 
 ### 自動 Migration 驗證
 
@@ -321,6 +326,7 @@ pnpm typecheck
 
 ```markdown
 ✅ 好的做法：
+
 1. 先請 AI 分析需求
 2. 確認理解正確後，請 AI 設計測試
 3. 確認測試案例後，請 AI 實作
@@ -331,6 +337,7 @@ pnpm typecheck
 
 ```markdown
 ✅ 好的做法：
+
 - 執行測試確認功能正確
 - 檢查程式碼是否符合規範
 - 使用 pnpm check 驗證所有檢查
@@ -342,11 +349,13 @@ pnpm typecheck
 
 ```markdown
 ❌ AI 可能會：
+
 - 幻覺（編造不存在的 API）
 - 過度自信（說「這樣就可以了」但其實不行）
 - 忽略邊界案例
 
 ✅ 解決方式：
+
 - 始終執行測試
 - 質疑不確定的答案
 - 要求提供參考來源
