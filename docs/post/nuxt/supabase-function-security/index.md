@@ -9,11 +9,9 @@ tags:
   - PostgreSQL
   - RLS
 series: nuxt-fullstack
-seriesTitle: Nuxt 4 全棧實戰
+seriesTitle: Nuxt 4 全棧實戰筆記
 seriesOrder: 8
 ---
-
-# Database Function 安全規範
 
 ## 這篇要解決什麼問題
 

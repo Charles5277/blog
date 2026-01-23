@@ -9,11 +9,9 @@ tags:
   - PostgreSQL
   - RLS
 series: nuxt-fullstack
-seriesTitle: Nuxt 4 全棧實戰
+seriesTitle: Nuxt 4 全棧實戰筆記
 seriesOrder: 7
 ---
-
-# RLS 與「讀 Client，寫 Server」策略
 
 ## 這篇要解決什麼問題
 

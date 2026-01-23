@@ -9,11 +9,9 @@ tags:
   - Vitest
   - AI
 series: nuxt-fullstack
-seriesTitle: Nuxt 4 全棧實戰
+seriesTitle: Nuxt 4 全棧實戰筆記
 seriesOrder: 12
 ---
-
-# AI 輔助開發與 CLAUDE.md
 
 ## 這篇要解決什麼問題
 
@@ -468,7 +466,7 @@ pnpm typecheck
 
 ## 系列總結
 
-恭喜你完成了「Nuxt 4 全棧實戰」系列！
+恭喜你完成了「Nuxt 4 全棧實戰筆記」系列！
 
 我們涵蓋了：
 

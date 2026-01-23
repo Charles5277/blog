@@ -8,11 +8,9 @@ tags:
   - TDD
   - Vitest
 series: nuxt-fullstack
-seriesTitle: Nuxt 4 全棧實戰
+seriesTitle: Nuxt 4 全棧實戰筆記
 seriesOrder: 11
 ---
-
-# TDD 與自動化測試
 
 ## 這篇要解決什麼問題
 

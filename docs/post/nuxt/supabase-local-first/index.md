@@ -8,11 +8,9 @@ tags:
   - Supabase
   - PostgreSQL
 series: nuxt-fullstack
-seriesTitle: Nuxt 4 全棧實戰
+seriesTitle: Nuxt 4 全棧實戰筆記
 seriesOrder: 6
 ---
-
-# Supabase Local-First 開發流程
 
 ## 這篇要解決什麼問題
 

@@ -8,11 +8,9 @@ tags:
   - Nitro
   - Pinia
 series: nuxt-fullstack
-seriesTitle: Nuxt 4 全棧實戰
+seriesTitle: Nuxt 4 全棧實戰筆記
 seriesOrder: 10
 ---
-
-# Pinia Colada 非同步狀態管理
 
 ## 這篇要解決什麼問題
 

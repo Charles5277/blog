@@ -8,11 +8,9 @@ tags:
   - Authentication
   - OAuth
 series: nuxt-fullstack
-seriesTitle: Nuxt 4 全棧實戰
+seriesTitle: Nuxt 4 全棧實戰筆記
 seriesOrder: 4
 ---
-
-# nuxt-better-auth 認證整合
 
 ## 這篇要解決什麼問題
 

@@ -8,11 +8,9 @@ tags:
   - Authentication
   - OAuth
 series: nuxt-fullstack
-seriesTitle: Nuxt 4 全棧實戰
+seriesTitle: Nuxt 4 全棧實戰筆記
 seriesOrder: 5
 ---
-
-# 角色權限系統設計
 
 ## 這篇要解決什麼問題
 

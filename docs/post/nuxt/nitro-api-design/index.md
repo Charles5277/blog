@@ -8,11 +8,9 @@ tags:
   - Nitro
   - Pinia
 series: nuxt-fullstack
-seriesTitle: Nuxt 4 全棧實戰
+seriesTitle: Nuxt 4 全棧實戰筆記
 seriesOrder: 9
 ---
-
-# Nitro Server API 設計模式
 
 ## 這篇要解決什麼問題
 
