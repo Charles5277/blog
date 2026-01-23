@@ -34,6 +34,7 @@ const sidebarConfigData = [
       { link: "nodejs/package-manager/" },
       { link: "nodejs/vite/" },
       { link: "nodejs/eslint/" },
+      { link: "nodejs/oxlint/" },
     ],
   },
   {
