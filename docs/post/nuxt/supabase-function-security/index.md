@@ -359,4 +359,4 @@ $$;
 - [PostgreSQL Function Security](https://www.postgresql.org/docs/current/sql-createfunction.html)
 - [Supabase Functions](https://supabase.com/docs/guides/database/functions)
 - 上一篇：[RLS 與「讀 Client，寫 Server」策略](/nuxt/supabase-rls-strategy/)
-- 下一篇：[Nitro Server API 設計模式](/nuxt/nitro-api-design/)
+- 下一篇：[Self-hosted Supabase 部署與遷移](/nuxt/supabase-self-hosted/)

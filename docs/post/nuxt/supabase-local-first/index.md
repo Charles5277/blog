@@ -191,6 +191,11 @@ supabase db push
 supabase migration list --linked
 ```
 
+::: tip Self-hosted 環境
+如果使用 Self-hosted Supabase，CI 無法直接執行 `supabase db push`。
+請參考 [Self-hosted Supabase 部署與遷移](/nuxt/supabase-self-hosted/) 了解手動執行 migration 的方式。
+:::
+
 ### 處理不一致
 
 ```bash
@@ -310,5 +315,6 @@ supabase migration repair --status reverted <timestamp>
 
 - [Supabase CLI 文件](https://supabase.com/docs/guides/cli)
 - [Supabase Migration 指南](https://supabase.com/docs/guides/cli/local-development#database-migrations)
+- **進階**：[Self-hosted Supabase 部署與遷移](/nuxt/supabase-self-hosted/)
 - 上一篇：[角色權限系統設計](/nuxt/role-based-access-control/)
 - 下一篇：[RLS 與「讀 Client，寫 Server」策略](/nuxt/supabase-rls-strategy/)

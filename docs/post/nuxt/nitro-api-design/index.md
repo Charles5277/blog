@@ -592,5 +592,5 @@ const { data } = await db.from("resources").select("*").is("deleted_at", null); 
 
 - [Nitro 文件](https://nitro.unjs.io/)
 - [h3 驗證 API](https://h3.unjs.io/utils/request#validating-with-validation-libraries)
-- 上一篇：[Database Function 安全規範](/nuxt/supabase-function-security/)
+- 上一篇：[Self-hosted Supabase 部署與遷移](/nuxt/supabase-self-hosted/)
 - 下一篇：[Pinia Colada 非同步狀態管理](/nuxt/pinia-colada-async-state/)
